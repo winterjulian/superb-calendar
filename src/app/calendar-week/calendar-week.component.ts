@@ -32,18 +32,17 @@ export class CalendarWeekComponent implements OnInit {
   // To prevent NG0100: Expression has changed after it was checked
   public isSet: Subject<boolean> = new Subject();
   // For next + previous buttons
+  public locale: string = 'en';
   public viewDate: Date = new Date();
   public clickedDate: Date;
   public events: CalendarEvent[] = this.storeService.getAppointmentData();
-  // TODO: Localization?
-  // TODO: Days to objects (for sun<->mon switch of week start day)
   public startDayWeek: number = 0;
   public endDayWeek: number = 0;
   public startMonth: string = '';
   public endMonth: string = '';
   public startYear: any = '';
   public endYear: any = '';
-  public days: Array<String> = [];
+  public days: Array<string> = [];
   public view: 'month' | 'week' | 'day' = 'week';
   public resetting: boolean | undefined = undefined;
 

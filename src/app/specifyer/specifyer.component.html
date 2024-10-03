@@ -1,6 +1,8 @@
 <div class="margin-bottom-15 basic-flex-container basic-flex-jcsb flex-centralize-v basic-flex-acsb" style="align-items: stretch">
+
+  <!-- left side -->
   <div class="basic-flex-container">
-    <div class="margin-right-20 theme-background">
+    <div class="theme-background">
       <button
         mat-raised-button
         (click)="resetDateToday()">
@@ -8,17 +10,32 @@
         {{ today | date: 'dd. MMM. YYYY' }}
       </button>
     </div>
-    <div class="basic-flex-container flex-centralize-v flex-centralize-h theme-background material-box-shadow-lowkey border-radius-medium padding-medium-left padding-medium-right">
-      {{ now | date: 'hh:mm:ss' }}
+    <div class="padding-large-left basic-flex-container">
+      <div class="flex-centralize-v flex-centralize-h theme-background material-box-shadow-lowkey border-radius-medium padding-medium-left padding-medium-right">
+        {{ now | date: 'hh:mm:ss' }}
+      </div>
     </div>
   </div>
+  <!-- right side -->
   <div class="basic-flex-container">
     <div>
-      <p-dropdown [style]="{'width':'250px'}" [options]="fakeProperties" optionLabel="displayValue" [showClear]="true" placeholder="All properties"></p-dropdown>
+      <form>
+        <select style="height: 36px; border-radius: 4px; border: none"
+                class="padding-small-left padding-small-right theme-background basic-font-color"
+                name="cars"
+                id="cars">
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="se">Svenska</option>
+        </select>
+      </form>
     </div>
-    <div>
+    <div class="padding-large-left">
       <section>
-        <mat-button-toggle-group [ngClass]="{'background-light font-light': !darkMode, 'background-dark font-dark': darkMode}" appearance="legacy">
+        <mat-button-toggle-group
+          [ngClass]="{'toggle-background-light font-light': !darkMode, 'toggle-background-dark font-dark toggle-checked-dark': darkMode}"
+          [hideSingleSelectionIndicator]="true"
+          appearance="legacy">
           <mat-button-toggle
             [checked]="!darkMode"
             (click)="switchDisplayMode(false)">
@@ -37,4 +54,5 @@
       </section>
     </div>
   </div>
+
 </div>

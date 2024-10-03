@@ -29,7 +29,7 @@ export class StoreService {
   private dailyAppointments: Record<string, Record<string, any[]>> = {};
   // Only works when week start = sunday
   // TODO: flexible week start
-  private basicDayStrings: Array<string> = ['Sun', 'Mon', 'Tue', 'Wes', 'Thu', 'Fri', 'Sat']
+  private basicDayStrings: Array<string> = ['Mon', 'Tue', 'Wes', 'Thu', 'Fri', 'Sat', 'Sun']
 
   /* GENERAL */
 

@@ -3,7 +3,6 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {CommonModule} from "@angular/common";
-import {DropdownModule} from "primeng/dropdown";
 import {MatButton} from "@angular/material/button";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {MatIcon} from "@angular/material/icon";
@@ -11,10 +10,11 @@ import {ThemeService} from "../theme.service";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {StoreService} from "../store.service";
 
+
 @Component({
   selector: 'app-specifyer',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, CommonModule, DropdownModule, MatButton, MatButtonToggleGroup, MatButtonToggle, MatIcon, MatCard, MatCardContent, MatCardHeader],
+  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, CommonModule, MatButton, MatButtonToggleGroup, MatButtonToggle, MatIcon, MatCard, MatCardContent, MatCardHeader],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './specifyer.component.html',
   styleUrl: './specifyer.component.css'

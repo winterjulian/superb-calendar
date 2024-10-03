@@ -32,6 +32,7 @@ body {
   --table-background-color: white;
   --table-background-color-odd: whitesmoke;
   --bg-color-table: white;
+  --bg-color-toggle-checked: lightgrey;
   --bg-color-table-nuance: whitesmoke;
   --calendar-border-color:  #67c8c9;
 }
@@ -43,6 +44,7 @@ body {
   --table-background-color: #1a1a1a;
   --table-background-color-odd: #2a2a2a;
   --bg-color-table: #1a1a1a;
+  --bg-color-toggle-checked: #1a1a1a;
   --bg-color-table-nuance: #252525;
   --calendar-border-color:  #1c3438
 }
@@ -63,16 +65,20 @@ body {
   box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
-.background-light {
+.toggle-background-light {
   background-color: #f7f7f7;
 }
 
-.background-dark {
-  background-color: #464646
+.toggle-background-dark {
+  background-color: #272727;
+}
+
+:host ::ng-deep .mat-button-toggle-checked {
+  background-color: var(--bg-color-toggle-checked);
 }
 
 .font-light {
-  color: #464646;
+  color: grey;
 }
 
 .font-dark {
