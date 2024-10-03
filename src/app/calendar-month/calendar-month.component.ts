@@ -1,9 +1,7 @@
 import {Component, inject, OnInit, signal, ViewChild} from '@angular/core';
 import {StoreService} from "../store.service";
 import {MatCalendar} from "@angular/material/datepicker";
-import {EstatePreviewComponent} from "../estate-preview/estate-preview.component";
 import {CalendarMonthHeaderComponent} from "../calendar-month-header/calendar-month-header.component";
-import {MAT_DATE_LOCALE} from "@angular/material/core";
 
 @Component({
   selector: 'app-calendar-month',
@@ -63,6 +61,5 @@ export class CalendarMonthComponent implements OnInit {
     this.calendar._goToDateInView(date, 'month')
   }
 
-  protected readonly EstatePreviewComponent = EstatePreviewComponent;
   protected readonly CalendarMonthHeaderComponent = CalendarMonthHeaderComponent;
 }

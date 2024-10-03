@@ -22,21 +22,21 @@
     <div class="padding-large-left">
       <section>
         <mat-button-toggle-group
-          [ngClass]="{'toggle-background-light font-light': !darkMode, 'toggle-background-dark font-dark toggle-checked-dark': darkMode}"
+          class="border-radius-medium toggle-background-color toggle-font-color"
           [hideSingleSelectionIndicator]="true"
           appearance="legacy">
           <mat-button-toggle
+            class="toggle-font-color"
             [checked]="!darkMode"
             (click)="switchDisplayMode(false)">
             <mat-icon
-              [ngClass]="{'font-light': darkMode, 'font-dark': !darkMode}"
             >brightness_5</mat-icon>
           </mat-button-toggle>
           <mat-button-toggle
+            class="toggle-font-color"
             [checked]="darkMode"
             (click)="switchDisplayMode(true)">
             <mat-icon
-              [ngClass]="{'font-light': darkMode, 'font-dark': !darkMode}"
             >brightness_2</mat-icon>
           </mat-button-toggle>
         </mat-button-toggle-group>

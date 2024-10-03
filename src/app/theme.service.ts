@@ -29,12 +29,21 @@ export class ThemeService {
   }
 
   scanPrefereces() {
-    // TODO: implement
+    this.darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+    console.log(this.darkMode)
   }
 
   scanLocalStorage() {
-    this.darkMode = localStorage.getItem("darkMode") === 'true';
-    console.log(this.darkMode);
+    const darkMode = localStorage.getItem("darkMode");
+    switch (darkMode) {
+      /*
+       treat null not as false, else if nothing is set in the local storage,
+       system-preferences will be overwritten
+       */
+      case null: break;
+      case 'false': this.darkMode = false; break;
+      case 'true': this.darkMode = true; break;
+    }
   }
 
   private setTheme() {

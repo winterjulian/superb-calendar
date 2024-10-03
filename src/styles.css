@@ -32,21 +32,27 @@ body {
   --table-background-color: white;
   --table-background-color-odd: whitesmoke;
   --bg-color-table: white;
+  --bg-color-toggle: #f7f7f7;
   --bg-color-toggle-checked: lightgrey;
+  --font-color-toggle: grey;
   --bg-color-table-nuance: whitesmoke;
   --calendar-border-color:  #67c8c9;
 }
 
-.dark-theme {
-  --bg-image: linear-gradient(355deg, #1d3a3d 14%, #212121 55%);
-  --bg-image-comp: linear-gradient(355deg, #182a2c 14%, #181818FF 100%);
-  --basic-font-color: lightgrey;
-  --table-background-color: #1a1a1a;
-  --table-background-color-odd: #2a2a2a;
-  --bg-color-table: #1a1a1a;
-  --bg-color-toggle-checked: #1a1a1a;
-  --bg-color-table-nuance: #252525;
-  --calendar-border-color:  #1c3438
+@media (prefers-color-scheme: dark) {
+  .dark-theme {
+    --bg-image: linear-gradient(355deg, #1d3a3d 14%, #212121 55%);
+    --bg-image-comp: linear-gradient(355deg, #182a2c 14%, #181818FF 100%);
+    --basic-font-color: lightgrey;
+    --table-background-color: #1a1a1a;
+    --table-background-color-odd: #2a2a2a;
+    --bg-color-table: #1a1a1a;
+    --bg-color-toggle: #272727;
+    --bg-color-toggle-checked: #1a1a1a;
+    --font-color-toggle: grey;
+    --bg-color-table-nuance: #252525;
+    --calendar-border-color:  #1c3438
+  }
 }
 
 
@@ -65,24 +71,16 @@ body {
   box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
 
-.toggle-background-light {
-  background-color: #f7f7f7;
+.toggle-background-color {
+  background-color: var(--bg-color-toggle)
 }
 
-.toggle-background-dark {
-  background-color: #272727;
+.toggle-font-color {
+  color: var(--font-color-toggle) !important;
 }
 
 :host ::ng-deep .mat-button-toggle-checked {
   background-color: var(--bg-color-toggle-checked);
-}
-
-.font-light {
-  color: grey;
-}
-
-.font-dark {
-  color: grey;
 }
 
 .theme-background {
@@ -91,11 +89,6 @@ body {
 
 .theme-background-nuance {
   background-color: var(--bg-color-table-nuance);
-}
-
-
-.background-color-almond-milk {
-  background-color: #f7f7f7;
 }
 
 .background-color-oyster-black {
@@ -107,10 +100,6 @@ body {
   background-color: transparent;
   width: 30px;
   height: 30px;
-}
-
-.more-vert-class:hover {
-  color: #3a8aec;
 }
 
 .basic-font-color {
@@ -148,11 +137,6 @@ body {
 
 :host ::ng-deep .cal-week-view .cal-hour-odd {
   background-color: var(--table-background-color-odd);
-}
-
-.calendar-border {
-  box-sizing: border-box;
-  border: 1px solid var(--calendar-border-color);
 }
 
 
@@ -279,7 +263,7 @@ body {
 }
 
 .border-radius-medium {
-  border-radius: 5px;
+  border-radius: 5px !important;
 }
 
 /* FONTS */
