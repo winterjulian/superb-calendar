@@ -1,0 +1,86 @@
+<div class="theme-background-nuance week-calendar-wrapper">
+  <div [ngClass]="{'move-out-transition' : resetting, 'move-in-transition': resetting===false }">
+
+    <!--- calender controller: --->
+
+    <div class="basic-flex-container basic-flex-jcsb">
+      <div *ngIf="isSet" class="flex-centralize-v basic-font-weight-500 margin-left-20">
+        {{ startDayWeek  }}. {{ startMonth | date:'MMMM' }} {{ startYear }} — {{ endDayWeek }}. {{ endMonth | date:'MMMM' }} {{ endYear }}
+      </div>
+      <div>
+        <div class="basic-flex-container basic-flex-jcsb">
+          <div
+            class="btn btn-primary"
+            mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (click)="resetFocussedDay()"
+          >
+            <div>
+              <button
+                mat-icon-button
+                type="button"
+                class="mat-calendar-previous-button">
+              </button>
+            </div>
+          </div>
+          <div
+            class="btn btn-primary"
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (click)="resetFocussedDay()"
+          >
+            <div>
+              <button
+                mat-icon-button
+                type="button"
+                class="mat-calendar-next-button">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--- calender: --->
+
+    <mwl-calendar-week-view
+      [viewDate]="viewDate"
+      [events]="events"
+      [hourSegments]="1"
+      [hourSegmentHeight]="35"
+      [dayStartHour]="8"
+      [dayEndHour]="18"
+      [headerTemplate]="headerTemplate"
+      (hourSegmentClicked)="hourSegmentClicked($event)"
+      (eventClicked)="eventClicked($event)"
+      (beforeViewRender)="setDateInformation($event)"
+    >
+      <ng-template #headerTemplate>
+        <div role="row"
+             class="basic-flex-container cal-day-headers">
+          <div *ngFor="let day of days; index as i"
+               [tabindex]="i"
+               class="flex-centralize-h col-header-width"
+               role="columnheader">
+            {{ day }}
+          </div>
+        </div>
+      </ng-template>
+
+      <!--- TODO: EventTemplate events are differently structured --->
+      <!--- TODO: Find out why <.< -->
+      <!--    <ng-template #eventTemplate>-->
+      <!--      <div class="padding-small" (click)="eventClicked($event)">-->
+      <!--        <div class="background-color-oyster-black height-100-percent basic-flex-container flex-direction-col padding-small">-->
+      <!--          <div class="font-color-almond-milk font-size-medium margin-small">-->
+      <!--            1-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--    </ng-template>-->
+
+    </mwl-calendar-week-view>
+  </div>
+</div>

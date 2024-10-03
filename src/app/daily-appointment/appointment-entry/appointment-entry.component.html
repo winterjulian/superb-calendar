@@ -1,0 +1,27 @@
+<div class="basic-flex-container basic-flex-jcsb">
+  <div class="flex-centralize-v">
+    <i class="material-icons font-color-immomio-blue margin-right-10">calendar_month</i>
+    <div>
+      {{ date | date:'d MMMM y' }}
+    </div>
+  </div>
+  <div class="flex-centralize-v">
+    <i class="material-icons font-color-immomio-blue margin-right-10">access_time</i>
+    <div>
+      {{ date | date:'hh:mm' }}
+    </div>
+  </div>
+  <div class="flex-centralize-v">
+    <i class="material-icons font-color-immomio-blue margin-right-10">person</i>
+    <div>
+      {{ attendee }} | {{ maxInvitee }}
+    </div>
+  </div>
+  <div class="width-5-percent">
+    <button class="more-vert-class">
+      <div class="flex-centralize-v flex-centralize-h">
+        <i class="material-icons font-color-fish-skin more-vert-class" (click)="functionsService.demandEternalJustice()">more_vert</i>
+      </div>
+    </button>
+  </div>
+</div>

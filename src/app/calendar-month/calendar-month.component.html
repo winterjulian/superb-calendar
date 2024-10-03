@@ -1,0 +1,7 @@
+<div class="height-100-percent theme-background">
+  <mat-calendar #calendar
+                [ngClass]="{'move-out-transition' : resetting, 'move-in-transition': resetting===false }"
+                [(selected)]="focussedDate"
+                (selectedChange)="onDateValueChange($event)">
+  </mat-calendar>
+</div>

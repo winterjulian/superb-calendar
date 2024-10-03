@@ -1,0 +1,15 @@
+@import "../styles.css";
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 30px;
+}
+
+html, body {
+  height: 100%;
+}
+
+::ng-deep .cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+}

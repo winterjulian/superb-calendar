@@ -1,0 +1,40 @@
+<div class="margin-bottom-15 basic-flex-container basic-flex-jcsb flex-centralize-v basic-flex-acsb" style="align-items: stretch">
+  <div class="basic-flex-container">
+    <div class="margin-right-20 theme-background">
+      <button
+        mat-raised-button
+        (click)="resetDateToday()">
+        <i class="material-icons margin-right-10">history</i>
+        {{ today | date: 'dd. MMM. YYYY' }}
+      </button>
+    </div>
+    <div class="basic-flex-container flex-centralize-v flex-centralize-h theme-background material-box-shadow-lowkey border-radius-medium padding-medium-left padding-medium-right">
+      {{ now | date: 'hh:mm:ss' }}
+    </div>
+  </div>
+  <div class="basic-flex-container">
+    <div>
+      <p-dropdown [style]="{'width':'250px'}" [options]="fakeProperties" optionLabel="displayValue" [showClear]="true" placeholder="All properties"></p-dropdown>
+    </div>
+    <div>
+      <section>
+        <mat-button-toggle-group [ngClass]="{'background-light font-light': !darkMode, 'background-dark font-dark': darkMode}" appearance="legacy">
+          <mat-button-toggle
+            [checked]="!darkMode"
+            (click)="switchDisplayMode(false)">
+            <mat-icon
+              [ngClass]="{'font-light': darkMode, 'font-dark': !darkMode}"
+            >brightness_5</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle
+            [checked]="darkMode"
+            (click)="switchDisplayMode(true)">
+            <mat-icon
+              [ngClass]="{'font-light': darkMode, 'font-dark': !darkMode}"
+            >brightness_2</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </section>
+    </div>
+  </div>
+</div>

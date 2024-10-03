@@ -1,0 +1,20 @@
+:host ::ng-deep .mat-mdc-icon-button .mat-mdc-button-touch-target {
+  height: 40px;
+  width: 40px;
+}
+
+:host ::ng-deep .cal-week-view .cal-event {
+  color: #f7f7f7;
+}
+
+:host ::ng-deep .cal-week-view .cal-ends-within-day .cal-event {
+  border-radius: 0;
+}
+
+:host ::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+  --mdc-icon-button-state-layer-size: 40px;
+}
+
+:host ::ng-deep .cal-week-view .cal-hour-segment::after {
+  content: none
+}

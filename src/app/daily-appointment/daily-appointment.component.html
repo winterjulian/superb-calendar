@@ -1,0 +1,58 @@
+<div class="height-100-percent basic-flex-container flex-direction-col">
+  <div class="calendar-border-bottom padding-medium head-height-50 basic-flex-container flex-centralize-v basic-font-weight-500">
+    <i class="material-icons font-color-immomio-blue margin-right-10">calendar_month</i>
+    {{ data.currentDate | date:'EEEE, d MMMM y'}}
+  </div>
+  <div class="height-100-percent background-color-almond-milk overflow-scroll">
+
+    <div *ngFor="let node of data.nodeData | keyvalue">
+
+      <!--- properties --->
+      <div class="calendar-border margin-large theme-background">
+
+        <!--- header --->
+        <!--- attention: inline style --->
+        <div class="basic-flex-container margin-medium">
+          <app-picture-title-pair
+            [image]="undefined"
+            [title]="store[node.key][0].property.name"
+            [subtitle]="functionsService.generateAddress(store[node.key][0].property.address)"
+            style="width: 70%">
+          </app-picture-title-pair>
+          <app-picture-title-pair
+            [image]="undefined"
+            [title]="'Unknown agent'"
+            [subtitle]="'Agent'"
+            style="width: 30%">
+          </app-picture-title-pair>
+        </div>
+
+        <!--- viewing(s) --->
+        <div class="margin-medium calendar-border">
+          <ng-container *ngFor="let appointment of store[node.key]">
+
+            <!--- appointments --->
+            <div class="calendar-border padding-medium">
+              <app-appointment-entry
+                [date]="appointment.date"
+                [attendee]="appointment.attendeeCount"
+                [maxInvitee]="appointment.maxInviteeCount">
+              </app-appointment-entry>
+            </div>
+
+          </ng-container>
+        </div>
+
+        <!--- (+)create viewing --->
+        <div class="basic-flex-container margin-medium">
+          <button (click)="functionsService.demandEternalJustice()" class="create-viewing-button width-100-percent flex-centralize-v flex-centralize-h border-radius-small padding-medium">
+            <i class="material-icons">add_circle</i>
+            <div class="basic-font-weight-600 margin-left-20">Create Viewing</div>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

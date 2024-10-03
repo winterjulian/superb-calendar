@@ -1,0 +1,13 @@
+:host ::ng-deep .mat-calendar-controls {
+  display:flex;
+  align-items: center;
+  margin: 0;
+}
+
+:host ::ng-deep .mat-calendar-header {
+  padding: 0;
+}
+
+:host ::ng-deep .mat-calendar-body-selected {
+  background-color: #158c8d;
+}

@@ -1,0 +1,15 @@
+:host ::ng-deep .p-dropdown {
+  border-radius: 0;
+}
+
+:host ::ng-deep .p-inputtext {
+  font-size: 12px;
+}
+
+:host ::ng-deep .ng-star-inserted {
+  font-size: 12px;
+}
+
+:host ::ng-deep .p-dropdown-panel {
+  border-radius: 0;
+}

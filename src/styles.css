@@ -1,1 +1,616 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+/* BASICS */
+
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: var(--bg-image);
+}
+
+.basic-font {
+  font-family: "Roboto",
+  "Segoe UI",
+  "GeezaPro",
+  "DejaVu Serif",
+  "sans-serif",
+  "-apple-system",
+  "BlinkMacSystemFont";
+}
+
+
+/* THEMEING */
+
+
+body {
+  --bg-image: linear-gradient(355deg, #97D9E1 14%, #ffffff 55%);
+  --bg-image-comp: linear-gradient(355deg, #d0f0f5 14%, #ffffff 100%);
+  --basic-font-color: #2b2e33;
+  --table-background-color: white;
+  --table-background-color-odd: whitesmoke;
+  --bg-color-table: white;
+  --bg-color-table-nuance: whitesmoke;
+  --calendar-border-color:  #67c8c9;
+}
+
+.dark-theme {
+  --bg-image: linear-gradient(355deg, #1d3a3d 14%, #212121 55%);
+  --bg-image-comp: linear-gradient(355deg, #182a2c 14%, #181818FF 100%);
+  --basic-font-color: lightgrey;
+  --table-background-color: #1a1a1a;
+  --table-background-color-odd: #2a2a2a;
+  --bg-color-table: #1a1a1a;
+  --bg-color-table-nuance: #252525;
+  --calendar-border-color:  #1c3438
+}
+
+
+/* COLORS & THEMES */
+
+
+.body-corresponding-comp-background {
+  background-image: var(--bg-image-comp)
+}
+
+.material-box-shadow {
+  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.material-box-shadow-lowkey {
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.background-light {
+  background-color: #f7f7f7;
+}
+
+.background-dark {
+  background-color: #464646
+}
+
+.font-light {
+  color: #464646;
+}
+
+.font-dark {
+  color: grey;
+}
+
+.theme-background {
+  background-color: var(--bg-color-table);
+}
+
+.theme-background-nuance {
+  background-color: var(--bg-color-table-nuance);
+}
+
+
+.background-color-almond-milk {
+  background-color: #f7f7f7;
+}
+
+.background-color-oyster-black {
+  background-color: #2b2e33
+}
+
+.more-vert-class {
+  border: 0px;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+}
+
+.more-vert-class:hover {
+  color: #3a8aec;
+}
+
+.basic-font-color {
+  color: var(--basic-font-color) !important;
+}
+
+:host ::ng-deep .mat-mdc-raised-button {
+  background-color: var(--table-background-color-odd) !important;
+  color: var(--basic-font-color) !important;
+}
+
+:host ::ng-deep .mat-mdc-button {
+  color: var(--basic-font-color) !important;
+}
+
+:host ::ng-deep .mat-calendar-body-cell-content {
+  color: var(--basic-font-color) !important;
+}
+
+:host ::ng-deep .mat-calendar-body-label {
+  color: var(--basic-font-color) !important;
+}
+
+:host ::ng-deep .mat-calendar-table-header th {
+  color: var(--basic-font-color) !important;
+}
+
+:host ::ng-deep .mat-calendar-arrow {
+  fill: var(--basic-font-color) !important;
+}
+
+:host ::ng-deep .cal-week-view {
+  background-color: var(--table-background-color);
+}
+
+:host ::ng-deep .cal-week-view .cal-hour-odd {
+  background-color: var(--table-background-color-odd);
+}
+
+.calendar-border {
+  box-sizing: border-box;
+  border: 1px solid var(--calendar-border-color);
+}
+
+
+/* CLASSICS */
+
+
+.scroll-container-y {
+  overflow-y: auto;
+}
+
+.scroll-container-x {
+  overflow-x: auto;
+}
+
+.basic-flex-container {
+  display: flex;
+}
+
+.flex-centralize-h {
+  display: flex;
+  justify-content: center;
+}
+
+.basic-flex-jcsb {
+  justify-content: space-between;
+}
+
+.basic-flex-acsb {
+  align-content: space-between;
+}
+
+.basic-flex-1 {
+  flex: 1;
+}
+
+.flex-centralize-v {
+  display: flex;
+  align-items: center;
+}
+
+.basic-font-weight-500 {
+  font-weight: 500;
+}
+
+
+.basic-font-weight-600 {
+  font-weight: 600;
+}
+
+.flex-direction-col {
+  flex-direction: column;
+}
+
+/* OTHERS */
+
+.property-preview-class {
+  background-color: white;
+}
+
+.property-preview-class:hover {
+  background-color: #e1e1e1;
+}
+
+.create-viewing-button {
+  color: #f89b3c;
+  background-color: white;
+  border: 2px solid #e1e1e1;
+}
+
+.create-viewing-button:hover {
+  background-color: #3a8aec;
+  color: white;
+}
+
+.preview-image {
+  height: 50px;
+  width: 50px;
+  border: 1px solid grey
+}
+
+.calender-column-width {
+  width: 250px;
+}
+
+.width-5-percent {
+  width: 5%;
+}
+
+.height-month-calendar {
+  height: 315px;
+}
+
+.calendar-border-2 {
+  box-sizing: border-box;
+  border: 2px solid #e1e1e1;
+}
+
+.calendar-border-bottom {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.col-header-width {
+  width: 70px;
+}
+
+.head-height-40 {
+  height: 40px;
+}
+
+.head-height-50 {
+  height: 50px;
+}
+
+.height-100-percent {
+  height: 100%;
+}
+
+.width-100-percent {
+  width: 100%;
+}
+
+.border-radius-small {
+  border-radius: 2px;
+}
+
+.border-radius-medium {
+  border-radius: 5px;
+}
+
+/* FONTS */
+
+.font-color-immomio-blue {
+  color: #3a8aec;
+}
+
+.font-color-salt-white {
+  color: white;
+}
+
+.font-color-almond-milk {
+  color: #f7f7f7;
+}
+
+.font-color-fish-skin {
+  color: darkgrey;
+}
+
+.font-color-fruity-orange {
+  color: #f89b3c;
+}
+
+.font-size-small {
+  font-size: 8px;
+}
+
+.font-size-medium {
+  font-size: 12px;
+}
+
+.font-size-large {
+  font-size: 16px;
+}
+
+/* MARGINS & PADDINGS */
+
+.margin-xsmall {
+  margin: 2px;
+}
+
+.margin-small {
+  margin: 5px;
+}
+
+.margin-medium {
+  margin: 10px;
+}
+
+.margin-large {
+  margin: 15px;
+}
+
+.margin-xlarge {
+  margin: 20px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.padding-xsmall {
+  padding: 2px;
+}
+
+.padding-small {
+  padding: 5px;
+}
+
+.padding-medium {
+  padding: 10px;
+}
+
+.padding-large {
+  padding: 15px;
+}
+
+.padding-xlarge {
+  padding: 20px;
+}
+
+.margin-xsmall-bottom {
+  margin-bottom: 2px;
+}
+
+.margin-small-bottom {
+  margin-bottom: 5px;
+}
+
+.margin-medium-bottom {
+  margin-bottom: 10px;
+}
+
+.margin-large-bottom {
+  margin-bottom: 15px;
+}
+
+.margin-xlarge-bottom {
+  margin-bottom: 20px;
+}
+
+.padding-xsmall-bottom {
+  padding-bottom: 2px;
+}
+
+.padding-small-bottom {
+  padding-bottom: 5px;
+}
+
+.padding-medium-bottom {
+  padding-bottom: 10px;
+}
+
+.padding-large-bottom {
+  padding-bottom: 15px;
+}
+
+.padding-xlarge-bottom {
+  padding-bottom: 20px;
+}
+
+.margin-xsmall-top {
+  margin-top: 2px;
+}
+
+.margin-small-top {
+  margin-top: 5px;
+}
+
+.margin-medium-top {
+  margin-top: 10px;
+}
+
+.margin-large-top {
+  margin-top: 15px;
+}
+
+.margin-xlarge-top {
+  margin-top: 20px;
+}
+
+.padding-xsmall-top {
+  padding-top: 2px;
+}
+
+.padding-small-top {
+  padding-top: 5px;
+}
+
+.padding-medium-top {
+  padding-top: 10px;
+}
+
+.padding-large-top {
+  padding-top: 15px;
+}
+
+.padding-xlarge-top {
+  padding-top: 20px;
+}
+
+.margin-xsmall-left {
+  margin-left: 2px;
+}
+
+.margin-small-left {
+  margin-left: 5px;
+}
+
+.margin-medium-left {
+  margin-left: 10px;
+}
+
+.margin-large-left {
+  margin-left: 15px;
+}
+
+.margin-xlarge-left {
+  margin-left: 20px;
+}
+
+.padding-xsmall-left {
+  padding-left: 2px;
+}
+
+.padding-small-left {
+  padding-left: 5px;
+}
+
+.padding-medium-left {
+  padding-left: 10px;
+}
+
+.padding-large-left {
+  padding-left: 15px;
+}
+
+.padding-xlarge-left {
+  padding-left: 20px;
+}
+
+.margin-xsmall-right {
+  margin-right: 2px;
+}
+
+.margin-small-right {
+  margin-right: 5px;
+}
+
+.margin-medium-right {
+  margin-right: 10px;
+}
+
+.margin-large-right {
+  margin-right: 15px;
+}
+
+.margin-xlarge-right {
+  margin-right: 20px;
+}
+
+.padding-xsmall-right {
+  padding-right: 2px;
+}
+
+.padding-small-right {
+  padding-right: 5px;
+}
+
+.padding-medium-right {
+  padding-right: 10px;
+}
+
+.padding-large-right {
+  padding-right: 15px;
+}
+
+.padding-xlarge-right {
+  padding-right: 20px;
+}
+
+/* OLD: */
+
+.margin-left-20 {
+  margin-left: 20px;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.margin-right-20 {
+  margin-right: 20px;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-medium {
+  margin: 15px;
+}
+
+.margin-large {
+  margin: 20px
+}
+
+.margin-xlarge {
+  margin: 30px;
+}
+
+.padding-large {
+  padding: 15px;
+}
+
+.padding-medium {
+  padding: 10px;
+}
+
+.padding-small {
+  padding: 2px;
+}
+
+.move-out-transition {
+  position: relative;
+  animation: move-in-animation 0.5s;
+}
+
+.move-in-transition {
+  position: relative;
+  animation-direction: reverse;
+  animation: move-out-animation 0.5s;
+}
+
+@keyframes move-in-animation {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.9;
+    left: 0px;
+    opacity: 1;
+  }
+  100% {
+    scale: 0.9;
+    left: -15px;
+    opacity: 0;
+  }
+}
+
+@keyframes move-out-animation {
+  0% {
+    scale: 0.9;
+    left: 15px;
+    opacity: 0;
+  }
+  50% {
+    scale: 0.9;
+    left: 0px;
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
