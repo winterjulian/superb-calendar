@@ -7,6 +7,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {CalendarWeekModule} from "angular-calendar";
 import {MatCalendar} from "@angular/material/datepicker";
 import {DateAdapter} from "@angular/material/core";
+import {DataService} from "./services/data.service";
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,12 @@ import {DateAdapter} from "@angular/material/core";
 export class AppComponent {
   title = 'SuperbCalendar';
   today: Date = new Date();
-  constructor(private dateAdapter: DateAdapter<Date>) {
+  constructor(
+    private dateAdapter: DateAdapter<Date>,
+    private dataService: DataService
+  ) {
     // Set start day of month calendar to monday
     this.dateAdapter.getFirstDayOfWeek = () => 1;
+    this.dataService.loadData();
   }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {CalendarMonthComponentModule} from "../calendar-month/calendar-month-component.module";
 import {CalendarWeekComponentModule} from "../calendar-week/calendar-week-component.module";
 import {MatButton} from "@angular/material/button";
-import {StoreService} from "../store.service";
+import {StoreService} from "../services/store.service";
 import {DatePipe} from "@angular/common";
 
 @Component({

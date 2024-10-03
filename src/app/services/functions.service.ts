@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {AddressModel} from "./interfaces/address.model";
+import {AddressModel} from "../interfaces/address.model";
 
 @Injectable({
   providedIn: 'root'

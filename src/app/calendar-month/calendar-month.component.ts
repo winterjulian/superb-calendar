@@ -1,5 +1,5 @@
 import {Component, inject, OnInit, signal, ViewChild} from '@angular/core';
-import {StoreService} from "../store.service";
+import {StoreService} from "../services/store.service";
 import {MatCalendar} from "@angular/material/datepicker";
 import {CalendarMonthHeaderComponent} from "../calendar-month-header/calendar-month-header.component";
 

@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { FunctionsService } from "../functions.service";
+import { FunctionsService } from "../services/functions.service";
 import { NodeModel } from "../interfaces/node.model";
 
 @Component({

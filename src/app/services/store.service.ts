@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
-import * as jsonData from '../assets/data.json';
-import {DataWrapperModel} from "./interfaces/dataWrapper.model";
+import * as jsonData from '../../assets/data.json';
+import {DataWrapperModel} from "../interfaces/dataWrapper.model";
 import {CalendarEvent} from "angular-calendar";
 import {addHours} from "date-fns";
-import {NodeModel} from "./interfaces/node.model";
+import {NodeModel} from "../interfaces/node.model";
 
 @Injectable({
   providedIn: 'root'

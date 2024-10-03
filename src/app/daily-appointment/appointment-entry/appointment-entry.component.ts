@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {DatePipe} from "@angular/common";
-import {FunctionsService} from "../../functions.service";
+import {FunctionsService} from "../../services/functions.service";
 
 @Component({
   selector: 'app-appointment-entry',

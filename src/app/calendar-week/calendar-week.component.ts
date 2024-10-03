@@ -1,10 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CalendarEvent, CalendarEventTitleFormatter} from "angular-calendar";
 import { CustomEventTitleFormatter } from '../providers/custom-event-title-formatter.provider';
-import {StoreService} from "../store.service";
+import {StoreService} from "../services/store.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DailyAppointmentComponent} from "../daily-appointment/daily-appointment.component";
-import {FunctionsService} from "../functions.service";
+import {FunctionsService} from "../services/functions.service";
 import {Subject} from "rxjs";
 import {WeekDayModel} from "../interfaces/weekDay.model";
 
