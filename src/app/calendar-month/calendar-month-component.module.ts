@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { CalendarMonthComponent } from "./calendar-month.component";
 import { MatCardModule } from "@angular/material/card";
 import { MatDatepickerModule } from "@angular/material/datepicker";
-import { provideNativeDateAdapter } from '@angular/material/core';
+import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
 import {MatButton} from "@angular/material/button";
 
 @NgModule({
@@ -14,8 +14,8 @@ import {MatButton} from "@angular/material/button";
         MatCardModule,
         MatButton,
     ],
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(), {provide: MAT_DATE_LOCALE, useValue: 'en'}],
   declarations: [CalendarMonthComponent],
   exports: [CalendarMonthComponent]
 })
-export class CalendarMonthComponentModule { }
+export class CalendarMonthComponentModule {}

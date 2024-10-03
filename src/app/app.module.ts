@@ -41,7 +41,7 @@ registerLocaleData(localeDe);
     SpecifyerComponent,
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},
   ]
 })
 export class AppModule { }
