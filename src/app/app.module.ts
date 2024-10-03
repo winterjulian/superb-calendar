@@ -6,7 +6,7 @@ import { EstatePreviewComponent } from "./estate-preview/estate-preview.componen
 import { SpecifyerComponent } from "./specifyer/specifyer.component";
 import { CalendarModule, DateAdapter} from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { CommonModule } from "@angular/common";
+import {CommonModule, registerLocaleData} from "@angular/common";
 import { CalendarMonthComponentModule} from "./calendar-month/calendar-month-component.module";
 import { CalendarWeekComponentModule} from "./calendar-week/calendar-week-component.module";
 import { MatButtonModule} from "@angular/material/button";
@@ -14,15 +14,12 @@ import { MatDialogModule} from "@angular/material/dialog";
 import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import { MatSelectModule} from "@angular/material/select";
-import {DropdownModule} from "primeng/dropdown";
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    OrganizerComponent,
-    EstatePreviewComponent,
-    SpecifyerComponent,
-  ],
+  declarations: [],
   exports: [],
   imports: [
     BrowserModule,
@@ -38,11 +35,13 @@ import {DropdownModule} from "primeng/dropdown";
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    DropdownModule,
+    OrganizerComponent,
+    AppComponent,
+    EstatePreviewComponent,
+    SpecifyerComponent,
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }

@@ -32,7 +32,6 @@ export class CalendarWeekComponent implements OnInit {
   // To prevent NG0100: Expression has changed after it was checked
   public isSet: Subject<boolean> = new Subject();
   // For next + previous buttons
-  public locale: string = 'en';
   public viewDate: Date = new Date();
   public clickedDate: Date;
   public events: CalendarEvent[] = this.storeService.getAppointmentData();

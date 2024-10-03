@@ -22,7 +22,6 @@ export class ThemeService {
   // SETTER
 
   setDisplayMode(darkMode: boolean) {
-    console.log(darkMode);
     this.darkMode = darkMode;
     localStorage.removeItem("darkMode");
     localStorage.setItem("darkMode", String(darkMode));
