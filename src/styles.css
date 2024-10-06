@@ -28,30 +28,34 @@ body {
 body {
   --bg-image: linear-gradient(355deg, #97D9E1 14%, #ffffff 55%);
   --bg-image-comp: linear-gradient(355deg, #d0f0f5 14%, #ffffff 100%);
-  --basic-font-color: #2b2e33;
-  --table-background-color: white;
-  --table-background-color-odd: whitesmoke;
+  --font-color-basic: #2b2e33;
+
   --bg-color-table: white;
-  --bg-color-toggle: #f7f7f7;
-  --bg-color-toggle-checked: lightgrey;
+  --bg-color-table-nuance: #e7e7e7;
+  --bg-color-table-row: white;
+  --bg-color-table-row-odd: whitesmoke;
+
+  --bg-color-toggle: #e7e7e7;
+  --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
-  --bg-color-table-nuance: whitesmoke;
-  --calendar-border-color:  #67c8c9;
+  --border-color-calendar:  #67c8c9;
 }
 
 @media (prefers-color-scheme: dark) {
   .dark-theme {
     --bg-image: linear-gradient(355deg, #1d3a3d 14%, #212121 55%);
     --bg-image-comp: linear-gradient(355deg, #182a2c 14%, #181818FF 100%);
-    --basic-font-color: lightgrey;
-    --table-background-color: #1a1a1a;
-    --table-background-color-odd: #2a2a2a;
-    --bg-color-table: #1a1a1a;
-    --bg-color-toggle: #272727;
+    --font-color-basic: lightgrey;
+
+    --bg-color-table: #282828;
+    --bg-color-table-nuance: #1a1a1a;
+    --bg-color-table-row: #1a1a1a;
+    --bg-color-table-row-odd: #2a2a2a;
+
+    --bg-color-toggle: #383838;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
-    --bg-color-table-nuance: #252525;
-    --calendar-border-color:  #1c3438
+    --border-color-calendar:  #1c3438
   }
 }
 
@@ -91,10 +95,6 @@ body {
   background-color: var(--bg-color-table-nuance);
 }
 
-.background-color-oyster-black {
-  background-color: #2b2e33
-}
-
 .more-vert-class {
   border: 0px;
   background-color: transparent;
@@ -103,40 +103,40 @@ body {
 }
 
 .basic-font-color {
-  color: var(--basic-font-color) !important;
+  color: var(--font-color-basic) !important;
 }
 
 :host ::ng-deep .mat-mdc-raised-button {
-  background-color: var(--table-background-color-odd) !important;
-  color: var(--basic-font-color) !important;
+  background-color: var(--bg-color-toggle) !important;
+  color: var(--font-color-basic) !important;
 }
 
 :host ::ng-deep .mat-mdc-button {
-  color: var(--basic-font-color) !important;
+  color: var(--font-color-basic) !important;
 }
 
 :host ::ng-deep .mat-calendar-body-cell-content {
-  color: var(--basic-font-color) !important;
+  color: var(--font-color-basic) !important;
 }
 
 :host ::ng-deep .mat-calendar-body-label {
-  color: var(--basic-font-color) !important;
+  color: var(--font-color-basic) !important;
 }
 
 :host ::ng-deep .mat-calendar-table-header th {
-  color: var(--basic-font-color) !important;
+  color: var(--font-color-basic) !important;
 }
 
 :host ::ng-deep .mat-calendar-arrow {
-  fill: var(--basic-font-color) !important;
+  fill: var(--font-color-basic) !important;
 }
 
 :host ::ng-deep .cal-week-view {
-  background-color: var(--table-background-color);
+  background-color: var(--bg-color-table-row);
 }
 
 :host ::ng-deep .cal-week-view .cal-hour-odd {
-  background-color: var(--table-background-color-odd);
+  background-color: var(--bg-color-table-row-odd);
 }
 
 
@@ -162,6 +162,11 @@ body {
 
 .basic-flex-jcsb {
   justify-content: space-between;
+}
+
+
+.basic-flex-jcfe {
+  justify-content: flex-end;
 }
 
 .basic-flex-acsb {

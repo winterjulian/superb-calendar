@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {BrowserModule} from "@angular/platform-browser";
 import { OrganizerComponent } from "./organizer/organizer.component";
-import { EstatePreviewComponent } from "./estate-preview/estate-preview.component";
 import { SpecifyerComponent } from "./specifyer/specifyer.component";
 import { CalendarModule, DateAdapter} from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -15,6 +14,7 @@ import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import { MatSelectModule} from "@angular/material/select";
 import localeDe from '@angular/common/locales/de';
+import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localeDe);
 
@@ -37,8 +37,8 @@ registerLocaleData(localeDe);
     MatSelectModule,
     OrganizerComponent,
     AppComponent,
-    EstatePreviewComponent,
     SpecifyerComponent,
+    AppRoutingModule,
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},

@@ -4,6 +4,7 @@ import {CalendarWeekComponentModule} from "../calendar-week/calendar-week-compon
 import {MatButton} from "@angular/material/button";
 import {StoreService} from "../services/store.service";
 import {DatePipe} from "@angular/common";
+import {DataService} from "../services/data.service";
 
 @Component({
   selector: 'app-organizer',
@@ -13,7 +14,16 @@ import {DatePipe} from "@angular/common";
   styleUrl: './organizer.component.css'
 })
 export class OrganizerComponent {
-  constructor(public storeService: StoreService) {}
+  constructor(
+    public storeService: StoreService,
+    public dataService: DataService
+  ) {}
 
+  saveData() {
+    this.dataService.saveData( { title: 'TEST', views: 999 } );
+  }
 
+  loadData() {
+    this.dataService.loadData();
+  }
 }

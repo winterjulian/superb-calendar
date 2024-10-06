@@ -1,14 +1,9 @@
-<div class="flex-centralize-h height-100-percent">
-
-  <div class="basic-flex-container flex-direction-col margin-xlarge">
-    <div>
-      <!--- header-like components: --->
-      <app-specifyer class="basic-font basic-font-color"></app-specifyer>
-    </div>
-    <div class="scroll-container-y material-box-shadow border-radius-medium">
-      <!--- main content components: --->
-      <app-organizer class="basic-font basic-font-color"></app-organizer>
-    </div>
+<div style="height:100%">
+  <div>
+    <router-outlet name="sidemenu"></router-outlet>
   </div>
-
+  <div style="z-index: 0">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+
