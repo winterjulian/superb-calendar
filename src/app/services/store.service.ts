@@ -13,14 +13,13 @@ export class StoreService {
 
   constructor() {
     this.refineRawAppointmentData();
-    this.today = new Date();
   }
 
-  private primaryColor: string = '#2b2e33'; // equals oyster-black
-  private secondaryColor: string = '#2b2e33'; // equals oyster-black
+  private primaryColor: string = '#f7f7f7'; // equals oyster-black
+  private secondaryColor: string = '#1d3a3d'; // equals oyster-black
   private dialogWidth: string = '725px';
   private dialogHeight: string = '500px';
-  private today: Date;
+  private today: Date = new Date();
   private currentlyFocussedDate: Subject<Date | undefined> = new Subject();
   private calendarReset: BehaviorSubject<boolean | undefined> = new BehaviorSubject<boolean | undefined>(undefined);
   // see "compilerOptions": { "resolveJsonModule": true ...};
@@ -35,7 +34,7 @@ export class StoreService {
 
   refineRawAppointmentData() {
     if (this.rawAppointmentData.data) {
-      this.rawAppointmentData.data.appointments.nodes.forEach((node: NodeModel) => {
+      [this.getLastProperty()].forEach((node: NodeModel) => {
 
         this.createDailyAppointmentStore(node);
 
@@ -43,6 +42,25 @@ export class StoreService {
         this.appointmentData.push(appointmentObject);
       })
     }
+    console.log(this.appointmentData);
+    /**
+     *
+     * end
+     * :
+     * Wed Oct 09 2024 14:45:00 GMT+0200 (Mitteleuropäische Sommerzeit)
+     * [[Prototype]]
+     * :
+     * Object
+     * start
+     * :
+     * Wed Oct 09 2024 13:15:00 GMT+0200 (Mitteleuropäische Sommerzeit)
+     * [[Prototype]]
+     * :
+     * Object
+     * title
+     * :
+     * "2 Zimmer in Stendal"
+     */
   }
 
   createDailyAppointmentStore(node: NodeModel) {
@@ -75,12 +93,8 @@ export class StoreService {
   createAppointmentObject(node: NodeModel) {
     return {
       title: String(node.property.name),
-      color: {
-          primary: this.primaryColor,
-          secondary: this.secondaryColor
-        },
       start: new Date(node.date),
-      end: addHours(new Date(node.date), 1),
+      end: addHours(new Date(node.date), 0.5),
     }
   }
 
@@ -131,7 +145,7 @@ export class StoreService {
   getLastProperty(): NodeModel {
     return {
       "id": "2442449",
-      "date": "2019-03-09T11:00:00.000+0000",
+      "date": "2024-10-09T11:15:00.000+0000",
       "maxInviteeCount": 3,
       "attendeeCount": 2,
       "showContactInformation": false,
@@ -146,7 +160,7 @@ export class StoreService {
       },
       "property": {
         "id": "2442379",
-        "name": "2 Zimmer in Stendal",
+        "name": "2 Zimmer\nin Stendal",
         "inviteeCount": 2,
         "address": {
           "street": "Karlhagenbeckstr",

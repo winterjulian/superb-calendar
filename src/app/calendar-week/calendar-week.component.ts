@@ -56,6 +56,7 @@ export class CalendarWeekComponent implements OnInit {
         this.viewDate = date;
       }
     })
+    console.log(this.events);
   }
 
   hourSegmentClicked(e: any) {
@@ -66,6 +67,7 @@ export class CalendarWeekComponent implements OnInit {
   }
 
   eventClicked(e: any): void {
+    console.log(e);
     this.openDialog(e);
   }
 
@@ -131,5 +133,9 @@ export class CalendarWeekComponent implements OnInit {
 
   resetFocussedDay() {
     this.storeService.setCurrentlyFocussedDate(undefined);
+  }
+
+  testFunc(input: any) {
+    console.log(input)
   }
 }

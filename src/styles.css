@@ -31,14 +31,14 @@ body {
   --font-color-basic: #2b2e33;
 
   --bg-color-table: white;
-  --bg-color-table-nuance: #e7e7e7;
+  --bg-color-table-nuance: #cacaca;
   --bg-color-table-row: white;
   --bg-color-table-row-odd: whitesmoke;
 
   --bg-color-toggle: #e7e7e7;
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
-  --border-color-calendar:  #67c8c9;
+  --bg-color-appointment:  #97D9E1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -52,10 +52,10 @@ body {
     --bg-color-table-row: #1a1a1a;
     --bg-color-table-row-odd: #2a2a2a;
 
-    --bg-color-toggle: #383838;
+    --bg-color-toggle: #3b3b3b;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
-    --border-color-calendar:  #1c3438
+    --bg-color-appointment:  #1c3438
   }
 }
 
@@ -93,6 +93,11 @@ body {
 
 .theme-background-nuance {
   background-color: var(--bg-color-table-nuance);
+}
+
+:host ::ng-deep .cal-week-view .cal-event {
+  background-color: var(--bg-color-appointment);
+  border: 1px solid var(--font-color-toggle);
 }
 
 .more-vert-class {

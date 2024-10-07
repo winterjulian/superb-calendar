@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {DatePipe, NgClass} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
+import {AppointmentsCreateComponent} from "../appointments-create/appointments-create.component";
 
 @Component({
   selector: 'app-appointments-overview',
@@ -11,7 +12,8 @@ import {MatButton} from "@angular/material/button";
     NgClass,
     MatIcon,
     DatePipe,
-    MatButton
+    MatButton,
+    AppointmentsCreateComponent
   ],
   templateUrl: './appointments-overview.component.html',
   styleUrl: './appointments-overview.component.css'
