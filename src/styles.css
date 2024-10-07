@@ -310,6 +310,15 @@ body {
   font-size: 16px;
 }
 
+.font-size-xlarge {
+  font-size: 20px;
+}
+
+.font-size-xxlarge {
+  font-size: 24px;
+}
+
+
 /* MARGINS & PADDINGS */
 
 .margin-xsmall {

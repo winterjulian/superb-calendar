@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
 import {AddressModel} from "../interfaces/address.model";
+import {UrlSegment} from "@angular/router";
+import {BasicDate} from "../interfaces/basicDate";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,25 @@ export class FunctionsService {
     return (String(year+'-'+month+'-'+day));
   }
 
+  extractBasicDateFromURL(urlSegment: Array<UrlSegment>): BasicDate | null {
+    if (urlSegment.length > 1) {
+      const dateShardsArray: Array<String> = String(urlSegment[1].path).split('-');
+      if (dateShardsArray.length === 3) {
+        return {
+          year: dateShardsArray[0],
+          month: dateShardsArray[1],
+          day: dateShardsArray[2]
+        }
+      } else {
+        console.warn('The date shards array\'s length did not equal 3');
+        return null
+      }
+    } else {
+      console.warn('The given URL segment was longer than the expected lenght of 2');
+      return null
+    }
+  }
+
   generateAddress(addressObject: AddressModel): string {
     return addressObject.street
       + ' ' + addressObject.houseNumber
@@ -23,6 +44,20 @@ export class FunctionsService {
   }
 
   demandEternalJustice() {
-    console.log('Please stop clicking me! Thx <3')
+    console.log('TO BE REMOVED') // TODO: REMOVE
+  }
+
+  getBasicDateFromDateAsString(date: Date, delimiter = '-'): String {
+    const dateShards: BasicDate = this.extractBasicDateFromDate(date);
+    return dateShards.year + delimiter + dateShards.month + delimiter + dateShards.day;
+
+  }
+
+  extractBasicDateFromDate(date: Date): BasicDate {
+    return {
+      year: String(date.getFullYear()),
+      month: String(date.getMonth()+1),
+      day: String(date.getDate()),
+    }
   }
 }

@@ -1,12 +1,16 @@
-<div class="test-class theme-background material-box-shadow"
-     style=""
-     [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}">
-  <div class="padding-medium basic-flex-container basic-flex-jcfe">
-    <button
-      mat-raised-button
-      (click)="close()">
-      <i class="material-icons">close</i>
-    </button>
+<div class="test-class theme-background material-box-shadow basic-font-color"
+     [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
+>
+  <div class="padding-medium basic-flex-container basic-flex-jcsb border-bottom">
+    <div class="basic-flex-container flex-centralize-h flex-centralize-v font-size-xxlarge padding-large-left">
+      {{ basicDate?.day }}.{{ basicDate?.month }}.{{ basicDate?.year }}</div>
+    <div>
+      <button
+        mat-raised-button
+        (click)="close()">
+        <i class="material-icons">close</i>
+      </button>
+    </div>
   </div>
 
   <div class="height-100-percent basic-flex-container flex-direction-col">

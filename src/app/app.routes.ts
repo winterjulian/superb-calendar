@@ -6,8 +6,8 @@ export const routeConfig: Routes = [
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
   { path: 'calendar', component: CalendarComponent },
   {
-    path: 'appointments',
-    outlet: 'sidemenu',
-    component: AppointmentsOverviewComponent
-  }
+    path: 'appointments/:date',
+    outlet: 'side',
+    component: AppointmentsOverviewComponent,
+  },
 ];

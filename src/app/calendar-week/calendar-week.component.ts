@@ -8,6 +8,7 @@ import {FunctionsService} from "../services/functions.service";
 import {Subject} from "rxjs";
 import {WeekDayModel} from "../interfaces/weekDay.model";
 import {Router} from "@angular/router";
+import {AppointmentsService} from "../services/appointments.service";
 
 @Component({
   selector: 'app-calendar-week',
@@ -24,6 +25,7 @@ export class CalendarWeekComponent implements OnInit {
   constructor(
     private router: Router,
     private storeService: StoreService,
+    private appointmentsService: AppointmentsService,
     private functionsService: FunctionsService,
     public dialog: MatDialog
   ) {
@@ -60,9 +62,14 @@ export class CalendarWeekComponent implements OnInit {
   }
 
   hourSegmentClicked(e: any) {
-    console.log(e);
-    // this.router.navigate(['', { outlets: { auxName: 'aside' } }]).then()
-    this.router.navigate([{outlets: {primary: 'calendar', sidemenu: 'appointments'}}]);
+    this.appointmentsService.setFocussedBasicDateByDate(e.date);
+    this.router.navigate([
+      { outlets:
+          { primary: 'calendar',
+            side: ['appointments', this.functionsService.getBasicDateFromDateAsString(e.date) ]
+          }
+      }]
+    );
     // this.openDialog(e);
   }
 

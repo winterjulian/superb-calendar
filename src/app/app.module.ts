@@ -14,7 +14,6 @@ import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import { MatSelectModule} from "@angular/material/select";
 import localeDe from '@angular/common/locales/de';
-import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localeDe);
 
@@ -22,6 +21,7 @@ registerLocaleData(localeDe);
   declarations: [],
   exports: [],
   imports: [
+
     BrowserModule,
     MatSlideToggleModule,
     CalendarModule.forRoot({
@@ -38,7 +38,6 @@ registerLocaleData(localeDe);
     OrganizerComponent,
     AppComponent,
     SpecifyerComponent,
-    AppRoutingModule,
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},
