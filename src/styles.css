@@ -586,6 +586,11 @@ body {
   animation: move-out-animation 0.5s;
 }
 
+.test-transition {
+  position: relative;
+  animation: overwrite-animation 0.3s;
+}
+
 @keyframes move-in-animation {
   0% {
     scale: 1;
@@ -610,11 +615,30 @@ body {
   }
   50% {
     scale: 0.9;
-    left: 0px;
+    left: 0;
     opacity: 1;
   }
   100% {
     scale: 1;
+  }
+}
+
+@keyframes overwrite-animation {
+  0% {
+    top:0;
+    opacity: 1;
+  }
+  33% {
+    top: 10px;
+    opacity: 0;
+  }
+  66% {
+    top: -10px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
   }
 }
 

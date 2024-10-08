@@ -1,8 +1,10 @@
 <div class="test-class theme-background material-box-shadow basic-font-color"
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
+  {{ isRenewed }}
   <div class="padding-medium basic-flex-container basic-flex-jcsb border-bottom">
-    <div class="basic-flex-container flex-centralize-h flex-centralize-v font-size-xxlarge padding-large-left">
+    <div class="basic-flex-container flex-centralize-h flex-centralize-v font-size-xxlarge padding-large-left"
+         [ngClass]="{'test-transition': isRenewed}">
       {{ basicDate?.day }}.{{ basicDate?.month }}.{{ basicDate?.year }}</div>
     <div>
       <button
