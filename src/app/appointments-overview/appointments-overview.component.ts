@@ -25,7 +25,7 @@ import {BasicDate} from "../interfaces/basicDate";
 export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   public isLoaded: boolean = false;
   public isRenewed: boolean = false;
-  public basicDate: BasicDate | null = null;
+  public basicDate!: BasicDate;
   private subscription!: Subscription;
 
   constructor(

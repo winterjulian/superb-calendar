@@ -1,8 +1,46 @@
-<div>
+<div class="basic-font-color theme-background-nuance-1 border-radius-medium padding-medium material-box-shadow">
+  <div class="basic-flex-container flex-centralize-v font-size-large margin-medium-bottom">
+    <i class="material-icons padding-medium-right">add</i>
+    <input
+      [(ngModel)]="title"
+      class="basic-font-color border-radius-medium theme-background padding-medium"
+      style="border: 0 solid transparent;"
+      placeholder="New appointment">
+  </div>
+  <div class="basic-flex-container">
+    <div class="margin-large-right" style="flex: 1">from</div>
+    <div style="flex: 1">to</div>
+  </div>
 
-  <ngb-timepicker [(ngModel)]="time" />
+  <div class="basic-flex-container">
+    <div class="flex-centralize-v flex-centralize-h theme-background-nuance-2 border-radius-medium margin-large-right" style="flex: 1">
+      <ngb-timepicker [minuteStep]="5" [(ngModel)]="start"/>
+    </div>
+    <div class="flex-centralize-v flex-centralize-h theme-background-nuance-2 border-radius-medium" style="flex: 1">
+      <ngb-timepicker [minuteStep]="5" [(ngModel)]="end"/>
+    </div>
+  </div>
 
-  {{ time.hour }}
-  {{ time.minute }}
+  <div class="basic-flex-container padding-medium-top">
+    <textarea [(ngModel)]="details" class="text-area width-100-percent padding-small border-radius-medium" placeholder="Appointment's details"></textarea>
+  </div>
+
+  <div class="padding-medium-top">
+    <button
+      mat-raised-button
+      (click)="reload()">
+      <i class="material-icons">restart_alt</i>
+    </button>
+    <button
+      mat-raised-button
+      (click)="dismiss()">
+      <i class="material-icons">delete</i>
+    </button>
+    <button
+      mat-raised-button
+      (click)="save()">
+      <i class="material-icons">check</i>
+    </button>
+  </div>
 
 </div>

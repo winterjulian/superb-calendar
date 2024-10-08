@@ -1,0 +1,205 @@
+/* MARGINS & PADDINGS */
+
+.margin-xsmall {
+  margin: 2px;
+}
+
+.margin-small {
+  margin: 5px;
+}
+
+.margin-medium {
+  margin: 10px;
+}
+
+.margin-large {
+  margin: 15px;
+}
+
+.margin-xlarge {
+  margin: 20px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.padding-xsmall {
+  padding: 2px;
+}
+
+.padding-small {
+  padding: 5px;
+}
+
+.padding-medium {
+  padding: 10px;
+}
+
+.padding-large {
+  padding: 15px;
+}
+
+.padding-xlarge {
+  padding: 20px;
+}
+
+.margin-xsmall-bottom {
+  margin-bottom: 2px;
+}
+
+.margin-small-bottom {
+  margin-bottom: 5px;
+}
+
+.margin-medium-bottom {
+  margin-bottom: 10px;
+}
+
+.margin-large-bottom {
+  margin-bottom: 15px;
+}
+
+.margin-xlarge-bottom {
+  margin-bottom: 20px;
+}
+
+.padding-xsmall-bottom {
+  padding-bottom: 2px;
+}
+
+.padding-small-bottom {
+  padding-bottom: 5px;
+}
+
+.padding-medium-bottom {
+  padding-bottom: 10px;
+}
+
+.padding-large-bottom {
+  padding-bottom: 15px;
+}
+
+.padding-xlarge-bottom {
+  padding-bottom: 20px;
+}
+
+.margin-xsmall-top {
+  margin-top: 2px;
+}
+
+.margin-small-top {
+  margin-top: 5px;
+}
+
+.margin-medium-top {
+  margin-top: 10px;
+}
+
+.margin-large-top {
+  margin-top: 15px;
+}
+
+.margin-xlarge-top {
+  margin-top: 20px;
+}
+
+.padding-xsmall-top {
+  padding-top: 2px;
+}
+
+.padding-small-top {
+  padding-top: 5px;
+}
+
+.padding-medium-top {
+  padding-top: 10px;
+}
+
+.padding-large-top {
+  padding-top: 15px;
+}
+
+.padding-xlarge-top {
+  padding-top: 20px;
+}
+
+.margin-xsmall-left {
+  margin-left: 2px;
+}
+
+.margin-small-left {
+  margin-left: 5px;
+}
+
+.margin-medium-left {
+  margin-left: 10px;
+}
+
+.margin-large-left {
+  margin-left: 15px;
+}
+
+.margin-xlarge-left {
+  margin-left: 20px;
+}
+
+.padding-xsmall-left {
+  padding-left: 2px;
+}
+
+.padding-small-left {
+  padding-left: 5px;
+}
+
+.padding-medium-left {
+  padding-left: 10px;
+}
+
+.padding-large-left {
+  padding-left: 15px;
+}
+
+.padding-xlarge-left {
+  padding-left: 20px;
+}
+
+.margin-xsmall-right {
+  margin-right: 2px;
+}
+
+.margin-small-right {
+  margin-right: 5px;
+}
+
+.margin-medium-right {
+  margin-right: 10px;
+}
+
+.margin-large-right {
+  margin-right: 15px;
+}
+
+.margin-xlarge-right {
+  margin-right: 20px;
+}
+
+.padding-xsmall-right {
+  padding-right: 2px;
+}
+
+.padding-small-right {
+  padding-right: 5px;
+}
+
+.padding-medium-right {
+  padding-right: 10px;
+}
+
+.padding-large-right {
+  padding-right: 15px;
+}
+
+.padding-xlarge-right {
+  padding-right: 20px;
+}

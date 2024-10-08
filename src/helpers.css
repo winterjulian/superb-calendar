@@ -1,0 +1,54 @@
+/* HELPERS */
+
+
+.scroll-container-y {
+  overflow-y: auto;
+}
+
+.scroll-container-x {
+  overflow-x: auto;
+}
+
+.basic-flex-container {
+  display: flex;
+}
+
+.flex-centralize-h {
+  display: flex;
+  justify-content: center;
+}
+
+.basic-flex-jcsb {
+  justify-content: space-between;
+}
+
+
+.basic-flex-jcfe {
+  justify-content: flex-end;
+}
+
+.basic-flex-acsb {
+  align-content: space-between;
+}
+
+.basic-flex-1 {
+  flex: 1;
+}
+
+.flex-centralize-v {
+  display: flex;
+  align-items: center;
+}
+
+.basic-font-weight-500 {
+  font-weight: 500;
+}
+
+
+.basic-font-weight-600 {
+  font-weight: 600;
+}
+
+.flex-direction-col {
+  flex-direction: column;
+}

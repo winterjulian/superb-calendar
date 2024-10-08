@@ -7,7 +7,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {CalendarWeekModule} from "angular-calendar";
 import {MatCalendar} from "@angular/material/datepicker";
 import {DateAdapter} from "@angular/material/core";
-import {DataService} from "./services/data.service";
+import {HttpClientService} from "./services/http-client.service";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {NgClass} from "@angular/common";
 
@@ -23,7 +23,7 @@ export class AppComponent {
   today: Date = new Date();
   constructor(
     private dateAdapter: DateAdapter<Date>,
-    private dataService: DataService
+    private httpClientService: HttpClientService
   ) {
     // Set start day of month calendar to monday
     this.dateAdapter.getFirstDayOfWeek = () => 1;

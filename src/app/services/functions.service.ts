@@ -21,9 +21,9 @@ export class FunctionsService {
       const dateShardsArray: Array<String> = String(urlSegment[1].path).split('-');
       if (dateShardsArray.length === 3) {
         return {
-          year: dateShardsArray[0],
-          month: dateShardsArray[1],
-          day: dateShardsArray[2]
+          year: Number(dateShardsArray[0]),
+          month: Number(dateShardsArray[1]),
+          day: Number(dateShardsArray[2])
         }
       } else {
         console.warn('The date shards array\'s length did not equal 3');
@@ -55,9 +55,9 @@ export class FunctionsService {
 
   extractBasicDateFromDate(date: Date): BasicDate {
     return {
-      year: String(date.getFullYear()),
-      month: String(date.getMonth()+1),
-      day: String(date.getDate()),
+      year: date.getFullYear(),
+      month: date.getMonth()+1,
+      day: date.getDate(),
     }
   }
 }

@@ -3,7 +3,7 @@ import {Injectable} from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class HttpClientService {
   loadData() {
     fetch("http://localhost:3000/posts", {
       method: "GET"

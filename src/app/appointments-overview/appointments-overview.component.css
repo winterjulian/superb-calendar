@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   z-index: 999;
 }
 
@@ -18,7 +18,7 @@
 
 @keyframes sidebar-move-in {
   0% {
-    left: -350px; /* TODO: take size of sidebar dynamically */
+    left: -400px; /* TODO: take size of sidebar dynamically */
     opacity: 1;
   }
   50% {
@@ -41,7 +41,7 @@
     opacity: 1;
   }
   100% {
-    left: -350px; /* TODO: take size of sidebar dynamically */
+    left: -400px; /* TODO: take size of sidebar dynamically */
     opacity: 1;
   }
 }

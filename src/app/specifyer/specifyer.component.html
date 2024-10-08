@@ -1,4 +1,4 @@
-<div class="margin-bottom-15 basic-flex-container basic-flex-jcsb flex-centralize-v basic-flex-acsb" style="align-items: stretch">
+<div class="margin-large-bottom basic-flex-container basic-flex-jcsb flex-centralize-v basic-flex-acsb" style="align-items: stretch">
 
   <!-- left side -->
   <div class="basic-flex-container">
@@ -6,7 +6,7 @@
       <button
         mat-raised-button
         (click)="resetDateToday()">
-        <i class="material-icons margin-right-10">history</i>
+        <i class="material-icons margin-medium-right">history</i>
         {{ today | date: 'dd. MMM. YYYY' }}
       </button>
     </div>
@@ -22,7 +22,7 @@
     <div class="padding-large-left">
       <section>
         <mat-button-toggle-group
-          class="border-radius-medium toggle-background-color toggle-font-color"
+          class="border-radius-medium theme-background-nuance-1 toggle-font-color"
           [hideSingleSelectionIndicator]="true"
           appearance="legacy">
           <mat-button-toggle

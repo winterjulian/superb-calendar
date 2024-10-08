@@ -1,0 +1,14 @@
+@import "../../styles.css";
+
+:host ::ng-deep .form-control {
+  background-color: var(--bg-color-table);
+  color: var(--font-color-basic);
+  border: 0;
+}
+
+.text-area {
+  background-color: var(--bg-color-table);
+  color: var(--font-color-basic);
+  resize: none;
+  border: 0;
+}

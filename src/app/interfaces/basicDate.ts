@@ -1,5 +1,5 @@
 export interface BasicDate {
-  year: String;
-  month: String;
-  day: String;
+  year: number;
+  month: number;
+  day: number;
 }
