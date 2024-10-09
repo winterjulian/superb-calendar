@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
+import {AppointmentExtended} from "../interfaces/appointmentExtended";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpClientService {
   loadData() {
-    fetch("http://localhost:3000/posts", {
+    fetch("http://localhost:3000/appointments", {
       method: "GET"
     }).then(response => {
       console.log('response', response)
@@ -15,8 +16,8 @@ export class HttpClientService {
     })
   }
 
-  saveData(input: Record<'title' | 'views', string | number>) {
-    fetch("http://localhost:3000/posts", {
+  saveData(input: AppointmentExtended) {
+    fetch("http://localhost:3000/appointments", {
       method: "POST",
       body: JSON.stringify(input),
       headers: {

@@ -1,8 +1,8 @@
 <div class="test-class theme-background material-box-shadow basic-font-color"
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
-  <div class="basic-flex-container basic-flex-jcsb border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
-    <div class="basic-flex-container flex-centralize-h flex-centralize-v font-size-xxlarge"
+  <div class="display-flex basic-flex-jcsb border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
+    <div class="display-flex flex-centralize-h flex-centralize-v font-size-xxlarge"
          [ngClass]="{'test-transition': isRenewed}">
       <i class="material-icons padding-medium-right">calendar_month</i>
       {{ basicDate.day }}.{{ basicDate.month }}.{{ basicDate.year }}</div>
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="height-100-percent basic-flex-container flex-direction-col padding-medium padding-xlarge-left padding-xlarge-right">
+  <div class="height-100-percent display-flex flex-direction-col padding-medium padding-xlarge-left padding-xlarge-right">
     <app-appointments-create [focussedDay]="basicDate"></app-appointments-create>
   </div>
 </div>

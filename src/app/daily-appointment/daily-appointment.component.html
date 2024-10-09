@@ -1,5 +1,5 @@
-<div class="height-100-percent basic-flex-container flex-direction-col">
-  <div class="calendar-border-bottom padding-medium head-height-50 basic-flex-container flex-centralize-v basic-font-weight-500">
+<div class="height-100-percent display-flex flex-direction-col">
+  <div class="calendar-border-bottom padding-medium head-height-50 display-flex flex-centralize-v basic-font-weight-500">
     <i class="material-icons font-color-immomio-blue margin-medium-right">calendar_month</i>
     {{ data.currentDate | date:'EEEE, d MMMM y'}}
   </div>
@@ -12,7 +12,7 @@
 
         <!--- header --->
         <!--- attention: inline style --->
-        <div class="basic-flex-container margin-medium">
+        <div class="display-flex margin-medium">
           <app-picture-title-pair
             [image]="undefined"
             [title]="store[node.key][0].property.name"
@@ -44,7 +44,7 @@
         </div>
 
         <!--- (+)create viewing --->
-        <div class="basic-flex-container margin-medium">
+        <div class="display-flex margin-medium">
           <button (click)="functionsService.demandEternalJustice()" class="create-viewing-button width-100-percent flex-centralize-v flex-centralize-h border-radius-small padding-medium">
             <i class="material-icons">add_circle</i>
             <div class="basic-font-weight-600 margin-left-20">Create Viewing</div>

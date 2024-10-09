@@ -20,7 +20,7 @@ export class OrganizerComponent {
   ) {}
 
   saveData() {
-    this.dataService.saveData( { title: 'TEST', views: 999 } );
+    // this.dataService.saveData( {} );
   }
 
   loadData() {

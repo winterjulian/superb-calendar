@@ -4,6 +4,8 @@ import {NgbTimepicker} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
 import {BasicDate} from "../interfaces/basicDate";
+import {AppointmentsService} from "../services/appointments.service";
+import {AppointmentTime} from "../interfaces/appointmentTime";
 
 @Component({
   selector: 'app-appointments-create',
@@ -22,14 +24,18 @@ export class AppointmentsCreateComponent implements OnInit {
 
   public title: String = '';
   public details: String = '';
-  public start = {
+  public start: AppointmentTime = {
     "hour": 13,
     "minute": 30
   }
-  public end = {
+  public end: AppointmentTime = {
     "hour": 0,
     "minute": 0
   }
+
+  constructor(
+    private appointmentsService: AppointmentsService,
+  ) {}
 
   ngOnInit() {
     this.end.hour = this.start.hour + 1;
@@ -38,12 +44,7 @@ export class AppointmentsCreateComponent implements OnInit {
 
   save() {
     const newTitle = this.title;
-    const newAppointmentStartDate = new Date(this.focussedDay.year, this.focussedDay.month-1, this.focussedDay.day, this.start.hour, this.start.minute)
-    const newAppointmentEndDate: Date = new Date(this.focussedDay.year, this.focussedDay.month-1, this.focussedDay.day, this.end.hour, this.start.minute)
-
-    console.log(newTitle, newAppointmentStartDate, newAppointmentEndDate, this.details)
-
-
+    this.appointmentsService.saveAppointment(this.title, this.focussedDay, this.start, this.end, this.details)
   }
 
   dismiss() {

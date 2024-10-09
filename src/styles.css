@@ -31,12 +31,14 @@ body {
   --bg-image: linear-gradient(355deg, #97D9E1 14%, #ffffff 55%);
   --bg-image-comp: linear-gradient(355deg, #d0f0f5 14%, #ffffff 100%);
   --font-color-basic: #2b2e33;
+  --font-color-disabled: #93969c;
 
   --bg-color-table: white;
   --bg-color-table-nuance: #cacaca;
   --bg-color-table-row: white;
   --bg-color-table-row-odd: whitesmoke;
 
+  --bg-color-disabled: #dadada;
   --bg-color-toggle: #e7e7e7;
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
@@ -48,12 +50,14 @@ body {
     --bg-image: linear-gradient(355deg, #1d3a3d 14%, #212121 55%);
     --bg-image-comp: linear-gradient(355deg, #182a2c 14%, #181818FF 100%);
     --font-color-basic: lightgrey;
+    --font-color-disabled: #5a5a5a;
 
     --bg-color-table: #282828;
     --bg-color-table-nuance: #1a1a1a;
     --bg-color-table-row: #1a1a1a;
     --bg-color-table-row-odd: #2a2a2a;
 
+    --bg-color-disabled: #282828;
     --bg-color-toggle: #3b3b3b;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
@@ -116,6 +120,11 @@ body {
 :host ::ng-deep .mat-mdc-raised-button {
   background-color: var(--bg-color-toggle) !important;
   color: var(--font-color-basic) !important;
+}
+
+:host ::ng-deep .mat-mdc-raised-button:disabled {
+  background-color: var(--bg-color-disabled) !important;
+  color: var(--font-color-disabled) !important;
 }
 
 :host ::ng-deep .mat-mdc-button {
