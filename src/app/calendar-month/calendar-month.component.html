@@ -2,6 +2,7 @@
   <mat-calendar #calendar
                 [ngClass]="{'move-out-transition' : resetting, 'move-in-transition': resetting===false }"
                 [(selected)]="focussedDate"
-                (selectedChange)="onDateValueChange($event)">
+                (selectedChange)="onDateValueChange($event)"
+  >
   </mat-calendar>
 </div>

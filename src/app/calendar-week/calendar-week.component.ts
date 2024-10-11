@@ -10,6 +10,7 @@ import {WeekDayModel} from "../interfaces/weekDay.model";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../services/appointments.service";
 import {HttpClientService} from "../services/http-client.service";
+import {DateRange} from "../interfaces/DateRange";
 
 @Component({
   selector: 'app-calendar-week',
@@ -105,6 +106,8 @@ export class CalendarWeekComponent implements OnInit {
 
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
+      this.setDateRange(e.header);
+
       e.header.forEach((weekDay: WeekDayModel, index: number) => {
         this.days[index] = weekDay.date.getDate() + ' ' + this.storeService.getBasicDayString(index);
 
@@ -135,6 +138,17 @@ export class CalendarWeekComponent implements OnInit {
     this.isSet.next(true);
   }
 
+  setDateRange(header: any) {
+    if (header.length === 7) {
+      this.appointmentsService.setDateRange({
+        from: header[0].date,
+        to: this.functionsService.addDayToDate(header[6].date)
+      });
+    } else {
+      console.warn('Given week header was not 7 days long')
+    }
+  }
+
   getDisplayableMonth(day: any) {
     return day.date.getFullYear() + '-' + (day.date.getMonth() + 1)
   }
@@ -148,7 +162,7 @@ export class CalendarWeekComponent implements OnInit {
   }
 
   loadData() {
-    this.httpClientService.loadDataInDateRange(
+    this.httpClientService.loadDataInDateRangeWithStrings(
       '2024-10-07T00:00:00.000Z', // from greater than + equal
       '2024-10-13T23:59:59.000Z' // to lesser than + equal
     ).subscribe(response => {

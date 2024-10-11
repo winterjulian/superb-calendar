@@ -20,11 +20,22 @@ export class HttpClientService {
   //   })
   // }
 
-  loadDataInDateRange(from: string, to: string): Observable<ExtendedCalendarEvent[]> {
+  loadDataInDateRangeWithDates(from: Date, to: Date): Observable<ExtendedCalendarEvent[]> {
+    /**
+     * from: date object;
+     * to: date object;
+     * alternative for load data with date strings
+     */
+    return this.loadDataInDateRangeWithStrings(from.toISOString(), to.toISOString());
+  }
+
+  loadDataInDateRangeWithStrings(from: string, to: string): Observable<ExtendedCalendarEvent[]> {
     /**
      * from: date string; equal or greater than the start of requested appointments
      * to: date string; equal or lesser than the end of requested appointments
      */
+    console.log(this.apiEndpoint + "/appointments" +
+      "?" + "start_gte=" + from + "&end_lte" + to)
     return new Observable(observer => {
       fetch(this.apiEndpoint + "/appointments" +
         "?" + "start_gte=" + from + "&end_lte" + to, {

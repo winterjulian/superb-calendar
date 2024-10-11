@@ -1,23 +1,30 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, Subject, take} from "rxjs";
 import {BasicDate} from "../interfaces/basicDate";
 import {FunctionsService} from "./functions.service";
 import {HttpClientService} from "./http-client.service";
 import {AppointmentTime} from "../interfaces/appointmentTime";
+import {DateRange} from "../interfaces/DateRange";
+import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentsService {
+  private dateRange: Subject<DateRange | undefined> = new Subject<DateRange | undefined>()
+  private appointments: Subject<ExtendedCalendarEvent[] | undefined> = new Subject<ExtendedCalendarEvent[] | undefined>()
+
   constructor(
     public functionsService: FunctionsService,
     public httpClientService: HttpClientService
   ) {
+    this.initLoadAppointments();
   }
 
   private focussedBasicDate: BehaviorSubject<BasicDate | null> = new BehaviorSubject<BasicDate | null>(null);
 
   // GETTER
+
   getFocussedBasicDate(): Observable<BasicDate | null> {
     return this.focussedBasicDate.asObservable();
   }
@@ -30,6 +37,10 @@ export class AppointmentsService {
 
   setFocussedBasicDateByDate(dateInput: Date): void {
     this.focussedBasicDate.next(this.functionsService.extractBasicDateFromDate(dateInput))
+  }
+
+  setDateRange(dateRange: DateRange): void {
+    this.dateRange.next(dateRange);
   }
 
   // DATA MANAGEMENT
@@ -47,5 +58,20 @@ export class AppointmentsService {
     }
     console.log(newAppointment);
     this.httpClientService.saveData(newAppointment)
+  }
+
+  initLoadAppointments() {
+    this.dateRange.subscribe(dateRange => {
+      console.log('dateRange:', dateRange)
+      this.loadAppointments(dateRange!);
+    })
+  }
+
+  loadAppointments(dateRange: DateRange) {
+    this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
+      .pipe(take(1))
+      .subscribe(response => {
+        console.log(response);
+    })
   }
 }

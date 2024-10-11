@@ -60,4 +60,9 @@ export class FunctionsService {
       day: date.getDate(),
     }
   }
+
+  addDayToDate(date: Date, daysAmount = 1) {
+
+    return new Date(date.setDate(date.getDate() + 1));
+  }
 }
