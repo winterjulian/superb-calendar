@@ -9,6 +9,7 @@ import {Subject} from "rxjs";
 import {WeekDayModel} from "../interfaces/weekDay.model";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../services/appointments.service";
+import {HttpClientService} from "../services/http-client.service";
 
 @Component({
   selector: 'app-calendar-week',
@@ -27,6 +28,7 @@ export class CalendarWeekComponent implements OnInit {
     private storeService: StoreService,
     private appointmentsService: AppointmentsService,
     private functionsService: FunctionsService,
+    private httpClientService: HttpClientService,
     public dialog: MatDialog
   ) {
     // Initialization inside the constructor
@@ -58,7 +60,6 @@ export class CalendarWeekComponent implements OnInit {
         this.viewDate = date;
       }
     })
-    console.log(this.events);
   }
 
   hourSegmentClicked(e: any) {
@@ -144,5 +145,14 @@ export class CalendarWeekComponent implements OnInit {
 
   testFunc(input: any) {
     console.log(input)
+  }
+
+  loadData() {
+    this.httpClientService.loadDataInDateRange(
+      '2024-10-07T00:00:00.000Z', // from greater than + equal
+      '2024-10-13T23:59:59.000Z' // to lesser than + equal
+    ).subscribe(response => {
+      this.events = response;
+    })
   }
 }

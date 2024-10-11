@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {CalendarMonthComponentModule} from "../calendar-month/calendar-month-component.module";
 import {CalendarWeekComponentModule} from "../calendar-week/calendar-week-component.module";
 import {MatButton} from "@angular/material/button";
 import {StoreService} from "../services/store.service";
 import {DatePipe} from "@angular/common";
 import {HttpClientService} from "../services/http-client.service";
+import {AppointmentsService} from "../services/appointments.service";
+import {CalendarWeekComponent} from "../calendar-week/calendar-week.component";
 
 @Component({
   selector: 'app-organizer',
@@ -14,16 +16,15 @@ import {HttpClientService} from "../services/http-client.service";
   styleUrl: './organizer.component.css'
 })
 export class OrganizerComponent {
-  constructor(
-    public storeService: StoreService,
-    public dataService: HttpClientService
-  ) {}
+  @ViewChild(CalendarWeekComponent) child!: CalendarWeekComponent;
+
+  constructor() {}
 
   saveData() {
     // this.dataService.saveData( {} );
   }
 
-  loadData() {
-    this.dataService.loadData();
+  triggerLoadData() {
+    this.child.loadData();
   }
 }

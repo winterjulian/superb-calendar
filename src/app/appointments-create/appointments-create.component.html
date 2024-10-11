@@ -14,10 +14,10 @@
 
   <div class="display-flex basic-flex-jcsb">
     <div class="basic-flex-1 theme-background-nuance-2">
-      <ngb-timepicker [minuteStep]="5" [(ngModel)]="start"/>
+      <ngb-timepicker [(ngModel)]="startTime" [minuteStep]="5" [seconds]="false"/>
     </div>
     <div class="basic-flex-1 theme-background-nuance-2 display-flex basic-flex-jcfe">
-      <ngb-timepicker [minuteStep]="5" [(ngModel)]="end"/>
+      <ngb-timepicker [(ngModel)]="endTime" [minuteStep]="5" [seconds]="false"/>
     </div>
   </div>
 

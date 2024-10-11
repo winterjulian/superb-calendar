@@ -123,6 +123,8 @@ export class StoreService {
   }
 
   getAppointmentData(): CalendarEvent[] {
+    console.log(this.appointmentData);
+    console.log(this.appointmentData[0].start);
     return this.appointmentData;
   }
 

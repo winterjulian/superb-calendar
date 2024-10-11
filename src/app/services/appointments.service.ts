@@ -34,17 +34,18 @@ export class AppointmentsService {
 
   // DATA MANAGEMENT
 
-  saveAppointment(title: String, focussedDay: BasicDate, start: AppointmentTime, end: AppointmentTime, details: String) {
-    const refinedStart = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, start.hour, start.minute)
-    const refinedEnd: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, end.hour, start.minute)
+  saveAppointment(title: String, focussedDay: BasicDate, startTime: AppointmentTime, endTime: AppointmentTime, details: String) {
+    const refinedStart = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, startTime.hour, startTime.minute)
+    const refinedEnd: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, endTime.hour, endTime.minute)
     const newAppointment = {
       title,
-      start,
-      end,
-      startDate: refinedStart,
-      endDate: refinedEnd,
+      startTime,
+      endTime,
+      start: refinedStart,
+      end: refinedEnd,
       details
     }
+    console.log(newAppointment);
     this.httpClientService.saveData(newAppointment)
   }
 }

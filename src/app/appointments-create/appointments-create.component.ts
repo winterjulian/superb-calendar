@@ -24,11 +24,11 @@ export class AppointmentsCreateComponent implements OnInit {
 
   public title: String = '';
   public details: String = '';
-  public start: AppointmentTime = {
+  public startTime: AppointmentTime = {
     "hour": 13,
     "minute": 30
   }
-  public end: AppointmentTime = {
+  public endTime: AppointmentTime = {
     "hour": 0,
     "minute": 0
   }
@@ -38,13 +38,13 @@ export class AppointmentsCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.end.hour = this.start.hour + 1;
-    this.end.minute = this.start.minute;
+    this.endTime.hour = this.startTime.hour + 1;
+    this.endTime.minute = this.startTime.minute;
   }
 
   save() {
     const newTitle = this.title;
-    this.appointmentsService.saveAppointment(this.title, this.focussedDay, this.start, this.end, this.details)
+    this.appointmentsService.saveAppointment(this.title, this.focussedDay, this.startTime, this.endTime, this.details)
   }
 
   dismiss() {
