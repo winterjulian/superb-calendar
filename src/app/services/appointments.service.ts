@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, Observable, Subject, take} from "rxjs";
+import {BehaviorSubject, distinctUntilChanged, Observable, ReplaySubject, Subject, take} from "rxjs";
 import {BasicDate} from "../interfaces/basicDate";
 import {FunctionsService} from "./functions.service";
 import {HttpClientService} from "./http-client.service";
@@ -12,7 +12,8 @@ import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 })
 export class AppointmentsService {
   private dateRange: Subject<DateRange | undefined> = new Subject<DateRange | undefined>()
-  private appointments: Subject<ExtendedCalendarEvent[] | undefined> = new Subject<ExtendedCalendarEvent[] | undefined>()
+  private appointments: Subject<ExtendedCalendarEvent[]> = new Subject<ExtendedCalendarEvent[]>()
+  private preferredTime: ReplaySubject<AppointmentTime> = new ReplaySubject<AppointmentTime>(1)
 
   constructor(
     public functionsService: FunctionsService,
@@ -29,6 +30,14 @@ export class AppointmentsService {
     return this.focussedBasicDate.asObservable();
   }
 
+  getAppointments(): Observable<ExtendedCalendarEvent[]> {
+    return this.appointments;
+  }
+
+  getPreferredTime(): Observable<AppointmentTime> {
+    return this.preferredTime;
+  }
+
   // SETTER
 
   setFocussedBasicDate(dateInput: BasicDate | null): void {
@@ -41,6 +50,15 @@ export class AppointmentsService {
 
   setDateRange(dateRange: DateRange): void {
     this.dateRange.next(dateRange);
+  }
+
+  setPreferredTime(date: Date) {
+    console.log('>>> setPreferredTime');
+    let newTime: AppointmentTime = {
+      hour: date.getHours(),
+      minute: date.getMinutes()
+    }
+    this.preferredTime.next(newTime);
   }
 
   // DATA MANAGEMENT
@@ -61,17 +79,23 @@ export class AppointmentsService {
   }
 
   initLoadAppointments() {
-    this.dateRange.subscribe(dateRange => {
-      console.log('dateRange:', dateRange)
+    this.dateRange.pipe(
+      distinctUntilChanged(((prev, curr) =>
+        prev?.from.getTime() === curr?.from.getTime() &&
+        prev?.to.getTime() === curr?.to.getTime()
+      ))
+    ).subscribe(dateRange => {
+      console.log(dateRange);
       this.loadAppointments(dateRange!);
     })
   }
 
   loadAppointments(dateRange: DateRange) {
+    console.log('LOADING');
     this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
-      .pipe(take(1))
       .subscribe(response => {
         console.log(response);
+        this.appointments.next(response);
     })
   }
 }

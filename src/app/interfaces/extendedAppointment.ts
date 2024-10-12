@@ -1,6 +1,6 @@
 import {AppointmentTime} from "./appointmentTime";
 
-export interface AppointmentExtended {
+export interface extendedAppointment {
   title: String,
   startTime: AppointmentTime,
   endTime: AppointmentTime

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {AppointmentExtended} from "../interfaces/appointmentExtended";
+import {extendedAppointment} from "../interfaces/extendedAppointment";
 import {Observable} from "rxjs";
 import {CalendarEvent} from "angular-calendar";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
@@ -34,11 +34,9 @@ export class HttpClientService {
      * from: date string; equal or greater than the start of requested appointments
      * to: date string; equal or lesser than the end of requested appointments
      */
-    console.log(this.apiEndpoint + "/appointments" +
-      "?" + "start_gte=" + from + "&end_lte" + to)
     return new Observable(observer => {
       fetch(this.apiEndpoint + "/appointments" +
-        "?" + "start_gte=" + from + "&end_lte" + to, {
+        "?" + "start_gte=" + from + "&start_lte=" + to, {
         method: "GET"
       }).then((response: Response) => {
         return response.json();
@@ -53,7 +51,10 @@ export class HttpClientService {
     })
   }
 
-  saveData(input: AppointmentExtended) {
+  saveData(input: extendedAppointment) {
+    /**
+     * input: extended appointment
+     */
     fetch("http://localhost:3000/appointments", {
       method: "POST",
       body: JSON.stringify(input),
@@ -61,10 +62,14 @@ export class HttpClientService {
         "Content-type": "application/json; charset=UTF-8"
       }
     }).then(response => {
-      console.log(response)
       return response.json();
     }).then(data => {
-      console.log(data)
+    })
+  }
+
+  deleteData(input: extendedAppointment) {
+    fetch("", {
+
     })
   }
 }

@@ -62,7 +62,7 @@ export class FunctionsService {
   }
 
   addDayToDate(date: Date, daysAmount = 1) {
-
-    return new Date(date.setDate(date.getDate() + 1));
+    let newDate = new Date(date);
+    return new Date(newDate.setDate(newDate.getDate() + 1));
   }
 }

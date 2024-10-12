@@ -26,12 +26,9 @@ export class SpecifyerComponent implements OnInit {
     public storeService: StoreService
   ) {
     this.today = new Date();
-    this.now = Date.now();
-    setInterval(() => {this.now = Date.now()}, 1000);
   }
 
   public today: Date;
-  public now: number;
   public darkMode: boolean = false;
 
   ngOnInit() {

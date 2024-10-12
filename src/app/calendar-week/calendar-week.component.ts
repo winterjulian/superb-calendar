@@ -1,16 +1,22 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {CalendarEvent, CalendarEventTitleFormatter} from "angular-calendar";
+import {Component, DestroyRef, EventEmitter, inject, OnDestroy, OnInit, Output} from '@angular/core';
+import {
+  CalendarDateFormatter,
+  CalendarEvent,
+  CalendarEventTitleFormatter,
+  CalendarNativeDateFormatter
+} from "angular-calendar";
 import { CustomEventTitleFormatter } from '../providers/custom-event-title-formatter.provider';
 import {StoreService} from "../services/store.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DailyAppointmentComponent} from "../daily-appointment/daily-appointment.component";
 import {FunctionsService} from "../services/functions.service";
-import {Subject} from "rxjs";
+import {Subject, take, takeUntil} from "rxjs";
 import {WeekDayModel} from "../interfaces/weekDay.model";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../services/appointments.service";
 import {HttpClientService} from "../services/http-client.service";
 import {DateRange} from "../interfaces/DateRange";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-calendar-week',
@@ -21,9 +27,14 @@ import {DateRange} from "../interfaces/DateRange";
       provide: CalendarEventTitleFormatter,
       useClass: CustomEventTitleFormatter,
     },
+    {
+      provide: CalendarDateFormatter,
+      useClass: CalendarNativeDateFormatter
+    }
   ],
 })
-export class CalendarWeekComponent implements OnInit {
+export class CalendarWeekComponent implements OnInit, OnDestroy {
+  public locale: any;
   constructor(
     private router: Router,
     private storeService: StoreService,
@@ -41,7 +52,7 @@ export class CalendarWeekComponent implements OnInit {
   // For next + previous buttons
   public viewDate: Date = new Date();
   public clickedDate: Date;
-  public events: CalendarEvent[] = this.storeService.getAppointmentData();
+  public events!: CalendarEvent[];
   public startDayWeek: number = 0;
   public endDayWeek: number = 0;
   public startMonth: string = '';
@@ -61,7 +72,14 @@ export class CalendarWeekComponent implements OnInit {
         this.viewDate = date;
       }
     })
+    this.appointmentsService.getAppointments()
+      .subscribe(response => {
+        console.log(response);
+        this.events = response
+      })
   }
+
+  ngOnDestroy() {}
 
   hourSegmentClicked(e: any) {
     this.appointmentsService.setFocussedBasicDateByDate(e.date);
@@ -72,6 +90,7 @@ export class CalendarWeekComponent implements OnInit {
           }
       }]
     );
+    this.appointmentsService.setPreferredTime(e.date)
     // this.openDialog(e);
   }
 
@@ -103,6 +122,7 @@ export class CalendarWeekComponent implements OnInit {
   }
 
   setDateInformation(e: any): void {
+    console.log('>>> setDateInformation()');
 
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
@@ -139,6 +159,7 @@ export class CalendarWeekComponent implements OnInit {
   }
 
   setDateRange(header: any) {
+    console.log('>>> setDateRange()');
     if (header.length === 7) {
       this.appointmentsService.setDateRange({
         from: header[0].date,
@@ -162,11 +183,10 @@ export class CalendarWeekComponent implements OnInit {
   }
 
   loadData() {
-    this.httpClientService.loadDataInDateRangeWithStrings(
-      '2024-10-07T00:00:00.000Z', // from greater than + equal
-      '2024-10-13T23:59:59.000Z' // to lesser than + equal
-    ).subscribe(response => {
-      this.events = response;
+    this.appointmentsService.getAppointments()
+      .subscribe(response => {
+        console.log('GETTING');
+        this.events = response;
     })
   }
 }

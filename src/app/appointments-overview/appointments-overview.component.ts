@@ -26,6 +26,9 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   public isLoaded: boolean = false;
   public isRenewed: boolean = false;
   public basicDate!: BasicDate;
+  public today: Date = new Date();
+  public now: number;
+
   private subscription!: Subscription;
 
   constructor(
@@ -33,7 +36,10 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     private router: Router,
     private appointmentsServce: AppointmentsService,
     private functionsService: FunctionsService
-  ) {}
+  ) {
+    this.now = Date.now();
+    setInterval(() => {this.now = Date.now()}, 1000);
+  }
 
   ngOnInit() {
     this.isLoaded = true;
@@ -53,12 +59,26 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
           // side sheet was opened through conventional UI click
           this.conventionalUrlOpening(response);
         }
-        setTimeout(() => { this.isRenewed = false; }, 500)
     })
+  }
+
+  triggerIsRenewed() {
+    this.isRenewed = true;
+    setTimeout(() => { this.isRenewed = false; }, 500)
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  navigateToDate() {
+    this.router.navigate(['', {
+      outlets:
+        {
+          primary: 'calendar',
+          side: ['appointments', this.functionsService.getBasicDateFromDateAsString(this.today) ]
+        }
+    }]);
   }
 
   initialUrlOpening(response: null): void {
@@ -72,7 +92,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
 
   conventionalUrlOpening(response: BasicDate): void {
     this.basicDate = response;
-    this.isRenewed = true;
+    this.triggerIsRenewed()
   }
 
   close() {
@@ -82,4 +102,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     }, 300)
   }
 
+  setToToday() {
+    this.basicDate = this.functionsService.extractBasicDateFromDate(this.today);
+  }
 }
