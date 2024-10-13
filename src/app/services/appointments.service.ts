@@ -11,8 +11,8 @@ import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
   providedIn: 'root'
 })
 export class AppointmentsService {
-  private dateRange: Subject<DateRange | undefined> = new Subject<DateRange | undefined>()
-  private appointments: ReplaySubject<ExtendedCalendarEvent[]> = new ReplaySubject<ExtendedCalendarEvent[]>()
+  private weekRange: ReplaySubject<DateRange | undefined> = new ReplaySubject<DateRange | undefined>(1)
+  private appointments: ReplaySubject<ExtendedCalendarEvent[]> = new ReplaySubject<ExtendedCalendarEvent[]>(1)
   private preferredTime: ReplaySubject<AppointmentTime> = new ReplaySubject<AppointmentTime>(1)
 
   constructor(
@@ -54,8 +54,8 @@ export class AppointmentsService {
     this.focussedBasicDate.next(this.functionsService.extractBasicDateFromDate(dateInput))
   }
 
-  setDateRange(dateRange: DateRange): void {
-    this.dateRange.next(dateRange);
+  setWeekRange(dateRange: DateRange): void {
+    this.weekRange.next(dateRange);
   }
 
   setPreferredTime(date: Date) {
@@ -79,21 +79,21 @@ export class AppointmentsService {
       end: endAsValidDate,
       details
     }
-    this.httpClientService.saveData(newAppointment).pipe(take(1)).subscribe(savedAppointment => {
-      this.appointments.pipe(take(1)).subscribe((response: ExtendedCalendarEvent[]) => {
-        console.log(response);
-        console.log(savedAppointment);
-        console.log(response.push(savedAppointment));
-        let newArray = response;
-        newArray.push(savedAppointment);
-        // let newArray = response.push(savedAppointment);
-        this.appointments.next(newArray);
-      })
+    this.httpClientService.saveData(newAppointment)
+      .pipe(take(1))
+      .subscribe(savedAppointment => {
+        this.weekRange
+          .pipe(take(1))
+          .subscribe(range => {
+            if (range) {
+              this.loadAppointments(range)
+            }
+          })
     })
   }
 
   initLoadAppointments() {
-    this.dateRange.pipe(
+    this.weekRange.pipe(
       distinctUntilChanged(((prev, curr) =>
         prev?.from.getTime() === curr?.from.getTime() &&
         prev?.to.getTime() === curr?.to.getTime()
@@ -105,6 +105,7 @@ export class AppointmentsService {
 
   loadAppointments(dateRange: DateRange) {
     this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
+      .pipe(take(1))
       .subscribe(response => {
         this.appointments.next(response);
     })

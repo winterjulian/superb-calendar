@@ -1,7 +1,8 @@
-import {Component, inject, OnInit, signal, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {StoreService} from "../services/store.service";
 import {MatCalendar} from "@angular/material/datepicker";
 import {CalendarMonthHeaderComponent} from "../calendar-month-header/calendar-month-header.component";
+import {DateAdapter} from '@angular/material/core';
 
 @Component({
   selector: 'app-calendar-month',
@@ -11,9 +12,14 @@ import {CalendarMonthHeaderComponent} from "../calendar-month-header/calendar-mo
 export class CalendarMonthComponent implements OnInit {
   @ViewChild('calendar', {static: false}) calendar!: MatCalendar<Date>;
 
-  constructor(public storeService: StoreService) {
+
+  constructor(
+    public storeService: StoreService,
+    private dateAdapter: DateAdapter<Date>
+  ) {
     // initialization
     this.clickedDate = new Date();
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
   }
 
   public resetting: boolean | undefined = undefined;

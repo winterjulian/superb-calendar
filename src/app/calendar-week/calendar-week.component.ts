@@ -17,6 +17,7 @@ import {AppointmentsService} from "../services/appointments.service";
 import {HttpClientService} from "../services/http-client.service";
 import {DateRange} from "../interfaces/DateRange";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 
 @Component({
   selector: 'app-calendar-week',
@@ -34,25 +35,10 @@ import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
   ],
 })
 export class CalendarWeekComponent implements OnInit, OnDestroy {
-  public locale: any;
-  constructor(
-    private router: Router,
-    private storeService: StoreService,
-    private appointmentsService: AppointmentsService,
-    private functionsService: FunctionsService,
-    private httpClientService: HttpClientService,
-    public dialog: MatDialog
-  ) {
-    // Initialization inside the constructor
-    this.clickedDate = new Date();
-  }
-
-  // To prevent NG0100: Expression has changed after it was checked
   public isSet: Subject<boolean> = new Subject();
-  // For next + previous buttons
   public viewDate: Date = new Date();
   public clickedDate: Date;
-  public events!: CalendarEvent[];
+  public events: ExtendedCalendarEvent[];
   public refresh: Subject<void> = new Subject<void>();
   public startDayWeek: number = 0;
   public endDayWeek: number = 0;
@@ -63,6 +49,19 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   public days: Array<string> = [];
   public view: 'month' | 'week' | 'day' = 'week';
   public resetting: boolean | undefined = undefined;
+
+  constructor(
+    private router: Router,
+    private storeService: StoreService,
+    private appointmentsService: AppointmentsService,
+    private functionsService: FunctionsService,
+    private httpClientService: HttpClientService,
+    public dialog: MatDialog
+  ) {
+    // Initialization inside the constructor
+    this.clickedDate = new Date();
+    this.events = [];
+  }
 
   ngOnInit() {
     this.storeService.getResetCalendar().subscribe((reset: boolean | undefined) => {
@@ -75,14 +74,8 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
     })
     this.appointmentsService.getAppointments()
       .subscribe(response => {
-        console.log('>>> getAppointments');
-        console.log(response)
         this.events = response
-        this.refresh.next();
       })
-    this.refresh.subscribe(response => {
-      console.log('refresh: ', response);
-    })
   }
 
   ngOnDestroy() {}
@@ -164,7 +157,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
 
   setDateRange(header: any) {
     if (header.length === 7) {
-      this.appointmentsService.setDateRange({
+      this.appointmentsService.setWeekRange({
         from: header[0].date,
         to: this.functionsService.addDayToDate(header[6].date)
       });

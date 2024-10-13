@@ -11,6 +11,7 @@ import {BasicDate} from "../interfaces/basicDate";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 import {AppointmentsHeaderComponent} from "../appointments-header/appointments-header.component";
 import {AppointmentsEventComponent} from "../appointments-event/appointments-event.component";
+import {supportColor} from "@angular/cli/src/utilities/color";
 
 @Component({
   selector: 'app-appointments-overview',
@@ -36,10 +37,10 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   public isRenewed: boolean = false;
   public focussedDay!: BasicDate;
   public today: Date = new Date();
-  public events!: Observable<ExtendedCalendarEvent[]>;
-  public newEventTitle: String = '';
+  public events: Subject<ExtendedCalendarEvent[]> = new Subject<ExtendedCalendarEvent[]>();
 
   private subscription!: Subscription;
+  private subscriptionArray: Array<Subscription> = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -50,34 +51,42 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoaded = true;
-    this.subscription = this.appointmentsServce.getFocussedBasicDate()
-      .pipe(distinctUntilChanged(((prev, curr) =>
-          prev?.year === curr?.year &&
-          prev?.month === curr?.month &&
-          prev?.day === curr?.day
-      )))
-      .subscribe((response: BasicDate | null): void => {
-        console.log('loading data');
-        if (!response) {
-          // response = null;
-          // side sheet was opened because of present auxiliary route
-          this.initialUrlOpening(response);
-        } else {
-          // response = { year: ... }
-          // side sheet was opened through conventional UI click
-          this.conventionalUrlOpening(response);
-        }
+    this.subscriptionArray.push(
+      this.appointmentsServce.getFocussedBasicDate()
+        .pipe(distinctUntilChanged(((prev, curr) =>
+            prev?.year === curr?.year &&
+            prev?.month === curr?.month &&
+            prev?.day === curr?.day
+        )))
+        .subscribe((response: BasicDate | null): void => {
+          console.log('loading data');
+          if (!response) {
+            // response = null;
+            // side sheet was opened because of present auxiliary route
+            this.initialUrlOpening(response);
+          } else {
+            // response = { year: ... }
+            // side sheet was opened through conventional UI click
+            this.conventionalUrlOpening(response);
+          }
+          this.loadAppointments();
+      })
+    );
+    this.subscriptionArray.push(
+      this.appointmentsServce.getAppointments().subscribe(response => {
+        console.log('test');
         this.loadAppointments();
-    })
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptionArray.forEach(subscription => {subscription.unsubscribe()})
   }
 
   triggerIsRenewed() {
     this.isRenewed = true;
     setTimeout(() => { this.isRenewed = false; }, 500)
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   navigateToDate() {
@@ -117,11 +126,11 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   }
 
   loadAppointments() {
-    this.events = this.appointmentsServce.getAppointmentsByBasicDate(this.focussedDay)
-  }
-
-  testFunc() {
-    this.events.subscribe(response => {console.log(response)})
+    this.appointmentsServce.getAppointmentsByBasicDate(this.focussedDay)
+      .pipe(take(1))
+      .subscribe(response => {
+        this.events.next(response);
+    })
   }
 
   toggleCreating() {
