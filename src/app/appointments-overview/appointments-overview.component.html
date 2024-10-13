@@ -16,7 +16,7 @@
 
         <div class="padding-large-left display-flex">
           <div class="flex-centralize-v flex-centralize-h theme-background-nuance-1 border-radius-medium padding-medium-left padding-medium-right">
-            {{ now | date: 'HH:mm:ss' }}
+            {{ currentTime | date: 'HH:mm:ss' }}
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
       <div class="display-flex flex-centralize-h flex-centralize-v font-size-xxlarge"
            [ngClass]="{'test-transition': isRenewed}">
         <i class="material-icons padding-medium-right">calendar_month</i>
-        {{ basicDate.day }}.{{ basicDate.month }}.{{ basicDate.year }}
+        {{ focussedDay.day }}.{{ focussedDay.month }}.{{ focussedDay.year }}
       </div>
       <div>
         >
@@ -42,7 +42,13 @@
     </div>
   </div>
 
-  <div class="height-100-percent display-flex flex-direction-col padding-medium padding-xlarge-left padding-xlarge-right">
-    <app-appointments-create [focussedDay]="basicDate"></app-appointments-create>
+  <div class="display-flex flex-direction-col padding-medium padding-xlarge-left padding-xlarge-right">
+    <app-appointments-create [focussedDay]="focussedDay"></app-appointments-create>
+  </div>
+
+  <div>
+    <ng-container *ngFor="let event of events | async; index as i">
+      <div>{{ event.title }}</div>
+    </ng-container>
   </div>
 </div>

@@ -3,6 +3,7 @@ import {extendedAppointment} from "../interfaces/extendedAppointment";
 import {Observable} from "rxjs";
 import {CalendarEvent} from "angular-calendar";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
+import {BasicDate} from "../interfaces/basicDate";
 
 @Injectable({
   providedIn: 'root'
@@ -51,10 +52,15 @@ export class HttpClientService {
     })
   }
 
+  loadDataWithBasicDate(basicDate: BasicDate) {
+  }
+
   saveData(input: extendedAppointment) {
     /**
      * input: extended appointment
      */
+
+    // TODO: return Observable
     fetch("http://localhost:3000/appointments", {
       method: "POST",
       body: JSON.stringify(input),
@@ -69,7 +75,7 @@ export class HttpClientService {
 
   deleteData(input: extendedAppointment) {
     fetch("", {
-
+      // TODO
     })
   }
 }

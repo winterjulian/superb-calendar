@@ -35,6 +35,10 @@ export class FunctionsService {
     }
   }
 
+  generateDateFromBasicDate(basicDate: BasicDate, hour = 0, minutes = 0, seconds = 0) {
+    return new Date(basicDate.year, basicDate.month-1, basicDate.day, hour, minutes, seconds);
+  }
+
   generateAddress(addressObject: AddressModel): string {
     return addressObject.street
       + ' ' + addressObject.houseNumber

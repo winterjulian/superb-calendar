@@ -38,6 +38,12 @@ export class AppointmentsService {
     return this.preferredTime;
   }
 
+  getAppointmentsByBasicDate(basicDate: BasicDate): Observable<ExtendedCalendarEvent[]> {
+    let from = this.functionsService.generateDateFromBasicDate(basicDate);
+    let to = this.functionsService.generateDateFromBasicDate(basicDate, 23, 59, 59);
+    return this.httpClientService.loadDataInDateRangeWithDates(from, to)
+  }
+
   // SETTER
 
   setFocussedBasicDate(dateInput: BasicDate | null): void {

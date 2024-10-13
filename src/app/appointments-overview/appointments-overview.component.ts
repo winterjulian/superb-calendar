@@ -1,13 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {DatePipe, NgClass} from "@angular/common";
+import {AsyncPipe, DatePipe, NgClass, NgForOf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {AppointmentsCreateComponent} from "../appointments-create/appointments-create.component";
 import {AppointmentsService} from "../services/appointments.service";
-import {distinctUntilChanged, Subscription} from "rxjs";
+import {distinctUntilChanged, Observable, Subject, Subscription, take} from "rxjs";
 import {FunctionsService} from "../services/functions.service";
 import {BasicDate} from "../interfaces/basicDate";
+import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 
 @Component({
   selector: 'app-appointments-overview',
@@ -17,7 +18,9 @@ import {BasicDate} from "../interfaces/basicDate";
     MatIcon,
     DatePipe,
     MatButton,
-    AppointmentsCreateComponent
+    AppointmentsCreateComponent,
+    NgForOf,
+    AsyncPipe
   ],
   templateUrl: './appointments-overview.component.html',
   styleUrl: './appointments-overview.component.css'
@@ -25,9 +28,10 @@ import {BasicDate} from "../interfaces/basicDate";
 export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   public isLoaded: boolean = false;
   public isRenewed: boolean = false;
-  public basicDate!: BasicDate;
+  public focussedDay!: BasicDate;
   public today: Date = new Date();
-  public now: number;
+  public currentTime: number;
+  public events!: Observable<ExtendedCalendarEvent[]>;
 
   private subscription!: Subscription;
 
@@ -37,8 +41,8 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     private appointmentsServce: AppointmentsService,
     private functionsService: FunctionsService
   ) {
-    this.now = Date.now();
-    setInterval(() => {this.now = Date.now()}, 1000);
+    this.currentTime = Date.now();
+    setInterval(() => {this.currentTime = Date.now()}, 1000);
   }
 
   ngOnInit() {
@@ -59,6 +63,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
           // side sheet was opened through conventional UI click
           this.conventionalUrlOpening(response);
         }
+        this.loadAppointments();
     })
   }
 
@@ -84,14 +89,14 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   initialUrlOpening(response: null): void {
     const basicDate = this.functionsService.extractBasicDateFromURL(this.route.snapshot.url)
     if (basicDate) {
-      this.basicDate = basicDate;
+      this.focussedDay = basicDate;
     } else {
       close();
     }
   }
 
   conventionalUrlOpening(response: BasicDate): void {
-    this.basicDate = response;
+    this.focussedDay = response;
     this.triggerIsRenewed()
   }
 
@@ -103,6 +108,14 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   }
 
   setToToday() {
-    this.basicDate = this.functionsService.extractBasicDateFromDate(this.today);
+    this.focussedDay = this.functionsService.extractBasicDateFromDate(this.today);
+  }
+
+  loadAppointments() {
+    this.events = this.appointmentsServce.getAppointmentsByBasicDate(this.focussedDay)
+  }
+
+  testFunc() {
+    this.events.subscribe(response => {console.log(response)})
   }
 }
