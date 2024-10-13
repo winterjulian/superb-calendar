@@ -46,15 +46,12 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
     this.appointmentsService.getPreferredTime()
       .pipe(takeUntil(this.unsubscriber))
       .subscribe((response: AppointmentTime) => {
-        console.log('SUBSCRIBE')
-        console.log(response)
         this.startTime.set(response);
         this.endTime.set({
           "hour": response.hour + 1,
           "minute": response.minute,
         })
         // setTimeout(() => {
-        //   console.log('UPDATING');
         //   this.startTime.set(response);
         //   this.endTime.set({
         //     "hour": response.hour + 1,

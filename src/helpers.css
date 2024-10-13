@@ -35,6 +35,10 @@
   flex: 1;
 }
 
+.basic-flex-4 {
+  flex: 4;
+}
+
 .flex-centralize-v {
   display: flex;
   align-items: center;
@@ -51,4 +55,12 @@
 
 .flex-direction-col {
   flex-direction: column;
+}
+
+.flex-direction-row {
+  flex-direction: row;
+}
+
+.details-area-height {
+  height: 100px;
 }

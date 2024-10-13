@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AsyncPipe, DatePipe, NgClass, NgForOf} from "@angular/common";
+import {AsyncPipe, DatePipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {AppointmentsCreateComponent} from "../appointments-create/appointments-create.component";
@@ -9,6 +9,8 @@ import {distinctUntilChanged, Observable, Subject, Subscription, take} from "rxj
 import {FunctionsService} from "../services/functions.service";
 import {BasicDate} from "../interfaces/basicDate";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
+import {AppointmentsHeaderComponent} from "../appointments-header/appointments-header.component";
+import {AppointmentsEventComponent} from "../appointments-event/appointments-event.component";
 
 @Component({
   selector: 'app-appointments-overview',
@@ -20,17 +22,20 @@ import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
     MatButton,
     AppointmentsCreateComponent,
     NgForOf,
-    AsyncPipe
+    AsyncPipe,
+    AppointmentsHeaderComponent,
+    NgIf,
+    AppointmentsEventComponent
   ],
   templateUrl: './appointments-overview.component.html',
   styleUrl: './appointments-overview.component.css'
 })
 export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   public isLoaded: boolean = false;
+  public isCreating: boolean = false;
   public isRenewed: boolean = false;
   public focussedDay!: BasicDate;
   public today: Date = new Date();
-  public currentTime: number;
   public events!: Observable<ExtendedCalendarEvent[]>;
 
   private subscription!: Subscription;
@@ -40,10 +45,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     private router: Router,
     private appointmentsServce: AppointmentsService,
     private functionsService: FunctionsService
-  ) {
-    this.currentTime = Date.now();
-    setInterval(() => {this.currentTime = Date.now()}, 1000);
-  }
+  ) {}
 
   ngOnInit() {
     this.isLoaded = true;
@@ -54,6 +56,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
           prev?.day === curr?.day
       )))
       .subscribe((response: BasicDate | null): void => {
+        console.log('loading data');
         if (!response) {
           // response = null;
           // side sheet was opened because of present auxiliary route
@@ -108,7 +111,8 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   }
 
   setToToday() {
-    this.focussedDay = this.functionsService.extractBasicDateFromDate(this.today);
+    this.appointmentsServce.setFocussedBasicDateByDate(this.today);
+    // this.focussedDay = this.functionsService.extractBasicDateFromDate(this.today);
   }
 
   loadAppointments() {
@@ -117,5 +121,9 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
 
   testFunc() {
     this.events.subscribe(response => {console.log(response)})
+  }
+
+  toggleCreating() {
+    this.isCreating = !this.isCreating;
   }
 }

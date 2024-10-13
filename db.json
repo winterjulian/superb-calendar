@@ -172,8 +172,23 @@
       },
       "start": "2024-10-08T20:30:00.000Z",
       "end": "2024-10-08T21:00:00.000Z",
-      "details": "",
+      "details": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       "id": 11
+    },
+    {
+      "title": "Test-12",
+      "startTime": {
+        "hour": 9,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 10,
+        "minute": 0
+      },
+      "start": "2024-10-13T07:00:00.000Z",
+      "end": "2024-10-13T08:00:00.000Z",
+      "details": "Immer wieder sonntags, kommt die Erinnerung",
+      "id": 12
     }
   ]
 }

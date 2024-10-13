@@ -30,7 +30,6 @@ export class ThemeService {
 
   scanPrefereces() {
     this.darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-    console.log(this.darkMode)
   }
 
   scanLocalStorage() {

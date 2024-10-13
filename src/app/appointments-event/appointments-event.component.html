@@ -1,0 +1,49 @@
+<div class="display-flex flex-direction-col theme-background-nuance-1 material-box-shadow width-100-percent">
+
+  <div class="padding-medium display-flex basic-flex-jcsb calendar-border-bottom">
+    <div class="display-flex width-100-percent basic-flex-jcsb">
+
+      <div class="basic-flex-1">
+        {{ event.startTime.hour }}:{{ event.startTime.minute }}
+      </div>
+
+      <div class="basic-flex-4 display-flex">
+        <div class="display-flex font-size-xlarge basic-flex-1">
+          {{ event.title }}
+        </div>
+        <div class="display-flex">
+          <i class="material-icons" (click)="testFunc()" style="scale: 0.8; cursor: pointer">delete</i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="padding-medium">
+    <div>
+      <div class="display-flex flex-direction-row">
+        <div class="basic-flex-1">
+          time
+        </div>
+        <div class="basic-flex-4">
+          <div class="display-flex flex-centralize-v">
+            <div class="">{{ event.startTime.hour }}:{{ event.startTime.minute }}</div>
+            <div class="display-flex flex-centralize-h flex-centralize-v">
+              <i  class="material-icons">arrow_right_alt</i>
+            </div>
+            <div class="">{{ event.endTime.hour }}:{{ event.startTime.minute }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="display-flex flex-direction-row padding-medium-top">
+        <div class="basic-flex-1">
+          details
+        </div>
+        <div class="basic-flex-4 theme-background padding-small details-area-height scroll-container-y">
+          {{ event.details }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

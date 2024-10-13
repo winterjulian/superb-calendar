@@ -1,54 +1,42 @@
-<div class="test-class theme-background material-box-shadow basic-font-color"
+<div class="display-flex flex-direction-col test-class theme-background material-box-shadow basic-font-color"
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
-  <div class="display-flex flex-direction-col basic-flex-jcsb border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
-    <div class="display-flex basic-flex-jcsb">
+  <div class="display-flex flex-direction-col basic-flex-jcsb calendar-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
 
-      <div class="display-flex basic-flex-jcsb">
-        <div>
-          <button
-            mat-raised-button
-            (click)="navigateToDate(); triggerIsRenewed(); setToToday()">
-            <i class="material-icons margin-medium-right">history</i>
-            {{ today | date: 'dd.M.' }}
-          </button>
-        </div>
+    <app-appointments-header
+      [isRenewed]="isRenewed"
+      [today]="today"
+      [focussedDay]="focussedDay"
+      (emitNavigateToDate)="navigateToDate()"
+      (emitTriggerIsRenewed)="triggerIsRenewed()"
+      (emitSetToToday)="setToToday()"
+      (emitClose)="close()"
+    ></app-appointments-header>
+  </div>
 
-        <div class="padding-large-left display-flex">
-          <div class="flex-centralize-v flex-centralize-h theme-background-nuance-1 border-radius-medium padding-medium-left padding-medium-right">
-            {{ currentTime | date: 'HH:mm:ss' }}
-          </div>
-        </div>
-      </div>
-
+  <div class="display-flex flex-direction-col margin-xlarge-left margin-xlarge-right margin-xlarge-top">
+    <ng-container *ngIf="isCreating; else elseBlock">
       <button
         mat-raised-button
-        (click)="close()">
-        <i class="material-icons">close</i>
+        class="border-radius-none"
+        (click)="toggleCreating()">
+        <i  class="material-icons">delete</i>
       </button>
-    </div>
-    <div class="display-flex basic-flex-jcsb padding-large-top">
-      <div>
-        <
-      </div>
-      <div class="display-flex flex-centralize-h flex-centralize-v font-size-xxlarge"
-           [ngClass]="{'test-transition': isRenewed}">
-        <i class="material-icons padding-medium-right">calendar_month</i>
-        {{ focussedDay.day }}.{{ focussedDay.month }}.{{ focussedDay.year }}
-      </div>
-      <div>
-        >
-      </div>
-    </div>
-  </div>
-
-  <div class="display-flex flex-direction-col padding-medium padding-xlarge-left padding-xlarge-right">
-    <app-appointments-create [focussedDay]="focussedDay"></app-appointments-create>
-  </div>
-
-  <div>
-    <ng-container *ngFor="let event of events | async; index as i">
-      <div>{{ event.title }}</div>
+      <app-appointments-create [focussedDay]="focussedDay"></app-appointments-create>
     </ng-container>
+    <ng-template #elseBlock>
+      <button
+        mat-raised-button
+        class="border-radius-none"
+        (click)="toggleCreating()">
+        <i  class="material-icons margin-medium-right">add</i>
+      </button>
+    </ng-template>
+  </div>
+
+  <div class="height-100-percent scroll-container-y">
+    <div class="margin-xlarge" *ngFor="let event of events | async; index as i">
+      <app-appointments-event [event]="event"></app-appointments-event>
+    </div>
   </div>
 </div>

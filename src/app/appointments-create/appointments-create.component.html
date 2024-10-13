@@ -1,42 +1,34 @@
-<div class="basic-font-color theme-background-nuance-2 border-radius-medium padding-large material-box-shadow">
-  <div class="display-flex flex-centralize-v font-size-large margin-medium-bottom">
+<div class="basic-font-color theme-background-nuance-2 padding-large material-box-shadow">
+  <div class="display-flex flex-centralize-v font-size-large">
     <i class="material-icons padding-medium-right">add</i>
     <input
       [(ngModel)]="title"
-      class="basic-font-color border-radius-medium theme-background padding-medium"
+      class="width-100-percent basic-font-color border-radius-medium theme-background padding-medium"
       style="border: 0 solid transparent;"
       placeholder="New appointment">
   </div>
-  <div class="display-flex">
-    <div class="margin-large-right" style="flex: 1">from</div>
-    <div style="flex: 1">to</div>
-  </div>
+<!--  <div class="display-flex">-->
+<!--    <div class="margin-large-right" style="flex: 1">from</div>-->
+<!--    <div style="flex: 1">to</div>-->
+<!--  </div>-->
 
   <div class="display-flex basic-flex-jcsb">
     <div class="basic-flex-1 theme-background-nuance-2">
       <ngb-timepicker [(ngModel)]="startTime" [minuteStep]="5" [seconds]="false"/>
+    </div>
+    <div class="display-flex flex-centralize-v">
+      <i  class="material-icons">arrow_right_alt</i>
     </div>
     <div class="basic-flex-1 theme-background-nuance-2 display-flex basic-flex-jcfe">
       <ngb-timepicker [(ngModel)]="endTime" [minuteStep]="5" [seconds]="false"/>
     </div>
   </div>
 
-  <div class="display-flex padding-medium-top">
+  <div class="display-flex">
     <textarea [(ngModel)]="details" class="text-area width-100-percent padding-small border-radius-medium" placeholder="Appointment's details"></textarea>
   </div>
 
-  <div class="padding-medium-top display-flex basic-flex-jcsb">
-    <button
-      mat-raised-button
-      class="theme-background"
-      (click)="reload()">
-      <i class="material-icons">restart_alt</i>
-    </button>
-    <button
-      mat-raised-button
-      (click)="dismiss()">
-      <i class="material-icons">delete</i>
-    </button>
+  <div class="display-flex basic-flex-jcfe padding-medium-top">
     <button
       mat-raised-button
       [disabled]="title===''"
@@ -44,5 +36,4 @@
       <i class="material-icons">check</i>
     </button>
   </div>
-
 </div>

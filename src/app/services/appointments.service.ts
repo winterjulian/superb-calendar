@@ -59,7 +59,6 @@ export class AppointmentsService {
   }
 
   setPreferredTime(date: Date) {
-    console.log('>>> setPreferredTime');
     let newTime: AppointmentTime = {
       hour: date.getHours(),
       minute: date.getMinutes()
@@ -80,7 +79,6 @@ export class AppointmentsService {
       end: refinedEnd,
       details
     }
-    console.log(newAppointment);
     this.httpClientService.saveData(newAppointment)
   }
 
@@ -91,16 +89,13 @@ export class AppointmentsService {
         prev?.to.getTime() === curr?.to.getTime()
       ))
     ).subscribe(dateRange => {
-      console.log(dateRange);
       this.loadAppointments(dateRange!);
     })
   }
 
   loadAppointments(dateRange: DateRange) {
-    console.log('LOADING');
     this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
       .subscribe(response => {
-        console.log(response);
         this.appointments.next(response);
     })
   }

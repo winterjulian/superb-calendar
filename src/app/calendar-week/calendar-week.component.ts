@@ -74,7 +74,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
     })
     this.appointmentsService.getAppointments()
       .subscribe(response => {
-        console.log(response);
         this.events = response
       })
   }
@@ -95,7 +94,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   eventClicked(e: any): void {
-    console.log(e);
     this.openDialog(e);
   }
 
@@ -122,7 +120,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   setDateInformation(e: any): void {
-    console.log('>>> setDateInformation()');
 
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
@@ -159,7 +156,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   setDateRange(header: any) {
-    console.log('>>> setDateRange()');
     if (header.length === 7) {
       this.appointmentsService.setDateRange({
         from: header[0].date,
@@ -185,7 +181,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   loadData() {
     this.appointmentsService.getAppointments()
       .subscribe(response => {
-        console.log('GETTING');
         this.events = response;
     })
   }

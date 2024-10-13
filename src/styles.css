@@ -30,7 +30,7 @@ body {
 body {
   --bg-image: linear-gradient(355deg, #97D9E1 14%, #ffffff 55%);
   --bg-image-comp: linear-gradient(355deg, #d0f0f5 14%, #ffffff 100%);
-  --font-color-basic: #2b2e33;
+  --font-color-basic: #33363b;
   --font-color-disabled: #93969c;
 
   --bg-color-table: white;
@@ -43,6 +43,8 @@ body {
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
   --bg-color-appointment:  #97D9E1;
+
+  --color-border: #b6b6b6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,7 +63,9 @@ body {
     --bg-color-toggle: #3b3b3b;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
-    --bg-color-appointment:  #1c3438
+    --bg-color-appointment:  #1c3438;
+
+    --color-border: #dcdcdc;
   }
 }
 
@@ -75,6 +79,10 @@ body {
 
 .material-box-shadow {
   box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.material-box-shadow-inset {
+  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2) inset, 1px 4px 8px 0 rgba(0, 0, 0, 0.19) inset;
 }
 
 .material-box-shadow-lowkey {
@@ -202,7 +210,7 @@ body {
 }
 
 .calendar-border-bottom {
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 1px solid var(--font-color-basic);
 }
 
 .col-header-width {
@@ -225,8 +233,13 @@ body {
   width: 100%;
 }
 
+.border-radius-none {
+  border-radius: 0 !important;
+}
+
+
 .border-radius-small {
-  border-radius: 2px;
+  border-radius: 2px !important;
 }
 
 .border-radius-medium {
