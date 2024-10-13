@@ -37,6 +37,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   public focussedDay!: BasicDate;
   public today: Date = new Date();
   public events!: Observable<ExtendedCalendarEvent[]>;
+  public newEventTitle: String = '';
 
   private subscription!: Subscription;
 

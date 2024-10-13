@@ -2,7 +2,6 @@
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
   <div class="display-flex flex-direction-col basic-flex-jcsb calendar-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
-
     <app-appointments-header
       [isRenewed]="isRenewed"
       [today]="today"
@@ -14,15 +13,15 @@
     ></app-appointments-header>
   </div>
 
-  <div class="display-flex flex-direction-col margin-xlarge-left margin-xlarge-right margin-xlarge-top">
+  <div class="height-100-percent scroll-container-y-scroll calendar-border-bottom body-corresponding-comp-background">
+    <div class="margin-xlarge fade-in-transition" *ngFor="let event of events | async; index as i">
+      <app-appointments-event [event]="event"></app-appointments-event>
+    </div>
+  </div>
+
+  <div class="display-flex flex-direction-col margin-xlarge-left margin-xlarge-right margin-xlarge-top margin-medium-bottom">
     <ng-container *ngIf="isCreating; else elseBlock">
-      <button
-        mat-raised-button
-        class="border-radius-none"
-        (click)="toggleCreating()">
-        <i  class="material-icons">delete</i>
-      </button>
-      <app-appointments-create [focussedDay]="focussedDay"></app-appointments-create>
+      <app-appointments-create [focussedDay]="focussedDay" (emitToggleCreating)="toggleCreating()"></app-appointments-create>
     </ng-container>
     <ng-template #elseBlock>
       <button
@@ -32,11 +31,5 @@
         <i  class="material-icons margin-medium-right">add</i>
       </button>
     </ng-template>
-  </div>
-
-  <div class="height-100-percent scroll-container-y">
-    <div class="margin-xlarge" *ngFor="let event of events | async; index as i">
-      <app-appointments-event [event]="event"></app-appointments-event>
-    </div>
   </div>
 </div>

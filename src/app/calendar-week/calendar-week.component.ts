@@ -53,6 +53,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   public viewDate: Date = new Date();
   public clickedDate: Date;
   public events!: CalendarEvent[];
+  public refresh: Subject<void> = new Subject<void>();
   public startDayWeek: number = 0;
   public endDayWeek: number = 0;
   public startMonth: string = '';
@@ -74,8 +75,14 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
     })
     this.appointmentsService.getAppointments()
       .subscribe(response => {
+        console.log('>>> getAppointments');
+        console.log(response)
         this.events = response
+        this.refresh.next();
       })
+    this.refresh.subscribe(response => {
+      console.log('refresh: ', response);
+    })
   }
 
   ngOnDestroy() {}

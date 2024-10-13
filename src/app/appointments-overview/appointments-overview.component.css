@@ -16,6 +16,10 @@
   animation: sidebar-move-out 0.3s forwards;
 }
 
+.fade-in-transition {
+  animation: fade-in-animation 0.3s forwards;
+}
+
 @keyframes sidebar-move-in {
   0% {
     left: -400px; /* TODO: take size of sidebar dynamically */
@@ -59,5 +63,14 @@
   }
   100% {
     scale: 1;
+  }
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

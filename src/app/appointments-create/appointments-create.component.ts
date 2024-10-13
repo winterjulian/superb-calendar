@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, signal, WritableSignal} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, signal, WritableSignal} from '@angular/core';
 import {MatDateRangeInput} from "@angular/material/datepicker";
 import {NgbTimepicker} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule} from "@angular/forms";
@@ -22,6 +22,8 @@ import {Subject, takeUntil} from "rxjs";
 })
 export class AppointmentsCreateComponent implements OnInit, OnDestroy {
   @Input() focussedDay!: BasicDate;
+
+  @Output() emitToggleCreating = new EventEmitter<void>
 
   public title: String = '';
   public details: String = '';
@@ -67,8 +69,12 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
   }
 
   save() {
-    const newTitle = this.title;
     this.appointmentsService.saveAppointment(this.title, this.focussedDay, this.startTime(), this.endTime(), this.details)
+    this.toggleCreating();
+  }
+
+  toggleCreating() {
+    this.emitToggleCreating.emit();
   }
 
   dismiss() {

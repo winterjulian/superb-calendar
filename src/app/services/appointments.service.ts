@@ -12,7 +12,7 @@ import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 })
 export class AppointmentsService {
   private dateRange: Subject<DateRange | undefined> = new Subject<DateRange | undefined>()
-  private appointments: Subject<ExtendedCalendarEvent[]> = new Subject<ExtendedCalendarEvent[]>()
+  private appointments: ReplaySubject<ExtendedCalendarEvent[]> = new ReplaySubject<ExtendedCalendarEvent[]>()
   private preferredTime: ReplaySubject<AppointmentTime> = new ReplaySubject<AppointmentTime>(1)
 
   constructor(
@@ -69,17 +69,27 @@ export class AppointmentsService {
   // DATA MANAGEMENT
 
   saveAppointment(title: String, focussedDay: BasicDate, startTime: AppointmentTime, endTime: AppointmentTime, details: String) {
-    const refinedStart = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, startTime.hour, startTime.minute)
-    const refinedEnd: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, endTime.hour, endTime.minute)
+    const startAsValidDate = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, startTime.hour, startTime.minute)
+    const endAsValidDate: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, endTime.hour, endTime.minute)
     const newAppointment = {
       title,
       startTime,
       endTime,
-      start: refinedStart,
-      end: refinedEnd,
+      start: startAsValidDate,
+      end: endAsValidDate,
       details
     }
-    this.httpClientService.saveData(newAppointment)
+    this.httpClientService.saveData(newAppointment).pipe(take(1)).subscribe(savedAppointment => {
+      this.appointments.pipe(take(1)).subscribe((response: ExtendedCalendarEvent[]) => {
+        console.log(response);
+        console.log(savedAppointment);
+        console.log(response.push(savedAppointment));
+        let newArray = response;
+        newArray.push(savedAppointment);
+        // let newArray = response.push(savedAppointment);
+        this.appointments.next(newArray);
+      })
+    })
   }
 
   initLoadAppointments() {

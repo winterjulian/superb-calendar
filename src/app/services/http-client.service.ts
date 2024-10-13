@@ -55,21 +55,25 @@ export class HttpClientService {
   loadDataWithBasicDate(basicDate: BasicDate) {
   }
 
-  saveData(input: extendedAppointment) {
+  saveData(input: extendedAppointment): Observable<ExtendedCalendarEvent> {
     /**
      * input: extended appointment
      */
 
     // TODO: return Observable
-    fetch("http://localhost:3000/appointments", {
-      method: "POST",
-      body: JSON.stringify(input),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    }).then(response => {
-      return response.json();
-    }).then(data => {
+    return new Observable(observer => {
+      fetch("http://localhost:3000/appointments", {
+        method: "POST",
+        body: JSON.stringify(input),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then(response => {
+        return response.json();
+      }).then((response: ExtendedCalendarEvent) => {
+        observer.next(response);
+        observer.complete();
+      })
     })
   }
 

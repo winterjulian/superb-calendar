@@ -9,6 +9,14 @@
   overflow-x: auto;
 }
 
+.scroll-container-y-scroll {
+  overflow-y: scroll;
+}
+
+.scroll-container-x-scroll {
+  overflow-x: scroll;
+}
+
 .display-flex {
   display: flex;
 }
