@@ -70,5 +70,5 @@
 }
 
 .details-area-height {
-  height: 100px;
+  max-height: 85px;
 }

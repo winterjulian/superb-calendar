@@ -313,6 +313,20 @@
       "end": "2024-10-12T11:00:00.000Z",
       "details": "Immer wieder Sonntags!",
       "id": 20
+    },
+    {
+      "title": "Test",
+      "startTime": {
+        "hour": 9,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 10,
+        "minute": 0
+      },
+      "start": "2024-10-14T07:00:00.000Z",
+      "end": "2024-10-14T08:00:00.000Z",
+      "id": 21
     }
   ]
 }

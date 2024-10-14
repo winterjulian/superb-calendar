@@ -60,7 +60,7 @@ export class HttpClientService {
      * input: extended appointment
      */
 
-    // TODO: return Observable
+    console.log(input);
     return new Observable(observer => {
       fetch("http://localhost:3000/appointments", {
         method: "POST",

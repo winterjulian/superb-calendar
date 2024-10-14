@@ -12,7 +12,6 @@ import {DateAdapter} from '@angular/material/core';
 export class CalendarMonthComponent implements OnInit {
   @ViewChild('calendar', {static: false}) calendar!: MatCalendar<Date>;
 
-
   constructor(
     public storeService: StoreService,
     private dateAdapter: DateAdapter<Date>

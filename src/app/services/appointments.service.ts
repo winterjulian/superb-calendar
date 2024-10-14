@@ -77,7 +77,7 @@ export class AppointmentsService {
       endTime,
       start: startAsValidDate,
       end: endAsValidDate,
-      details
+      details: undefined
     }
     this.httpClientService.saveData(newAppointment)
       .pipe(take(1))

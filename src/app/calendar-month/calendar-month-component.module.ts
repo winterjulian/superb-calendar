@@ -14,7 +14,7 @@ import {MatButton} from "@angular/material/button";
         MatCardModule,
         MatButton,
     ],
-  providers: [provideNativeDateAdapter(), {provide: MAT_DATE_LOCALE, useValue: 'en'}],
+  providers: [provideNativeDateAdapter()],
   declarations: [CalendarMonthComponent],
   exports: [CalendarMonthComponent]
 })

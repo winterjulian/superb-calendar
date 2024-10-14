@@ -6,5 +6,5 @@ export interface extendedAppointment {
   endTime: AppointmentTime
   start: Date;
   end: Date,
-  details: String,
+  details: String | undefined,
 }

@@ -5,5 +5,5 @@ export interface ExtendedCalendarEvent extends CalendarEvent {
   // +CalendarEvent properties
   startTime: AppointmentTime,
   endTime: AppointmentTime,
-  details: string,
+  details: string | undefined,
 }
