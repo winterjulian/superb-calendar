@@ -70,6 +70,7 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
 
   save() {
     this.appointmentsService.saveAppointment(this.title, this.focussedDay, this.startTime(), this.endTime(), this.details)
+    this.appointmentsService.triggerDailyAppointmentRealod();
     this.toggleCreating();
   }
 

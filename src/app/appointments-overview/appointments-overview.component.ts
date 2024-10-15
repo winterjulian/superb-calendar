@@ -67,15 +67,12 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
             // side sheet was opened through conventional UI click
             this.conventionalUrlOpening(response);
           }
-          this.loadDailyAppointments('first');
+          this.loadDailyAppointments();
       })
     );
     this.subscriptionArray.push(
-      // TODO: change subscription! Don't reload on getAppointments(), unnecessary updates:
-      //  is called when week calendar is switched. Create flag in appointments service that is triggered after
-      //  save and delete etc.
-      this.appointmentsServce.getAppointments().subscribe(response => {
-        this.loadDailyAppointments('second');
+      this.appointmentsServce.getDailyAppointmentReload().subscribe(_ => {
+        this.loadDailyAppointments();
       })
     );
   }
@@ -125,8 +122,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     // this.focussedDay = this.functionsService.extractBasicDateFromDate(this.today);
   }
 
-  loadDailyAppointments(source: string) {
-    console.log('>>> loadAppointments(' + source + ')')
+  loadDailyAppointments() {
     this.appointmentsServce.getAppointmentsByBasicDate(this.focussedDay)
       .pipe(take(1))
       .subscribe(response => {

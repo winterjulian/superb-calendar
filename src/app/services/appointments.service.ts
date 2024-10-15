@@ -14,6 +14,7 @@ export class AppointmentsService {
   private weekRange: ReplaySubject<DateRange | undefined> = new ReplaySubject<DateRange | undefined>(1)
   private appointments: ReplaySubject<ExtendedCalendarEvent[]> = new ReplaySubject<ExtendedCalendarEvent[]>(1)
   private preferredTime: ReplaySubject<AppointmentTime> = new ReplaySubject<AppointmentTime>(1)
+  private triggerDailyAppointmentReload: Subject<boolean> = new Subject<boolean>()
 
   constructor(
     public functionsService: FunctionsService,
@@ -44,6 +45,10 @@ export class AppointmentsService {
     return this.httpClientService.loadDataInDateRangeWithDates(from, to)
   }
 
+  getDailyAppointmentReload(): Subject<boolean> {
+    return this.triggerDailyAppointmentReload;
+  }
+
   // SETTER
 
   setFocussedBasicDate(dateInput: BasicDate | null): void {
@@ -66,6 +71,10 @@ export class AppointmentsService {
     this.preferredTime.next(newTime);
   }
 
+  triggerDailyAppointmentRealod() {
+    this.triggerDailyAppointmentReload.next(true);
+  }
+
   // DATA MANAGEMENT
 
   saveAppointment(title: String, focussedDay: BasicDate, startTime: AppointmentTime, endTime: AppointmentTime, details: String) {
@@ -77,7 +86,7 @@ export class AppointmentsService {
       endTime,
       start: startAsValidDate,
       end: endAsValidDate,
-      details: undefined
+      details: details
     }
     this.httpClientService.saveData(newAppointment)
       .pipe(take(1))
