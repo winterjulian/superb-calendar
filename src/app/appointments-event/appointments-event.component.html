@@ -1,46 +1,43 @@
 <div class="fade-in-transition display-flex flex-direction-col theme-background material-box-shadow-lowkey border-radius-small width-100-percent">
 
   <div class="padding-medium display-flex basic-flex-jcsb calendar-border-bottom">
-    <div class="display-flex width-100-percent basic-flex-jcsb">
 
-      <div class="basic-flex-1">
+    <div class="display-flex flex-centralize-v flex-centralize-h basic-font-weight-600">
+      <div class="font-size-xlarge">
         {{ event.startTime.hour | time: 'h' }}:{{ event.startTime.minute | time }}
       </div>
 
-      <div class="basic-flex-4 display-flex">
-        <div class="display-flex font-size-xlarge basic-flex-1">
-          {{ event.title }}
-        </div>
-        <div class="display-flex">
-          <i class="material-icons" (click)="testFunc()" style="scale: 0.8; cursor: pointer">delete</i>
-        </div>
+      <div>
+        <i  class="display-flex material-icons">arrow_right_alt</i>
       </div>
 
+      <div>
+        {{ event.endTime.hour | time: 'h' }}:{{ event.endTime.minute | time }}
+      </div>
     </div>
+
+    <div>
+      <div class="display-flex">
+        <i class="material-icons" (click)="testFunc()" style="scale: 0.8; cursor: pointer">delete</i>
+      </div>
+    </div>
+
   </div>
 
   <div class="padding-medium">
     <div>
       <div class="display-flex flex-direction-row">
-        <div class="basic-flex-1 padding-small-top padding-small-bottom">
-          time
-        </div>
-        <div class="basic-flex-4 padding-small">
-          <div class="display-flex flex-centralize-v">
-            <div class="">{{ event.startTime.hour | time: 'h' }}:{{ event.startTime.minute | time }}</div>
-            <div class="display-flex flex-centralize-h flex-centralize-v">
-              <i  class="material-icons">arrow_right_alt</i>
-            </div>
-            <div class="">{{ event.endTime.hour | time: 'h' }}:{{ event.startTime.minute | time }}</div>
-          </div>
+        <div>
+
+          {{ event.title }}
+
         </div>
       </div>
       <div *ngIf="event.details" class="display-flex flex-direction-row padding-medium-top">
-        <div class="basic-flex-1 padding-small-top padding-small-bottom">
-          details
-        </div>
-        <div class="basic-flex-4 border theme-background padding-small details-area-height scroll-container-y">
+        <div class="border theme-background padding-small details-area-height scroll-container-y">
+
           {{ event.details }}
+
         </div>
       </div>
     </div>
