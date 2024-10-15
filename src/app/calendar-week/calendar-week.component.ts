@@ -156,6 +156,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   setDateRange(header: any) {
+    console.log('>>> setDateRange()');
     if (header.length === 7) {
       this.appointmentsService.setWeekRange({
         from: header[0].date,

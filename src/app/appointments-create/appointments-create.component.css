@@ -6,6 +6,10 @@
   border: 0;
 }
 
+:host ::ng-deep .chevron {
+  color: var(--bg-color-appointment);
+}
+
 .text-area {
   background-color: var(--bg-color-table);
   color: var(--font-color-basic);

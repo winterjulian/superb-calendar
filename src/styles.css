@@ -45,12 +45,14 @@ body {
   --bg-color-appointment:  #97D9E1;
 
   --color-border: #cacaca;
+  --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  --shadow-black-lowkey: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
   .dark-theme {
-    --bg-image: linear-gradient(355deg, #1d3a3d 14%, #212121 55%);
-    --bg-image-comp: linear-gradient(90deg, #182a2c 5%, #282828 60%);
+    --bg-image: linear-gradient(355deg, #142c31 14%, #212121 55%);
+    --bg-image-comp: linear-gradient(90deg, #142c31 5%, #282828 60%);
     --font-color-basic: lightgrey;
     --font-color-disabled: #5a5a5a;
 
@@ -63,9 +65,11 @@ body {
     --bg-color-toggle: #3b3b3b;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
-    --bg-color-appointment:  #1c3438;
+    --bg-color-appointment: #142c31;
 
     --color-border: #cacaca;
+    --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    --shadow-black-lowkey: 1px 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 5px 0 rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -78,7 +82,7 @@ body {
 }
 
 .material-box-shadow {
-  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--shadow-black);
 }
 
 .material-box-shadow-inset {
@@ -86,7 +90,7 @@ body {
 }
 
 .material-box-shadow-lowkey {
-  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: var(--shadow-black-lowkey);
 }
 
 .toggle-font-color {

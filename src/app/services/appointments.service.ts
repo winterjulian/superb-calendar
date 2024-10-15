@@ -93,6 +93,7 @@ export class AppointmentsService {
   }
 
   initLoadAppointments() {
+    console.log('>>> initLoadAppointments()');
     this.weekRange.pipe(
       distinctUntilChanged(((prev, curr) =>
         prev?.from.getTime() === curr?.from.getTime() &&
@@ -104,6 +105,7 @@ export class AppointmentsService {
   }
 
   loadAppointments(dateRange: DateRange) {
+    console.log('>>> loadAppointments()')
     this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
       .pipe(take(1))
       .subscribe(response => {
