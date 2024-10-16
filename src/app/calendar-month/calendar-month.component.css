@@ -9,5 +9,5 @@
 }
 
 :host ::ng-deep .mat-calendar-body-selected {
-  background-color: #158c8d;
+  background-color: var(--bg-color-focussed-day);
 }

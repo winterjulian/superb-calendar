@@ -18,3 +18,27 @@
 :host ::ng-deep .cal-week-view .cal-hour-segment::after {
   content: none
 }
+
+:host ::ng-deep .cal-week-view {
+  border-color: var(--color-border);
+}
+
+:host ::ng-deep .cal-week-view .cal-day-headers {
+  border-color: var(--color-border);
+}
+
+:host ::ng-deep .cal-week-view .cal-time-events {
+  border-color: var(--color-border);
+}
+
+:host ::ng-deep .cal-week-view .cal-day-column {
+  border-color: var(--color-border);
+}
+
+:host ::ng-deep .cal-week-view .cal-hour .cal-hour-segment {
+  border-color: var(--color-border);
+}
+
+:host ::ng-deep .cal-week-view .cal-hour:last-child .cal-hour-segment {
+  border-color: var(--color-border);
+}

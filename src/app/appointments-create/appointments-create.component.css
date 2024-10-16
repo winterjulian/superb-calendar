@@ -7,7 +7,7 @@
 }
 
 :host ::ng-deep .chevron {
-  color: var(--bg-color-appointment);
+  background-image: var(--bg-image-event);
 }
 
 .text-area {
