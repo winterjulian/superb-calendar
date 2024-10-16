@@ -80,3 +80,11 @@
 .simple-border-top {
   border-top: 1px solid var(--font-color-basic)
 }
+
+.simple-border-left {
+  border-left: 1px solid var(--font-color-basic)
+}
+
+.simple-border-right {
+  border-right: 1px solid var(--font-color-basic)
+}

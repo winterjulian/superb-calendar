@@ -31,14 +31,16 @@ body {
 body {
   --bg-image: linear-gradient(355deg, #69bec2 14%, #ffffff 55%);
   --bg-image-comp: linear-gradient(90deg, #dcfbff 5%, #ffffff 60%);
-  --bg-image-event: linear-gradient(-12deg, #9ad7d9 5%, #ffffff 40%);
-  --font-color-basic: #33363b;
+  --bg-image-event: linear-gradient(-12deg, #9ad7d9 5%, #f3f3f4 40%);
+  --bg-image-event-hover: linear-gradient(-12deg, #ffffff 5%, #9ad7d9 25%, #ffffff 50%);
+  --font-color-basic: #474a50;
   --font-color-disabled: #93969c;
 
   --bg-color-table: white;
   --bg-color-table-nuance: #e7e7e7;
   --bg-color-table-row: white;
   --bg-color-table-row-odd: whitesmoke;
+  --bg-color-event-1: #69bec2;
   --bg-color-focussed-day: #9ad7d9;
 
   --bg-color-disabled: #dadada;
@@ -56,6 +58,7 @@ body {
     --bg-image: linear-gradient(355deg, #0d333b 14%, #212121 55%);
     --bg-image-comp: linear-gradient(90deg, #0d333b 5%, #282828 60%);
     --bg-image-event: linear-gradient(-12deg, #1a4f5d 5%, #2f2f2f 40%);
+    --bg-image-event-hover: linear-gradient(-12deg, #1a4f5d 5%, #2f2f2f 50%);
     --font-color-basic: lightgrey;
     --font-color-disabled: #5a5a5a;
 
@@ -63,6 +66,7 @@ body {
     --bg-color-table-nuance: #1a1a1a;
     --bg-color-table-row: #1a1a1a;
     --bg-color-table-row-odd: #2a2a2a;
+    --bg-color-event-1: #69bec2;
     --bg-color-focussed-day: #158c8d;
 
     --bg-color-disabled: #282828;
@@ -105,7 +109,13 @@ body {
 }
 
 .event-background {
+  transition: 0.1s ease-in-out;
   background-image: var(--bg-image-event) !important;
+}
+
+.event-background:hover {
+  transition: 0.1s ease-in-out;
+  scale: 1.05;
 }
 
 .theme-background {
@@ -371,6 +381,31 @@ body {
   }
   100% {
     top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes move-out-animation {
+  0% {
+    scale: 0.9;
+    left: 15px;
+    opacity: 0;
+  }
+  50% {
+    scale: 0.9;
+    left: 0px;
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }

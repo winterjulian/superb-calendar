@@ -1,5 +1,9 @@
 @import "../../styles.css";
 
+.event-background:hover {
+  scale: none !important;
+}
+
 :host ::ng-deep .form-control {
   background-color: var(--bg-color-table);
   color: var(--font-color-basic);
@@ -7,7 +11,7 @@
 }
 
 :host ::ng-deep .chevron {
-  background-image: var(--bg-image-event);
+  color: var(--bg-color-event-1);
 }
 
 .text-area {

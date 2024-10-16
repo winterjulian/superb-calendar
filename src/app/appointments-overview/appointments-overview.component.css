@@ -49,28 +49,3 @@
     opacity: 1;
   }
 }
-
-@keyframes move-out-animation {
-  0% {
-    scale: 0.9;
-    left: 15px;
-    opacity: 0;
-  }
-  50% {
-    scale: 0.9;
-    left: 0px;
-    opacity: 1;
-  }
-  100% {
-    scale: 1;
-  }
-}
-
-@keyframes fade-in-animation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}

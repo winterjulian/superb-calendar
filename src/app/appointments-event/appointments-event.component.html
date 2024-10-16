@@ -1,41 +1,34 @@
-<div class="fade-in-transition display-flex flex-direction-col event-background material-box-shadow-lowkey border-radius-small width-100-percent">
+<div class="appointments-event display-flex event-background material-box-shadow-lowkey border-radius-small fade-in-transition width-100-percent">
 
-  <div class="padding-medium display-flex basic-flex-jcsb">
+  <div class="padding-medium simple-border-right">
+    <div class="display-flex flex-direction-col flex-centralize-v basic-flex-jcsb height-100-percent">
 
-    <div class="display-flex flex-centralize-v flex-centralize-h basic-font-weight-600">
-      <div class="width-100-percent font-size-large basic-font-weight-500">
+      <div class="font-size-large basic-font-weight-600">
+        {{ event.startTime.hour | time: 'h' }}:{{ event.startTime.minute | time }}
+      </div>
+      <div>
+        {{ event.endTime.hour | time: 'h' }}:{{ event.endTime.minute | time }}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="padding-medium display-flex flex-direction-col width-100-percent">
+
+    <div class="display-flex flex-direction-row height-100-percent flex-centralize-v basic-flex-jcsb">
+      <div class="font-size-large width-100-percent basic-font-weight-500">
 
         {{ event.title }}
 
       </div>
+      <div>
+        <div class="display-flex">
+          <i class="material-icons" (click)="deleteAppointment()" style="scale: 0.8; cursor: pointer">delete</i>
+        </div>
+      </div>
     </div>
-
     <div>
-      <div class="display-flex">
-        <i class="material-icons" (click)="deleteAppointment()" style="scale: 0.8; cursor: pointer">delete</i>
-      </div>
-    </div>
-
-  </div>
-
-  <div>
-    <div class="padding-medium-right padding-xlarge-left">
-      <div class="display-flex flex-direction-row padding-medium-bottom">
-
-        <div class="font-size-xlarge">
-          {{ event.startTime.hour | time: 'h' }}:{{ event.startTime.minute | time }}
-        </div>
-
-        <div>
-          <i  class="display-flex material-icons">arrow_right_alt</i>
-        </div>
-
-        <div>
-          {{ event.endTime.hour | time: 'h' }}:{{ event.endTime.minute | time }}
-        </div>
-
-      </div>
-      <div *ngIf="event.details" class="simple-border-top display-flex flex-direction-row padding-medium-top padding-medium-bottom">
+      <div *ngIf="event.details" class="display-flex flex-direction-row padding-medium-top">
         <div class="width-100-percent details-area-height scroll-container-y">
 
           {{ event.details }}
@@ -43,6 +36,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
 </div>
