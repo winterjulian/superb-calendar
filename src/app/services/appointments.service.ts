@@ -14,7 +14,7 @@ export class AppointmentsService {
   private weekRange: ReplaySubject<DateRange | undefined> = new ReplaySubject<DateRange | undefined>(1)
   private appointments: ReplaySubject<ExtendedCalendarEvent[]> = new ReplaySubject<ExtendedCalendarEvent[]>(1)
   private preferredTime: ReplaySubject<AppointmentTime> = new ReplaySubject<AppointmentTime>(1)
-  private triggerDailyAppointmentReload: Subject<boolean> = new Subject<boolean>()
+  private dailyAppointmentReload: Subject<boolean> = new Subject<boolean>()
 
   constructor(
     public functionsService: FunctionsService,
@@ -46,7 +46,7 @@ export class AppointmentsService {
   }
 
   getDailyAppointmentReload(): Subject<boolean> {
-    return this.triggerDailyAppointmentReload;
+    return this.dailyAppointmentReload;
   }
 
   // SETTER
@@ -71,13 +71,20 @@ export class AppointmentsService {
     this.preferredTime.next(newTime);
   }
 
-  triggerDailyAppointmentRealod() {
-    this.triggerDailyAppointmentReload.next(true);
+  triggerDailyAppointmentReload() {
+    this.dailyAppointmentReload.next(true);
   }
 
   // DATA MANAGEMENT
 
-  saveAppointment(title: String, focussedDay: BasicDate, startTime: AppointmentTime, endTime: AppointmentTime, details: String) {
+  saveAppointment(
+    title: String,
+    focussedDay: BasicDate,
+    startTime: AppointmentTime,
+    endTime: AppointmentTime,
+    details: String | undefined
+  ) {
+    console.log(focussedDay);
     const startAsValidDate = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, startTime.hour, startTime.minute)
     const endAsValidDate: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, endTime.hour, endTime.minute)
     const newAppointment = {

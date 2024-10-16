@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {AddressModel} from "../interfaces/address.model";
 import {UrlSegment} from "@angular/router";
 import {BasicDate} from "../interfaces/basicDate";
+import {AppointmentTime} from "../interfaces/appointmentTime";
 
 @Injectable({
   providedIn: 'root'
@@ -68,5 +69,12 @@ export class FunctionsService {
   addDayToDate(date: Date, daysAmount = 1) {
     let newDate = new Date(date);
     return new Date(newDate.setDate(newDate.getDate() + 1));
+  }
+
+  add30MinutesToAppointmentTime(input: AppointmentTime): AppointmentTime {
+    return {
+      hour: input.minute + 30 > 59 ? input.hour + 1 : input.hour,
+      minute: (input.minute + 30) % 60,
+    };
   }
 }

@@ -1,12 +1,14 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, signal, WritableSignal} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {MatDateRangeInput} from "@angular/material/datepicker";
 import {NgbTimepicker} from "@ng-bootstrap/ng-bootstrap";
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
 import {BasicDate} from "../interfaces/basicDate";
 import {AppointmentsService} from "../services/appointments.service";
-import {AppointmentTime} from "../interfaces/appointmentTime";
 import {Subject, takeUntil} from "rxjs";
+import {NgIf} from "@angular/common";
+import {AppointmentTime} from "../interfaces/appointmentTime";
+import {FunctionsService} from "../services/functions.service";
 
 @Component({
   selector: 'app-appointments-create',
@@ -15,7 +17,9 @@ import {Subject, takeUntil} from "rxjs";
     MatDateRangeInput,
     NgbTimepicker,
     FormsModule,
-    MatButton
+    MatButton,
+    ReactiveFormsModule,
+    NgIf
   ],
   templateUrl: './appointments-create.component.html',
   styleUrl: './appointments-create.component.css'
@@ -25,41 +29,34 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
 
   @Output() emitToggleCreating = new EventEmitter<void>
 
-  public title: String = '';
-  public details: String = '';
-  public startTime: WritableSignal<AppointmentTime> = signal({
-    "hour": 13,
-    "minute": 30
-  });
-  public endTime: WritableSignal<AppointmentTime> = signal({
-    "hour": 0,
-    "minute": 0
-  });
-
+  public appointmentsForm: FormGroup = this.fb.group({
+      title: [null, Validators.required],
+      focussedDay: this.focussedDay,
+      startTime: {
+        "hour": 13,
+        "minute": 30
+      },
+      endTime:  {
+        "hour": 0,
+        "minute": 0
+      },
+      details: undefined
+    })
   private unsubscriber: Subject<void> = new Subject()
 
   constructor(
-    private appointmentsService: AppointmentsService
+    private fb: FormBuilder,
+    private appointmentsService: AppointmentsService,
+    private functionsService: FunctionsService
   ) {}
 
   ngOnInit() {
-    // this.endTime.hour = this.startTime.hour + 1;
-    // this.endTime.minute = this.startTime.minute;
     this.appointmentsService.getPreferredTime()
       .pipe(takeUntil(this.unsubscriber))
       .subscribe((response: AppointmentTime) => {
-        this.startTime.set(response);
-        this.endTime.set({
-          "hour": response.hour + 1,
-          "minute": response.minute,
-        })
-        // setTimeout(() => {
-        //   this.startTime.set(response);
-        //   this.endTime.set({
-        //     "hour": response.hour + 1,
-        //     "minute": response.minute,
-        //   })
-        // }, 3000)
+        console.log(response);
+        this.appointmentsForm.patchValue({startTime: {hour: response.hour, minute: response.minute}});
+        this.appointmentsForm.patchValue({endTime: this.functionsService.add30MinutesToAppointmentTime(response)});
     })
   }
 
@@ -68,21 +65,27 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
     this.unsubscriber.complete()
   }
 
-  save() {
-    this.appointmentsService.saveAppointment(this.title, this.focussedDay, this.startTime(), this.endTime(), this.details)
-    this.appointmentsService.triggerDailyAppointmentRealod();
-    this.toggleCreating();
+  getErrors(input: string): ValidationErrors | null | undefined {
+    return this.appointmentsForm.get(input)?.errors;
   }
 
   toggleCreating() {
     this.emitToggleCreating.emit();
   }
 
-  dismiss() {
-
-  }
-
-  reload() {
-
+  submit(e: any) {
+    if (!this.appointmentsForm.valid) {
+      this.appointmentsForm.markAllAsTouched();
+    } else {
+      this.appointmentsService.saveAppointment(
+        this.appointmentsForm.value.title,
+        this.focussedDay,
+        this.appointmentsForm.value.startTime,
+        this.appointmentsForm.value.endTime,
+        this.appointmentsForm.value.details
+      )
+      this.appointmentsService.triggerDailyAppointmentReload();
+      this.toggleCreating();
+    }
   }
 }
