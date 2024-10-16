@@ -13,7 +13,7 @@
     ></app-appointments-header>
   </div>
 
-  <div class="body-corresponding-comp-background height-100-percent scroll-container-y-scroll calendar-border-bottom">
+  <div class="height-100-percent scroll-container-y-scroll calendar-border-bottom">
     <div class="margin-xlarge" *ngFor="let event of events | async; index as i">
       <app-appointments-event [event]="event"></app-appointments-event>
     </div>

@@ -26,9 +26,10 @@ body {
 
 /* THEMEING */
 
+/*#142c31*/
 
 body {
-  --bg-image: linear-gradient(355deg, #97D9E1 14%, #ffffff 55%);
+  --bg-image: linear-gradient(355deg, #69bec2 14%, #ffffff 55%);
   --bg-image-comp: linear-gradient(90deg, #dcfbff 5%, #ffffff 60%);
   --font-color-basic: #33363b;
   --font-color-disabled: #93969c;
@@ -42,7 +43,7 @@ body {
   --bg-color-toggle: #e7e7e7;
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
-  --bg-color-appointment:  #97D9E1;
+  --bg-color-appointment: #a2d4e0;
 
   --color-border: #cacaca;
   --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
@@ -51,8 +52,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
   .dark-theme {
-    --bg-image: linear-gradient(355deg, #142c31 14%, #212121 55%);
-    --bg-image-comp: linear-gradient(90deg, #142c31 5%, #282828 60%);
+    --bg-image: linear-gradient(355deg, #0d333b 14%, #212121 55%);
+    --bg-image-comp: linear-gradient(90deg, #0d333b 5%, #282828 60%);
     --font-color-basic: lightgrey;
     --font-color-disabled: #5a5a5a;
 
@@ -65,7 +66,7 @@ body {
     --bg-color-toggle: #3b3b3b;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
-    --bg-color-appointment: #142c31;
+    --bg-color-appointment: #1c343a;
 
     --color-border: #cacaca;
     --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 5px 0 rgba(0, 0, 0, 0.5);

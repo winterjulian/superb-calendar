@@ -72,3 +72,11 @@
 .details-area-height {
   max-height: 85px;
 }
+
+.simple-border-bottom {
+  border-bottom: 1px solid var(--font-color-basic)
+}
+
+.simple-border-top {
+  border-top: 1px solid var(--font-color-basic)
+}

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input} from '@angular/core';
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 import {MatButton} from "@angular/material/button";
 import {DatePipe, NgIf} from "@angular/common";
@@ -21,5 +21,9 @@ export class AppointmentsEventComponent {
 
   testFunc() {
     console.log('DELETE');
+  }
+
+  deleteAppointment() {
+
   }
 }

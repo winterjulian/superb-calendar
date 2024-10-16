@@ -1,6 +1,6 @@
-<div class="fade-in-transition display-flex flex-direction-col theme-background material-box-shadow-lowkey border-radius-small width-100-percent">
+<div class="fade-in-transition display-flex flex-direction-col event-background material-box-shadow-lowkey border-radius-small width-100-percent">
 
-  <div class="padding-medium display-flex basic-flex-jcsb calendar-border-bottom">
+  <div class="padding-medium display-flex basic-flex-jcsb">
 
     <div class="display-flex flex-centralize-v flex-centralize-h basic-font-weight-600">
       <div class="font-size-xlarge">
@@ -18,23 +18,23 @@
 
     <div>
       <div class="display-flex">
-        <i class="material-icons" (click)="testFunc()" style="scale: 0.8; cursor: pointer">delete</i>
+        <i class="material-icons" (click)="deleteAppointment()" style="scale: 0.8; cursor: pointer">delete</i>
       </div>
     </div>
 
   </div>
 
-  <div class="padding-medium">
-    <div>
-      <div class="display-flex flex-direction-row">
-        <div>
+  <div>
+    <div class="padding-medium-right padding-xlarge-left">
+      <div class="display-flex flex-direction-row padding-medium-bottom">
+        <div class="width-100-percent font-size-large basic-font-weight-500">
 
           {{ event.title }}
 
         </div>
       </div>
-      <div *ngIf="event.details" class="display-flex flex-direction-row padding-medium-top">
-        <div class="border theme-background padding-small details-area-height scroll-container-y">
+      <div *ngIf="event.details" class="simple-border-top display-flex flex-direction-row padding-medium-top padding-medium-bottom">
+        <div class="width-100-percent details-area-height scroll-container-y">
 
           {{ event.details }}
 
