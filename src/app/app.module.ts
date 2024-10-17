@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {BrowserModule} from "@angular/platform-browser";
-import { OrganizerComponent } from "./organizer/organizer.component";
-import { SpecifyerComponent } from "./specifyer/specifyer.component";
+import { OrganizerComponent } from "./components/organizer/organizer.component";
+import { SpecifyerComponent } from "./components/specifyer/specifyer.component";
 import { CalendarModule, DateAdapter} from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {CommonModule, registerLocaleData} from "@angular/common";

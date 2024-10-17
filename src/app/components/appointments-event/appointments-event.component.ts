@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input} from '@angular/core';
-import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
+import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
 import {MatButton} from "@angular/material/button";
 import {DatePipe, NgIf} from "@angular/common";
-import {TimePipe} from "../helpers/time.pipe";
+import {TimePipe} from "../../helpers/time.pipe";
 import {MatDialog} from "@angular/material/dialog";
-import {BasicDate} from "../interfaces/basicDate";
-import {DialogDeleteComponent} from "../dialogs/dialog-delete/dialog-delete.component";
+import {BasicDate} from "../../interfaces/basicDate";
+import {DialogDeleteComponent} from "../../dialogs/dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-appointments-event',

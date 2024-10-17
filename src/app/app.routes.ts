@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
-import {CalendarComponent} from "./calendar/calendar.component";
-import {AppointmentsOverviewComponent} from "./appointments-overview/appointments-overview.component";
+import {CalendarComponent} from "./components/calendar/calendar.component";
+import {AppointmentsOverviewComponent} from "./components/appointments-overview/appointments-overview.component";
 
 export const routeConfig: Routes = [
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },

@@ -6,9 +6,9 @@ import {CommonModule} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
 import {MatIcon} from "@angular/material/icon";
-import {ThemeService} from "../services/theme.service";
+import {ThemeService} from "../../services/theme.service";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
-import {StoreService} from "../services/store.service";
+import {StoreService} from "../../services/store.service";
 
 
 @Component({

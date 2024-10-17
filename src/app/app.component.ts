@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
-import {OrganizerComponent} from "./organizer/organizer.component";
-import {SpecifyerComponent} from "./specifyer/specifyer.component";
-import {CalendarMonthComponentModule} from "./calendar-month/calendar-month-component.module";
+import {OrganizerComponent} from "./components/organizer/organizer.component";
+import {SpecifyerComponent} from "./components/specifyer/specifyer.component";
+import {CalendarMonthComponentModule} from "./components/calendar-month/calendar-month-component.module";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {CalendarWeekModule} from "angular-calendar";
 import {MatCalendar} from "@angular/material/datepicker";
 import {DateAdapter} from "@angular/material/core";
-import {CalendarComponent} from "./calendar/calendar.component";
+import {CalendarComponent} from "./components/calendar/calendar.component";
 import {NgClass} from "@angular/common";
 
 @Component({
@@ -28,4 +28,7 @@ export class AppComponent {
 
   // TODO: Add angular animations
   // TODO: Finalize event template (calendar-week)
+  // TODO: Add a "last-created-appointments" logic (under calendar-month)
+  // TODO: rename organizer (=>calendar-display)
+  // TODO: rename specifyer (=>calendar-specifyer)
 }

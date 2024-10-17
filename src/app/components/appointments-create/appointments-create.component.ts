@@ -3,13 +3,13 @@ import {MatDateRangeInput} from "@angular/material/datepicker";
 import {NgbTimepicker} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
-import {BasicDate} from "../interfaces/basicDate";
-import {AppointmentsService} from "../services/appointments.service";
+import {BasicDate} from "../../interfaces/basicDate";
+import {AppointmentsService} from "../../services/appointments.service";
 import {Subject, takeUntil} from "rxjs";
 import {NgClass, NgIf} from "@angular/common";
-import {AppointmentTime} from "../interfaces/appointmentTime";
-import {FunctionsService} from "../services/functions.service";
-import {appointmentEndValidator} from "../helpers/appointment-end.directive";
+import {AppointmentTime} from "../../interfaces/appointmentTime";
+import {FunctionsService} from "../../services/functions.service";
+import {appointmentEndValidator} from "../../helpers/appointment-end.directive";
 
 @Component({
   selector: 'app-appointments-create',

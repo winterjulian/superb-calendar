@@ -5,16 +5,16 @@ import {
   CalendarEventTitleFormatter,
   CalendarNativeDateFormatter
 } from "angular-calendar";
-import { CustomEventTitleFormatter } from '../providers/custom-event-title-formatter.provider';
-import {StoreService} from "../services/store.service";
+import { CustomEventTitleFormatter } from '../../providers/custom-event-title-formatter.provider';
+import {StoreService} from "../../services/store.service";
 import {MatDialog} from "@angular/material/dialog";
-import {FunctionsService} from "../services/functions.service";
+import {FunctionsService} from "../../services/functions.service";
 import {Subject} from "rxjs";
-import {WeekDayModel} from "../interfaces/weekDay.model";
+import {WeekDayModel} from "../../interfaces/weekDay.model";
 import {Router} from "@angular/router";
-import {AppointmentsService} from "../services/appointments.service";
-import {HttpClientService} from "../services/http-client.service";
-import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
+import {AppointmentsService} from "../../services/appointments.service";
+import {HttpClientService} from "../../services/http-client.service";
+import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
 
 @Component({
   selector: 'app-calendar-week',

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {DatePipe, NgClass} from "@angular/common";
 import {MatButton} from "@angular/material/button";
-import {BasicDate} from "../interfaces/basicDate";
+import {BasicDate} from "../../interfaces/basicDate";
 
 @Component({
   selector: 'app-appointments-header',
