@@ -10,18 +10,9 @@ import {BasicDate} from "../interfaces/basicDate";
 })
 export class HttpClientService {
   private apiEndpoint = 'http://localhost:3000'
-  // loadData() {
-  //   fetch("http://localhost:3000/appointments", {
-  //     method: "GET"
-  //   }).then(response => {
-  //     console.log('response', response)
-  //     return response.json();
-  //   }).then(data => {
-  //     console.log(data);
-  //   })
-  // }
 
   loadDataInDateRangeWithDates(from: Date, to: Date): Observable<ExtendedCalendarEvent[]> {
+    // TODO: reposition into appointmentsService
     /**
      * from: date object;
      * to: date object;
@@ -52,9 +43,6 @@ export class HttpClientService {
     })
   }
 
-  loadDataWithBasicDate(basicDate: BasicDate) {
-  }
-
   saveData(input: extendedAppointment): Observable<ExtendedCalendarEvent> {
     /**
      * input: extended appointment
@@ -62,7 +50,7 @@ export class HttpClientService {
 
     console.log(input);
     return new Observable(observer => {
-      fetch("http://localhost:3000/appointments", {
+      fetch(this.apiEndpoint + "/appointments", {
         method: "POST",
         body: JSON.stringify(input),
         headers: {
@@ -77,9 +65,20 @@ export class HttpClientService {
     })
   }
 
-  deleteData(input: extendedAppointment) {
-    fetch("", {
-      // TODO
+  deleteData(id: string) {
+    /**
+     * id: string or number given by JSON-server
+     * stringyfied at this point
+     */
+    return new Observable(observer => {
+      fetch(this.apiEndpoint + "/appointments/" + id, {
+        method: "DELETE",
+      }).then(response => {
+        return response.json();
+      }).then(response => {
+        observer.next(response);
+        observer.complete();
+      })
     })
   }
 }

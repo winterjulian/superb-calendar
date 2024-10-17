@@ -3,6 +3,7 @@ import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 import {MatButton} from "@angular/material/button";
 import {DatePipe, NgIf} from "@angular/common";
 import {TimePipe} from "../helpers/time.pipe";
+import {AppointmentsService} from "../services/appointments.service";
 
 @Component({
   selector: 'app-appointments-event',
@@ -19,11 +20,13 @@ import {TimePipe} from "../helpers/time.pipe";
 export class AppointmentsEventComponent {
   @Input() event!: ExtendedCalendarEvent;
 
-  testFunc() {
-    console.log('DELETE');
-  }
+  constructor(private appointmentsService: AppointmentsService) {}
 
-  deleteAppointment() {
-
+  deleteAppointment(id: number | string | undefined) {
+    if (id) {
+      this.appointmentsService.deleteAppointment(String(id))
+    } else {
+      console.warn('The given id was neither valid string nor valid number')
+    }
   }
 }

@@ -19,9 +19,7 @@ export class AppointmentsService {
   constructor(
     public functionsService: FunctionsService,
     public httpClientService: HttpClientService
-  ) {
-    this.initLoadAppointments();
-  }
+  ) {this.initLoadAppointments();}
 
   private focussedBasicDate: BehaviorSubject<BasicDate | null> = new BehaviorSubject<BasicDate | null>(null);
 
@@ -71,11 +69,40 @@ export class AppointmentsService {
     this.preferredTime.next(newTime);
   }
 
+  // DATA MANAGEMENT
+
   triggerDailyAppointmentReload() {
     this.dailyAppointmentReload.next(true);
   }
 
-  // DATA MANAGEMENT
+  triggerWeeklyAppointmentReload() {
+    this.weekRange
+      .pipe(take(1))
+      .subscribe(range => {
+        if (range) {
+          this.loadAppointments(range)
+        }
+      })
+  }
+
+  initLoadAppointments() {
+    this.weekRange.pipe(
+      distinctUntilChanged(((prev, curr) =>
+        prev?.from.getTime() === curr?.from.getTime() &&
+        prev?.to.getTime() === curr?.to.getTime()
+      ))
+    ).subscribe(dateRange => {
+      this.loadAppointments(dateRange!);
+    })
+  }
+
+  loadAppointments(dateRange: DateRange) {
+    this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
+      .pipe(take(1))
+      .subscribe(response => {
+        this.appointments.next(response);
+    })
+  }
 
   saveAppointment(
     title: String,
@@ -84,7 +111,6 @@ export class AppointmentsService {
     endTime: AppointmentTime,
     details: String | undefined
   ) {
-    console.log(focussedDay);
     const startAsValidDate = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, startTime.hour, startTime.minute)
     const endAsValidDate: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, endTime.hour, endTime.minute)
     const newAppointment = {
@@ -99,34 +125,16 @@ export class AppointmentsService {
       .pipe(take(1))
       .subscribe(savedAppointment => {
         this.triggerDailyAppointmentReload();
-        this.weekRange
-          .pipe(take(1))
-          .subscribe(range => {
-            if (range) {
-              this.loadAppointments(range)
-            }
-          })
-    })
+        this.triggerWeeklyAppointmentReload();
+      })
   }
 
-  initLoadAppointments() {
-    console.log('>>> initLoadAppointments()');
-    this.weekRange.pipe(
-      distinctUntilChanged(((prev, curr) =>
-        prev?.from.getTime() === curr?.from.getTime() &&
-        prev?.to.getTime() === curr?.to.getTime()
-      ))
-    ).subscribe(dateRange => {
-      this.loadAppointments(dateRange!);
-    })
-  }
-
-  loadAppointments(dateRange: DateRange) {
-    console.log('>>> loadAppointments()')
-    this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
+  deleteAppointment(id: string) {
+    this.httpClientService.deleteData(id)
       .pipe(take(1))
       .subscribe(response => {
-        this.appointments.next(response);
-    })
+        this.triggerDailyAppointmentReload();
+        this.triggerWeeklyAppointmentReload();
+      })
   }
 }
