@@ -47,6 +47,7 @@ body {
   --bg-color-toggle: #e7e7e7;
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
+  --color-error: #d65555;
 
   --color-border: #cacaca;
   --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
@@ -73,6 +74,7 @@ body {
     --bg-color-toggle: #3b3b3b;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
+    --color-error: #d65555;
 
     --color-border: #545454;
     --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 5px 0 rgba(0, 0, 0, 0.5);
@@ -136,6 +138,22 @@ body {
   border: 1px solid grey;
   /*border: 0;*/
   border-radius: 5px;
+}
+
+.border-transparent {
+  border: 1px solid transparent;
+}
+
+.font-error {
+  color: var(--color-error);
+}
+
+.border-error {
+  border: 1px solid var(--color-error);
+}
+
+.background-error {
+  background-color: var(--color-error);
 }
 
 .more-vert-class {

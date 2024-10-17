@@ -5,6 +5,14 @@
 }
 
 :host ::ng-deep .form-control {
+  border: 1px solid transparent !important;
+}
+
+::ng-deep .border-error .form-control {
+  border: 1px solid var(--color-error) !important;
+}
+
+:host ::ng-deep .form-control {
   background-color: var(--bg-color-table);
   color: var(--font-color-basic);
   border: 0;

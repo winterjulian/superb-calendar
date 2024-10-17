@@ -98,6 +98,7 @@ export class AppointmentsService {
     this.httpClientService.saveData(newAppointment)
       .pipe(take(1))
       .subscribe(savedAppointment => {
+        this.triggerDailyAppointmentReload();
         this.weekRange
           .pipe(take(1))
           .subscribe(range => {

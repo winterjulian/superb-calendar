@@ -6,9 +6,10 @@ import {MatButton} from "@angular/material/button";
 import {BasicDate} from "../interfaces/basicDate";
 import {AppointmentsService} from "../services/appointments.service";
 import {Subject, takeUntil} from "rxjs";
-import {NgIf} from "@angular/common";
+import {NgClass, NgIf} from "@angular/common";
 import {AppointmentTime} from "../interfaces/appointmentTime";
 import {FunctionsService} from "../services/functions.service";
+import {appointmentEndValidator} from "../helpers/appointment-end.directive";
 
 @Component({
   selector: 'app-appointments-create',
@@ -19,7 +20,8 @@ import {FunctionsService} from "../services/functions.service";
     FormsModule,
     MatButton,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    NgClass
   ],
   templateUrl: './appointments-create.component.html',
   styleUrl: './appointments-create.component.css'
@@ -32,14 +34,16 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
   public appointmentsForm: FormGroup = this.fb.group({
       title: [null, Validators.required],
       focussedDay: this.focussedDay,
-      startTime: {
-        "hour": 13,
-        "minute": 30
-      },
-      endTime:  {
-        "hour": 0,
-        "minute": 0
-      },
+      time: this.fb.group({
+        startTime: {
+          "hour": 13,
+          "minute": 30
+        },
+        endTime: {
+          "hour": 0,
+          "minute": 0
+        },
+      }, { validators: appointmentEndValidator()}),
       details: undefined
     })
   private unsubscriber: Subject<void> = new Subject()
@@ -51,13 +55,7 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.appointmentsService.getPreferredTime()
-      .pipe(takeUntil(this.unsubscriber))
-      .subscribe((response: AppointmentTime) => {
-        console.log(response);
-        this.appointmentsForm.patchValue({startTime: {hour: response.hour, minute: response.minute}});
-        this.appointmentsForm.patchValue({endTime: this.functionsService.add30MinutesToAppointmentTime(response)});
-    })
+    this.getPreferredTime();
   }
 
   ngOnDestroy() {
@@ -65,26 +63,48 @@ export class AppointmentsCreateComponent implements OnInit, OnDestroy {
     this.unsubscriber.complete()
   }
 
+  // GETTER
+
+  getPreferredTime() {
+    this.appointmentsService.getPreferredTime()
+      .pipe(takeUntil(this.unsubscriber))
+      .subscribe((response: AppointmentTime) => {
+        this.appointmentsForm.patchValue({
+          time: {
+            startTime: {
+              hour: response.hour, minute: response.minute
+            }
+          }
+        });
+        this.appointmentsForm.patchValue({
+          time: {
+            endTime: this.functionsService.add30MinutesToAppointmentTime(response)
+          }
+        });
+      })
+  }
+
   getErrors(input: string): ValidationErrors | null | undefined {
     return this.appointmentsForm.get(input)?.errors;
   }
+
+  // OTHERS
 
   toggleCreating() {
     this.emitToggleCreating.emit();
   }
 
-  submit(e: any) {
+  submit() {
     if (!this.appointmentsForm.valid) {
       this.appointmentsForm.markAllAsTouched();
     } else {
       this.appointmentsService.saveAppointment(
         this.appointmentsForm.value.title,
         this.focussedDay,
-        this.appointmentsForm.value.startTime,
-        this.appointmentsForm.value.endTime,
+        this.appointmentsForm.value.time.startTime,
+        this.appointmentsForm.value.time.endTime,
         this.appointmentsForm.value.details
       )
-      this.appointmentsService.triggerDailyAppointmentReload();
       this.toggleCreating();
     }
   }

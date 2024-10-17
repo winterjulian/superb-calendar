@@ -574,36 +574,49 @@
       "title": "Test-61",
       "startTime": {
         "hour": 10,
-        "minute": 0,
-        "second": 0
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 10,
+        "minute": 30
+      },
+      "start": "2024-10-17T08:00:00.000Z",
+      "end": "2024-10-17T08:30:00.000Z",
+      "details": null,
+      "id": 39
+    },
+    {
+      "title": "Test-62",
+      "startTime": {
+        "hour": 10,
+        "minute": 30
       },
       "endTime": {
         "hour": 11,
-        "minute": 0,
-        "second": 0
+        "minute": 0
       },
-      "start": null,
-      "end": null,
+      "start": "2024-10-17T08:30:00.000Z",
+      "end": "2024-10-17T09:00:00.000Z",
       "details": null,
       "id": 40
     },
     {
-      "title": "Jesus halt",
+      "title": "Test-63",
       "startTime": {
-        "hour": 12,
+        "hour": 11,
         "minute": 0
       },
       "endTime": {
-        "hour": 12,
-        "minute": 0
+        "hour": 11,
+        "minute": 30
       },
-      "start": "2024-10-17T10:00:00.000Z",
-      "end": "2024-10-17T10:00:00.000Z",
+      "start": "2024-10-17T09:00:00.000Z",
+      "end": "2024-10-17T09:30:00.000Z",
       "details": null,
       "id": 41
     },
     {
-      "title": "Test",
+      "title": "Test-64",
       "startTime": {
         "hour": 11,
         "minute": 30
@@ -616,6 +629,36 @@
       "end": "2024-10-17T10:00:00.000Z",
       "details": null,
       "id": 42
+    },
+    {
+      "title": "Test-65",
+      "startTime": {
+        "hour": 9,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 9,
+        "minute": 30
+      },
+      "start": "2024-10-19T07:00:00.000Z",
+      "end": "2024-10-19T07:30:00.000Z",
+      "details": null,
+      "id": 43
+    },
+    {
+      "title": "Test-66",
+      "startTime": {
+        "hour": 9,
+        "minute": 30
+      },
+      "endTime": {
+        "hour": 10,
+        "minute": 0
+      },
+      "start": "2024-10-19T07:30:00.000Z",
+      "end": "2024-10-19T08:00:00.000Z",
+      "details": null,
+      "id": 44
     }
   ]
 }
