@@ -113,10 +113,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
         nodeData: data
       }
     });
-
-    // dialogRef.afterClosed().subscribe(() => {
-    //   console.warn('CalendarWeekComponent: The dialog was closed');
-    // });
   }
 
   setDateInformation(e: any): void {

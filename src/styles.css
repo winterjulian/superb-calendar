@@ -36,8 +36,8 @@ body {
   --font-color-basic: #474a50;
   --font-color-disabled: #93969c;
 
-  --bg-color-table: white;
-  --bg-color-table-nuance: #e7e7e7;
+  --bg-color: white;
+  --bg-color-nuance-1: #e7e7e7;
   --bg-color-table-row: white;
   --bg-color-table-row-odd: whitesmoke;
   --bg-color-event-1: #69bec2;
@@ -48,6 +48,7 @@ body {
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
   --color-error: #d65555;
+  --warn-symbol-color: #f1bf3f;
 
   --color-border: #cacaca;
   --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
@@ -63,8 +64,8 @@ body {
     --font-color-basic: lightgrey;
     --font-color-disabled: #5a5a5a;
 
-    --bg-color-table: #282828;
-    --bg-color-table-nuance: #1a1a1a;
+    --bg-color: #282828;
+    --bg-color-nuance-1: #1a1a1a;
     --bg-color-table-row: #1a1a1a;
     --bg-color-table-row-odd: #2a2a2a;
     --bg-color-event-1: #69bec2;
@@ -75,6 +76,7 @@ body {
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
     --color-error: #d65555;
+    --warn-symbol-color: goldenrod;
 
     --color-border: #545454;
     --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 5px 0 rgba(0, 0, 0, 0.5);
@@ -121,7 +123,7 @@ body {
 }
 
 .theme-background {
-  background-color: var(--bg-color-table);
+  background-color: var(--bg-color);
 }
 
 .theme-background-nuance-1 {
@@ -129,7 +131,7 @@ body {
 }
 
 .theme-background-nuance-2 {
-  background-color: var(--bg-color-table-nuance);
+  background-color: var(--bg-color-nuance-1);
 }
 
 :host ::ng-deep .cal-week-view .cal-event {
@@ -142,6 +144,10 @@ body {
 
 .border-transparent {
   border: 1px solid transparent;
+}
+
+.warn-symbol-color {
+  color: var(--warn-symbol-color)
 }
 
 .font-error {
@@ -212,25 +218,6 @@ body {
 
 /* OTHERS */
 
-
-.property-preview-class {
-  background-color: white;
-}
-
-.property-preview-class:hover {
-  background-color: #e1e1e1;
-}
-
-.create-viewing-button {
-  color: #f89b3c;
-  background-color: white;
-  border: 2px solid #e1e1e1;
-}
-
-.create-viewing-button:hover {
-  background-color: #3a8aec;
-  color: white;
-}
 
 .preview-image {
   height: 50px;
@@ -433,3 +420,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* OVERWRITING */
+
+/*:host ::ng-deep .dialog-panel .mat-mdc-dialog-container {*/
+/*  background-color: var(--bg-color-table) !important;*/
+/*}*/
+
+.custom-dialog-container {
+  .mat-mdc-dialog-container {
+    --mdc-dialog-container-color: var(--bg-color);
+    color: var(--font-color-basic);
+  }
+}
+
+:host ::ng-deep .form-control {
+  border: 1px solid transparent !important;
+}

@@ -4,16 +4,14 @@
   scale: none !important;
 }
 
-:host ::ng-deep .form-control {
-  border: 1px solid transparent !important;
-}
+
 
 ::ng-deep .border-error .form-control {
   border: 1px solid var(--color-error) !important;
 }
 
 :host ::ng-deep .form-control {
-  background-color: var(--bg-color-table);
+  background-color: var(--bg-color);
   color: var(--font-color-basic);
   border: 0;
 }
@@ -23,7 +21,7 @@
 }
 
 .text-area {
-  background-color: var(--bg-color-table);
+  background-color: var(--bg-color);
   color: var(--font-color-basic);
   resize: none;
   border: 0;

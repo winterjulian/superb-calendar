@@ -4,6 +4,10 @@ import {MatButton} from "@angular/material/button";
 import {DatePipe, NgIf} from "@angular/common";
 import {TimePipe} from "../helpers/time.pipe";
 import {AppointmentsService} from "../services/appointments.service";
+import {DailyAppointmentComponent} from "../daily-appointment/daily-appointment.component";
+import {MatDialog} from "@angular/material/dialog";
+import {BasicDate} from "../interfaces/basicDate";
+import {DialogDeleteComponent} from "../dialogs/dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-appointments-event',
@@ -18,15 +22,22 @@ import {AppointmentsService} from "../services/appointments.service";
   styleUrl: './appointments-event.component.css'
 })
 export class AppointmentsEventComponent {
+  @Input() focussedDay!: BasicDate;
   @Input() event!: ExtendedCalendarEvent;
 
-  constructor(private appointmentsService: AppointmentsService) {}
+  constructor(
+    public dialog: MatDialog,
+    private appointmentsService: AppointmentsService
+  ) {}
 
-  deleteAppointment(id: number | string | undefined) {
-    if (id) {
-      this.appointmentsService.deleteAppointment(String(id))
-    } else {
-      console.warn('The given id was neither valid string nor valid number')
-    }
+  openDeleteDialog(event: ExtendedCalendarEvent): void {
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      panelClass: 'custom-dialog-container',
+      width: "350px",
+      data: {
+        event: event,
+        focussedDay: this.focussedDay,
+      }
+    });
   }
 }

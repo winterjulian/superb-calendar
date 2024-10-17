@@ -1,0 +1,40 @@
+<div class="display-flex flex-direction-col" style="background-color: transparent">
+  <div class="display-flex flex-direction-row simple-border-bottom padding-large flex-centralize-h flex-centralize-v">
+
+    <div class="padding-medium-right">
+      <i class="material-icons warn-symbol-color">warning</i>
+    </div>
+    <div>
+      appointment deletion warning
+    </div>
+
+  </div>
+  <div class="display-flex flex-direction-col padding-large">
+    <div>
+      You are about to delete the appointment <br>
+    </div>
+    <div class="display-flex flex-centralize-h padding-medium font-size-large">
+      <b>{{ data.event.title }}</b><br>
+    </div>
+    <div>
+      on {{ data.event.start | date: 'dd. MMMM YYYY' }}
+      at {{ data.event.start | date: 'HH:MM'}}. Click the check button to proceed.
+    </div>
+  </div>
+  <div class="display-flex flex-direction-row basic-flex-jcsb padding-large-bottom padding-large-right padding-large-left">
+    <div>
+      <button
+        (click)="abort()"
+        mat-raised-button>
+        <i class="material-icons">close</i>
+      </button>
+    </div>
+    <div>
+      <button
+        (click)="check()"
+        mat-raised-button>
+        <i class="material-icons">check</i>
+      </button>
+    </div>
+  </div>
+</div>

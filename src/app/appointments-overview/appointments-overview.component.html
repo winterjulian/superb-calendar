@@ -1,4 +1,4 @@
-<div class="display-flex flex-direction-col test-class theme-background material-box-shadow basic-font-color"
+<div class="display-flex flex-direction-col side-sheet theme-background material-box-shadow basic-font-color"
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
   <div class="display-flex flex-direction-col basic-flex-jcsb calendar-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
@@ -15,7 +15,7 @@
 
   <div class="height-100-percent scroll-container-y-scroll calendar-border-bottom">
     <div class="margin-xlarge" *ngFor="let event of events | async; index as i">
-      <app-appointments-event [event]="event"></app-appointments-event>
+      <app-appointments-event [focussedDay]="focussedDay" [event]="event"></app-appointments-event>
     </div>
   </div>
 

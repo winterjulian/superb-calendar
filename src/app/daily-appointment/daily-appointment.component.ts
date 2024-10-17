@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { FunctionsService } from "../services/functions.service";
 import { NodeModel } from "../interfaces/node.model";
+import {BasicDate} from "../interfaces/basicDate";
 
 @Component({
   selector: 'app-daily-appointment',
@@ -10,9 +11,6 @@ import { NodeModel } from "../interfaces/node.model";
 })
 export class DailyAppointmentComponent {
   constructor(
-    public functionsService: FunctionsService,
-    @Inject(MAT_DIALOG_DATA) public data: {currentDate: string, nodeData: Record<string, Array<NodeModel>>}
+    @Inject(MAT_DIALOG_DATA) public data: {currentDate: BasicDate}
   ) {}
-
-  store: Record<string, Array<NodeModel>> = this.data.nodeData;
 }
