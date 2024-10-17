@@ -1,10 +1,6 @@
-@import "../../styles.css";
-
 .event-background:hover {
   scale: none !important;
 }
-
-
 
 ::ng-deep .border-error .form-control {
   border: 1px solid var(--color-error) !important;

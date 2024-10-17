@@ -24,7 +24,7 @@ import {appointmentEndValidator} from "../../helpers/appointment-end.directive";
     NgClass
   ],
   templateUrl: './appointments-create.component.html',
-  styleUrl: './appointments-create.component.css'
+  styleUrls: ['./appointments-create.component.css', '/src/styles.css']
 })
 export class AppointmentsCreateComponent implements OnInit, OnDestroy {
   @Input() focussedDay!: BasicDate;
