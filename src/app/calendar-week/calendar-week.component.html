@@ -3,12 +3,12 @@
 
     <!--- calender controller: --->
 
-    <div class="display-flex basic-flex-jcsb">
-      <div *ngIf="isSet" class="flex-centralize-v basic-font-weight-500 margin-left-20">
+    <div class="display-flex flex-space-between-v">
+      <div *ngIf="isSet" class="flex-centralize-v font-weight-thick margin-left-20">
         {{ startDayWeek  }}. {{ startMonth | date:'MMMM' }} {{ startYear }} — {{ endDayWeek }}. {{ endMonth | date:'MMMM' }} {{ endYear }}
       </div>
       <div>
-        <div class="display-flex basic-flex-jcsb">
+        <div class="display-flex flex-space-between-v">
           <div
             mwlCalendarPreviousView
             [view]="view"

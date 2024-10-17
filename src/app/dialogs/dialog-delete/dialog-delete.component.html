@@ -13,7 +13,7 @@
     <div>
       You are about to delete the appointment <br>
     </div>
-    <div class="display-flex flex-centralize-h padding-medium font-size-large">
+    <div class="display-flex flex-centralize-h padding-medium font-size-medium">
       <b>{{ data.event.title }}</b><br>
     </div>
     <div>
@@ -21,7 +21,7 @@
       at {{ data.event.start | date: 'HH:MM'}}. Click the check button to proceed.
     </div>
   </div>
-  <div class="display-flex flex-direction-row basic-flex-jcsb padding-large-bottom padding-large-right padding-large-left">
+  <div class="display-flex flex-direction-row flex-space-between-v padding-large-bottom padding-large-right padding-large-left">
     <div>
       <button
         (click)="abort()"

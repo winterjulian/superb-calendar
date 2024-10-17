@@ -1,7 +1,7 @@
 <div class="display-flex flex-direction-col side-sheet theme-background material-box-shadow basic-font-color"
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
-  <div class="display-flex flex-direction-col basic-flex-jcsb calendar-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
+  <div class="display-flex flex-direction-col flex-space-between-v calendar-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
     <app-appointments-header
       [isRenewed]="isRenewed"
       [today]="today"

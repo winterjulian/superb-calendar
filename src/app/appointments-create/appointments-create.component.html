@@ -16,15 +16,15 @@
         </div>
 
       </div>
-      <div style="height: 20px" class="display-flex basic-flex-jcfe font-error">
+      <div style="height: 20px" class="display-flex flex-flex-end font-error">
         <div *ngIf="appointmentsForm.get('title')?.hasError('required') && !this.appointmentsForm.untouched">
-          <i class="material-icons font-size-medium">subdirectory_arrow_right</i>
+          <i class="material-icons font-size-small">subdirectory_arrow_right</i>
           required
         </div>
       </div>
     </div>
 
-    <div formGroupName="time" class="display-flex basic-flex-jcsb">
+    <div formGroupName="time" class="display-flex flex-space-between-v">
       <div class="basic-flex-1">
         <ngb-timepicker
           [ngClass]="{'border-error':
@@ -48,9 +48,9 @@
       </div>
     </div>
     <div>
-      <div style="height: 20px" class="display-flex basic-flex-jcfe font-error">
+      <div style="height: 20px" class="display-flex flex-flex-end font-error">
         <div *ngIf="!this.appointmentsForm.untouched && appointmentsForm.get('time')?.hasError('isInvalid')">
-          <i class="material-icons font-size-medium">subdirectory_arrow_right</i>
+          <i class="material-icons font-size-small">subdirectory_arrow_right</i>
           end date should be after start date
         </div>
       </div>

@@ -5,14 +5,12 @@ import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {AppointmentsCreateComponent} from "../appointments-create/appointments-create.component";
 import {AppointmentsService} from "../services/appointments.service";
-import {distinctUntilChanged, Observable, Subject, Subscription, take} from "rxjs";
+import {distinctUntilChanged, Subject, Subscription, take} from "rxjs";
 import {FunctionsService} from "../services/functions.service";
 import {BasicDate} from "../interfaces/basicDate";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 import {AppointmentsHeaderComponent} from "../appointments-header/appointments-header.component";
 import {AppointmentsEventComponent} from "../appointments-event/appointments-event.component";
-import {supportColor} from "@angular/cli/src/utilities/color";
-import {DailyAppointmentComponent} from "../daily-appointment/daily-appointment.component";
 
 @Component({
   selector: 'app-appointments-overview',

@@ -1,0 +1,53 @@
+:host ::ng-deep .cal-event-title {
+  color: var(--font-color-basic);
+}
+
+:host ::ng-deep .mat-mdc-raised-button {
+  background-color: var(--bg-color-toggle) !important;
+  color: var(--font-color-basic) !important;
+}
+
+:host ::ng-deep .mat-mdc-raised-button:disabled {
+  background-color: var(--bg-color-disabled) !important;
+  color: var(--font-color-disabled) !important;
+}
+
+:host ::ng-deep .mat-mdc-button {
+  color: var(--font-color-basic) !important;
+}
+
+:host ::ng-deep .mat-calendar-body-cell-content {
+  color: var(--font-color-basic) !important;
+}
+
+:host ::ng-deep .mat-calendar-body-label {
+  color: var(--font-color-basic) !important;
+}
+
+:host ::ng-deep .mat-calendar-table-header th {
+  color: var(--font-color-basic) !important;
+}
+
+:host ::ng-deep .mat-calendar-arrow {
+  fill: var(--font-color-basic) !important;
+}
+
+:host ::ng-deep .cal-week-view {
+  background-color: var(--bg-color-table-row);
+}
+
+:host ::ng-deep .cal-week-view .cal-hour-odd {
+  background-color: var(--bg-color-table-row-odd);
+}
+
+.custom-dialog-container {
+  /* for material dialogs */
+  .mat-mdc-dialog-container {
+    --mdc-dialog-container-color: var(--bg-color);
+    color: var(--font-color-basic);
+  }
+}
+
+:host ::ng-deep .form-control {
+  border: 1px solid transparent !important;
+}

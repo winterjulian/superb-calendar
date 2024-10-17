@@ -1,0 +1,136 @@
+/* HELPERS */
+
+.border-radius-none {
+  border-radius: 0 !important;
+}
+
+.border-radius-small {
+  border-radius: 2px !important;
+}
+
+.border-radius-medium {
+  border-radius: 5px !important;
+}
+.height-100-percent {
+  height: 100%;
+}
+
+.width-100-percent {
+  width: 100%;
+}
+
+.scroll-container-y {
+  overflow-y: auto;
+}
+
+.scroll-container-x {
+  overflow-x: auto;
+}
+
+.scroll-container-y-scroll {
+  overflow-y: scroll;
+}
+
+.scroll-container-x-scroll {
+  overflow-x: scroll;
+}
+
+.font-weight-thick {
+  font-weight: 500;
+}
+
+.font-weight-thicker {
+  font-weight: 600;
+}
+
+.details-area-height {
+  max-height: 85px;
+}
+
+.simple-border-bottom {
+  border-bottom: 1px solid var(--font-color-basic)
+}
+
+.simple-border-top {
+  border-top: 1px solid var(--font-color-basic)
+}
+
+.simple-border-left {
+  border-left: 1px solid var(--font-color-basic)
+}
+
+.simple-border-right {
+  border-right: 1px solid var(--font-color-basic)
+}
+
+.font-size-xxsmall {
+  font-size: 8px;
+}
+
+.font-size-xsmall {
+  font-size: 10px;
+}
+
+.font-size-small {
+  font-size: 12px;
+}
+
+.font-size-medium {
+  font-size: 16px;
+}
+
+.font-size-large {
+  font-size: 20px;
+}
+
+.font-size-xlarge {
+  font-size: 24px;
+}
+
+.font-size-xxlarge {
+  font-size: 28px;
+}
+
+/* FLEX */
+
+.display-flex {
+  display: flex;
+}
+
+.flex-centralize-h {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-centralize-v {
+  display: flex;
+  align-items: center;
+}
+
+.flex-space-between-v {
+  justify-content: space-between;
+}
+
+.flex-space-between-h {
+  align-content: space-between;
+}
+
+.flex-flex-end {
+  justify-content: flex-end;
+}
+
+.basic-flex-1 {
+  flex: 1;
+}
+
+.basic-flex-4 {
+  flex: 4;
+}
+
+.flex-direction-col {
+  flex-direction: column;
+}
+
+.flex-direction-row {
+  flex-direction: row;
+}

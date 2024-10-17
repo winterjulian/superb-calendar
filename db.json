@@ -82,21 +82,6 @@
       "id": 6
     },
     {
-      "title": "Test-8",
-      "startTime": {
-        "hour": 13,
-        "minute": 30
-      },
-      "endTime": {
-        "hour": 14,
-        "minute": 30
-      },
-      "start": "2024-10-16T11:30:00.000Z",
-      "end": "2024-10-16T12:30:00.000Z",
-      "details": "",
-      "id": 8
-    },
-    {
       "title": "Test-9",
       "startTime": {
         "hour": 10,
@@ -293,20 +278,6 @@
       "id": 32
     },
     {
-      "title": "Test-23",
-      "startTime": {
-        "hour": 11,
-        "minute": 0
-      },
-      "endTime": {
-        "hour": 12,
-        "minute": 0
-      },
-      "start": "2024-10-09T09:00:00.000Z",
-      "end": "2024-10-09T10:00:00.000Z",
-      "id": 33
-    },
-    {
       "title": "Test-26",
       "startTime": {
         "hour": 9,
@@ -350,6 +321,21 @@
       "end": "2024-10-17T08:30:00.000Z",
       "details": null,
       "id": 39
+    },
+    {
+      "title": "Feedbackgespräch mit Konstantin",
+      "startTime": {
+        "hour": 11,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 11,
+        "minute": 30
+      },
+      "start": "2024-10-18T09:00:00.000Z",
+      "end": "2024-10-18T09:30:00.000Z",
+      "details": "Konstantin zur contract-sign-Komponente Feedback geben (Code unleserlich)",
+      "id": 40
     }
   ]
 }

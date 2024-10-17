@@ -8,15 +8,12 @@ import {
 import { CustomEventTitleFormatter } from '../providers/custom-event-title-formatter.provider';
 import {StoreService} from "../services/store.service";
 import {MatDialog} from "@angular/material/dialog";
-import {DailyAppointmentComponent} from "../daily-appointment/daily-appointment.component";
 import {FunctionsService} from "../services/functions.service";
-import {Subject, take, takeUntil} from "rxjs";
+import {Subject} from "rxjs";
 import {WeekDayModel} from "../interfaces/weekDay.model";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../services/appointments.service";
 import {HttpClientService} from "../services/http-client.service";
-import {DateRange} from "../interfaces/DateRange";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 
 @Component({
@@ -98,21 +95,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   openDialog(e: any): void {
-    let clickedDate: string | undefined = undefined;
-    let data: Record<string, any[]> = {};
-
-    if (e.event && e.event.start) {
-      clickedDate = this.functionsService.extractDate(e.event.start);
-      data = this.storeService.getDailyAppointmentDataByDate(clickedDate);
-    }
-    const dialogRef = this.dialog.open(DailyAppointmentComponent, {
-      width: this.storeService.getDialogWidth(),
-      height: this.storeService.getDialogHeight(),
-      data: {
-        currentDate: clickedDate,
-        nodeData: data
-      }
-    });
   }
 
   setDateInformation(e: any): void {

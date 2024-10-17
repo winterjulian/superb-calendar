@@ -1,0 +1,91 @@
+.move-out-transition {
+  position: relative;
+  animation: move-in-animation 0.5s;
+}
+
+.move-in-transition {
+  position: relative;
+  animation-direction: reverse;
+  animation: move-out-animation 0.5s;
+}
+
+.scroll-down-transition {
+  position: relative;
+  animation: overwrite-animation 0.3s;
+}
+
+@keyframes move-in-animation {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.9;
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    scale: 0.9;
+    left: -15px;
+    opacity: 0;
+  }
+}
+
+@keyframes move-out-animation {
+  0% {
+    scale: 0.9;
+    left: 15px;
+    opacity: 0;
+  }
+  50% {
+    scale: 0.9;
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes overwrite-animation {
+  0% {
+    top:0;
+    opacity: 1;
+  }
+  33% {
+    top: 10px;
+    opacity: 0;
+  }
+  66% {
+    top: -10px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes move-out-animation {
+  0% {
+    scale: 0.9;
+    left: 15px;
+    opacity: 0;
+  }
+  50% {
+    scale: 0.9;
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes fade-in-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

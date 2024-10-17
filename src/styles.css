@@ -1,9 +1,10 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
-@import "margins.css";
-@import "helpers.css";
+@import "styles/helpers.css";
+@import "styles/margins.css";
+@import "styles/animations.css";
+@import "styles/overriders.css";
 
 /* BASICS */
-
 
 html, body { height: 100%; }
 
@@ -12,6 +13,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-image: var(--bg-image);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .basic-font {
   font-family: "Roboto",
@@ -23,10 +30,7 @@ body {
   "BlinkMacSystemFont";
 }
 
-
 /* THEMEING */
-
-/*#142c31*/
 
 body {
   --bg-image: linear-gradient(355deg, #69bec2 14%, #ffffff 55%);
@@ -92,34 +96,12 @@ body {
   background-image: var(--bg-image-comp)
 }
 
-.material-box-shadow {
-  box-shadow: var(--shadow-black);
-}
-
-.material-box-shadow-inset {
-  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2) inset, 1px 4px 8px 0 rgba(0, 0, 0, 0.19) inset;
-}
-
-.material-box-shadow-lowkey {
-  box-shadow: var(--shadow-black-lowkey);
-}
-
 .toggle-font-color {
   color: var(--font-color-toggle) !important;
 }
 
 :host ::ng-deep .mat-button-toggle-checked {
   background-color: var(--bg-color-toggle-checked);
-}
-
-.event-background {
-  transition: 0.1s ease-in-out;
-  background-image: var(--bg-image-event) !important;
-}
-
-.event-background:hover {
-  transition: 0.1s ease-in-out;
-  scale: 1.05;
 }
 
 .theme-background {
@@ -169,74 +151,6 @@ body {
   height: 30px;
 }
 
-.basic-font-color {
-  color: var(--font-color-basic) !important;
-}
-
-:host ::ng-deep .cal-event-title {
-  color: var(--font-color-basic);
-}
-
-:host ::ng-deep .mat-mdc-raised-button {
-  background-color: var(--bg-color-toggle) !important;
-  color: var(--font-color-basic) !important;
-}
-
-:host ::ng-deep .mat-mdc-raised-button:disabled {
-  background-color: var(--bg-color-disabled) !important;
-  color: var(--font-color-disabled) !important;
-}
-
-:host ::ng-deep .mat-mdc-button {
-  color: var(--font-color-basic) !important;
-}
-
-:host ::ng-deep .mat-calendar-body-cell-content {
-  color: var(--font-color-basic) !important;
-}
-
-:host ::ng-deep .mat-calendar-body-label {
-  color: var(--font-color-basic) !important;
-}
-
-:host ::ng-deep .mat-calendar-table-header th {
-  color: var(--font-color-basic) !important;
-}
-
-:host ::ng-deep .mat-calendar-arrow {
-  fill: var(--font-color-basic) !important;
-}
-
-:host ::ng-deep .cal-week-view {
-  background-color: var(--bg-color-table-row);
-}
-
-:host ::ng-deep .cal-week-view .cal-hour-odd {
-  background-color: var(--bg-color-table-row-odd);
-}
-
-
-/* OTHERS */
-
-
-.preview-image {
-  height: 50px;
-  width: 50px;
-  border: 1px solid grey
-}
-
-.calender-column-width {
-  width: 250px;
-}
-
-.width-5-percent {
-  width: 5%;
-}
-
-.height-month-calendar {
-  height: 315px;
-}
-
 .calendar-border-2 {
   box-sizing: border-box;
   border: 2px solid #e1e1e1;
@@ -246,194 +160,26 @@ body {
   border-bottom: 1px solid var(--color-border);
 }
 
+.basic-font-color {
+  color: var(--font-color-basic) !important;
+}
+
+.material-box-shadow {
+  box-shadow: var(--shadow-black);
+}
+
+.material-box-shadow-inset {
+  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2) inset, 1px 4px 8px 0 rgba(0, 0, 0, 0.19) inset;
+}
+
+.material-box-shadow-lowkey {
+  box-shadow: var(--shadow-black-lowkey);
+}
+
+.calender-column-width {
+  width: 250px;
+}
+
 .col-header-width {
   width: 70px;
-}
-
-.head-height-40 {
-  height: 40px;
-}
-
-.head-height-50 {
-  height: 50px;
-}
-
-.height-100-percent {
-  height: 100%;
-}
-
-.width-100-percent {
-  width: 100%;
-}
-
-.border-radius-none {
-  border-radius: 0 !important;
-}
-
-
-.border-radius-small {
-  border-radius: 2px !important;
-}
-
-.border-radius-medium {
-  border-radius: 5px !important;
-}
-
-/* FONTS */
-
-.font-color-immomio-blue {
-  color: #3a8aec;
-}
-
-.font-color-salt-white {
-  color: white;
-}
-
-.font-color-almond-milk {
-  color: #f7f7f7;
-}
-
-.font-color-fish-skin {
-  color: darkgrey;
-}
-
-.font-color-fruity-orange {
-  color: #f89b3c;
-}
-
-.font-size-small {
-  font-size: 8px;
-}
-
-.font-size-medium {
-  font-size: 12px;
-}
-
-.font-size-large {
-  font-size: 16px;
-}
-
-.font-size-xlarge {
-  font-size: 20px;
-}
-
-.font-size-xxlarge {
-  font-size: 24px;
-}
-
-/* OLD: */
-
-.move-out-transition {
-  position: relative;
-  animation: move-in-animation 0.5s;
-}
-
-.move-in-transition {
-  position: relative;
-  animation-direction: reverse;
-  animation: move-out-animation 0.5s;
-}
-
-.test-transition {
-  position: relative;
-  animation: overwrite-animation 0.3s;
-}
-
-@keyframes move-in-animation {
-  0% {
-    scale: 1;
-  }
-  50% {
-    scale: 0.9;
-    left: 0px;
-    opacity: 1;
-  }
-  100% {
-    scale: 0.9;
-    left: -15px;
-    opacity: 0;
-  }
-}
-
-@keyframes move-out-animation {
-  0% {
-    scale: 0.9;
-    left: 15px;
-    opacity: 0;
-  }
-  50% {
-    scale: 0.9;
-    left: 0;
-    opacity: 1;
-  }
-  100% {
-    scale: 1;
-  }
-}
-
-@keyframes overwrite-animation {
-  0% {
-    top:0;
-    opacity: 1;
-  }
-  33% {
-    top: 10px;
-    opacity: 0;
-  }
-  66% {
-    top: -10px;
-    opacity: 0;
-  }
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes move-out-animation {
-  0% {
-    scale: 0.9;
-    left: 15px;
-    opacity: 0;
-  }
-  50% {
-    scale: 0.9;
-    left: 0px;
-    opacity: 1;
-  }
-  100% {
-    scale: 1;
-  }
-}
-
-@keyframes fade-in-animation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-/* OVERWRITING */
-
-/*:host ::ng-deep .dialog-panel .mat-mdc-dialog-container {*/
-/*  background-color: var(--bg-color-table) !important;*/
-/*}*/
-
-.custom-dialog-container {
-  .mat-mdc-dialog-container {
-    --mdc-dialog-container-color: var(--bg-color);
-    color: var(--font-color-basic);
-  }
-}
-
-:host ::ng-deep .form-control {
-  border: 1px solid transparent !important;
 }

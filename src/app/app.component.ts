@@ -28,4 +28,7 @@ export class AppComponent {
     // Set start day of month calendar to monday
     this.dateAdapter.getFirstDayOfWeek = () => 1;
   }
+
+  // TODO: Add angular animations
+  // TODO: Finalize event template (calendar-week)
 }

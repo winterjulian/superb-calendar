@@ -1,9 +1,9 @@
 <div class="appointments-event display-flex event-background material-box-shadow-lowkey border-radius-small fade-in-transition width-100-percent">
 
   <div class="padding-medium simple-border-right">
-    <div class="display-flex flex-direction-col flex-centralize-v basic-flex-jcsb height-100-percent">
+    <div class="display-flex flex-direction-col flex-centralize-v flex-space-between-v height-100-percent">
 
-      <div class="font-size-large basic-font-weight-600">
+      <div class="font-size-medium font-weight-thicker">
         {{ event.startTime.hour | time: 'h' }}:{{ event.startTime.minute | time }}
       </div>
       <div>
@@ -15,8 +15,8 @@
 
   <div class="padding-medium display-flex flex-direction-col width-100-percent">
 
-    <div class="display-flex flex-direction-row height-100-percent flex-centralize-v basic-flex-jcsb">
-      <div class="font-size-large width-100-percent basic-font-weight-500">
+    <div class="display-flex flex-direction-row height-100-percent flex-centralize-v flex-space-between-v">
+      <div class="font-size-medium width-100-percent font-weight-thick">
 
         {{ event.title }}
 
