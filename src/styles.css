@@ -124,6 +124,16 @@ body {
   border-radius: 5px;
 }
 
+.event-background {
+  background-image: var(--bg-image-event) !important;
+  transition: 0.1s ease-in-out;
+}
+
+.event-background:hover {
+  scale: 1.05;
+  transition: 0.1s ease-in-out;
+}
+
 .border-transparent {
   border: 1px solid transparent;
 }
