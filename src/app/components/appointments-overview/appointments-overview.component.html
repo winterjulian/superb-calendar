@@ -1,7 +1,7 @@
 <div class="display-flex flex-direction-col side-sheet theme-background material-box-shadow basic-font-color"
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
-  <div class="display-flex flex-direction-col flex-space-between-v calendar-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
+  <div class="display-flex flex-direction-col flex-space-between-v simple-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
     <app-appointments-header
       [isRenewed]="isRenewed"
       [today]="today"
@@ -13,7 +13,7 @@
     ></app-appointments-header>
   </div>
 
-  <div class="height-100-percent scroll-container-y-scroll calendar-border-bottom">
+  <div class="height-100-percent scroll-container-y-scroll simple-border-bottom">
     <div class="margin-xlarge" *ngFor="let event of events | async; index as i">
       <app-appointments-event [focussedDay]="focussedDay" [event]="event"></app-appointments-event>
     </div>

@@ -54,11 +54,12 @@ body {
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
   --color-error: #d65555;
-  --color-highlight: #00b0bb;
+  --color-highlight: #00b0ba;
   --warn-symbol-color: #f1bf3f;
 
   --color-border: #cacaca;
-  --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  --color-border-highlight: #51b5bb;
+  --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 5px 0 rgba(0, 0, 0, 0.3);
   --shadow-black-lowkey: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -87,7 +88,8 @@ body {
     --warn-symbol-color: goldenrod;
 
     --color-border: #545454;
-    --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    --color-border-highlight: #559a9e;
+    --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.6), 0 2px 5px 0 rgba(0, 0, 0, 0.6);
     --shadow-black-lowkey: 1px 1px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 5px 0 rgba(0, 0, 0, 0.5);
   }
 }
@@ -96,6 +98,10 @@ body {
 
 .body-corresponding-comp-background {
   background-image: var(--bg-image-comp)
+}
+
+.basic-font-color {
+  color: var(--font-color-basic) !important;
 }
 
 .toggle-font-color {
@@ -116,12 +122,6 @@ body {
 
 .theme-background-nuance-2 {
   background-color: var(--bg-color-nuance-1);
-}
-
-:host ::ng-deep .cal-week-view .cal-event {
-  background-image: var(--bg-image-event);
-  border: 1px solid grey;
-  border-radius: 5px;
 }
 
 .event-background {
@@ -156,19 +156,6 @@ body {
 
 .font-highlight {
   color: var(--color-highlight) !important;
-}
-
-.calendar-border-2 {
-  box-sizing: border-box;
-  border: 2px solid #e1e1e1;
-}
-
-.calendar-border-bottom {
-  border-bottom: 1px solid var(--color-border);
-}
-
-.basic-font-color {
-  color: var(--font-color-basic) !important;
 }
 
 .material-box-shadow {
