@@ -15,7 +15,6 @@ import { MatDialogModule} from "@angular/material/dialog";
 import { MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/material/form-field";
 import { MatSelectModule} from "@angular/material/select";
-import localeDe from '@angular/common/locales/de';
 
 @NgModule({
   declarations: [],
