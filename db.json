@@ -263,21 +263,6 @@
       "id": 32
     },
     {
-      "title": "Test-26",
-      "startTime": {
-        "hour": 9,
-        "minute": 0
-      },
-      "endTime": {
-        "hour": 10,
-        "minute": 0
-      },
-      "start": "2024-10-18T07:00:00.000Z",
-      "end": "2024-10-18T08:00:00.000Z",
-      "details": "asdf",
-      "id": 36
-    },
-    {
       "title": "Test-28--------------",
       "startTime": {
         "hour": 9,

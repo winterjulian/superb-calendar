@@ -49,7 +49,7 @@
 }
 
 :host ::ng-deep .form-control {
-  border: 1px solid transparent !important;
+  border: 1px solid transparent;
 }
 
 :host ::ng-deep .cal-week-view .cal-event {
