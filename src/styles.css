@@ -15,9 +15,11 @@ body {
 }
 
 html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .basic-font {
@@ -33,15 +35,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* THEMEING */
 
 body {
-  --bg-image: linear-gradient(355deg, #69bec2 14%, #ffffff 55%);
-  --bg-image-comp: linear-gradient(90deg, #dcfbff 5%, #ffffff 60%);
+  --bg-image: linear-gradient(355deg, #69bec2 14%, whitesmoke 55%);
+  --bg-image-comp: linear-gradient(90deg, #dcfbff 5%, whitesmoke 60%);
   --bg-image-event: linear-gradient(-12deg, #9ad7d9 5%, #f3f3f4 40%);
-  --bg-image-event-hover: linear-gradient(-12deg, #ffffff 5%, #9ad7d9 25%, #ffffff 50%);
+  --bg-image-event-hover: linear-gradient(-12deg, whitesmoke 5%, #9ad7d9 25%, whitesmoke 50%);
   --font-color-basic: #474a50;
   --font-color-disabled: #93969c;
 
-  --bg-color: white;
-  --bg-color-nuance-1: #e7e7e7;
+  --bg-color: whitesmoke;
+  --bg-color-nuance-1: #dcdcdc;
   --bg-color-table-row: white;
   --bg-color-table-row-odd: whitesmoke;
   --bg-color-event-1: #69bec2;
@@ -52,6 +54,7 @@ body {
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
   --color-error: #d65555;
+  --color-highlight: #00b0bb;
   --warn-symbol-color: #f1bf3f;
 
   --color-border: #cacaca;
@@ -80,6 +83,7 @@ body {
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
     --color-error: #d65555;
+    --color-highlight: #00b0ba;
     --warn-symbol-color: goldenrod;
 
     --color-border: #545454;
@@ -88,9 +92,7 @@ body {
   }
 }
 
-
 /* COLORS & THEMES */
-
 
 .body-corresponding-comp-background {
   background-image: var(--bg-image-comp)
@@ -118,9 +120,7 @@ body {
 
 :host ::ng-deep .cal-week-view .cal-event {
   background-image: var(--bg-image-event);
-  /*background-color: blue;*/
   border: 1px solid grey;
-  /*border: 0;*/
   border-radius: 5px;
 }
 
@@ -154,11 +154,8 @@ body {
   background-color: var(--color-error);
 }
 
-.more-vert-class {
-  border: 0px;
-  background-color: transparent;
-  width: 30px;
-  height: 30px;
+.font-highlight {
+  color: var(--color-highlight) !important;
 }
 
 .calendar-border-2 {

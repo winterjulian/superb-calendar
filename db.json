@@ -161,21 +161,6 @@
     {
       "title": "Test-17",
       "startTime": {
-        "hour": 9,
-        "minute": 0
-      },
-      "endTime": {
-        "hour": 10,
-        "minute": 0
-      },
-      "start": "2024-10-09T07:00:00.000Z",
-      "end": "2024-10-09T08:00:00.000Z",
-      "details": "",
-      "id": 17
-    },
-    {
-      "title": "Test-17",
-      "startTime": {
         "hour": 13,
         "minute": 30,
         "second": 0
@@ -306,21 +291,6 @@
       "end": "2024-10-15T08:00:00.000Z",
       "details": "asdfasdf",
       "id": 38
-    },
-    {
-      "title": "Test-61",
-      "startTime": {
-        "hour": 10,
-        "minute": 0
-      },
-      "endTime": {
-        "hour": 10,
-        "minute": 30
-      },
-      "start": "2024-10-17T08:00:00.000Z",
-      "end": "2024-10-17T08:30:00.000Z",
-      "details": null,
-      "id": 39
     },
     {
       "title": "Feedbackgespräch mit Konstantin",

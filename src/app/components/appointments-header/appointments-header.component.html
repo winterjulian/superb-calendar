@@ -5,8 +5,10 @@
       <button
         mat-raised-button
         (click)="navigateToDate(); triggerIsRenewed(); setToToday()">
-        <i class="material-icons margin-medium-right">history</i>
-        {{ today | date: 'dd.M.' }}
+        <i class="material-icons margin-medium-right font-highlight">history</i>
+        <div class="font-highlight">
+          {{ today | date: 'dd.M.' }}
+        </div>
       </button>
     </div>
 
@@ -25,14 +27,16 @@
 </div>
 <div class="display-flex flex-space-between-v padding-large-top">
   <div>
-<!--    <-->
+<!--    <    -->
   </div>
-  <div class="display-flex flex-centralize-h flex-centralize-v font-size-xlarge"
-       [ngClass]="{'scroll-down-transition': isRenewed}">
-    <i class="material-icons padding-medium-right">calendar_month</i>
-    {{ focussedDay.day }}.{{ focussedDay.month }}.{{ focussedDay.year }}
+  <div [ngClass]="{'scroll-down-transition': isRenewed}">
+    <div class="display-flex flex-centralize-h flex-centralize-v font-size-xlarge"
+      [ngClass]="{'font-highlight': focussedDayIsToday}">
+      <i class="material-icons padding-medium-right">calendar_month</i>
+      {{ focussedDay.day }}.{{ focussedDay.month }}.{{ focussedDay.year }}
+    </div>
   </div>
   <div>
-<!--    >-->
+<!--    >    -->
   </div>
 </div>

@@ -3,11 +3,13 @@ import { AppComponent } from './app.component';
 import {BrowserModule} from "@angular/platform-browser";
 import { OrganizerComponent } from "./components/organizer/organizer.component";
 import { SpecifyerComponent } from "./components/specifyer/specifyer.component";
-import { CalendarModule, DateAdapter} from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import {CommonModule, registerLocaleData} from "@angular/common";
-import { CalendarMonthComponentModule} from "./calendar-month/calendar-month-component.module";
-import { CalendarWeekComponentModule} from "./calendar-week/calendar-week-component.module";
+import {
+  CalendarDateFormatter,
+  CalendarNativeDateFormatter,
+} from 'angular-calendar';
+import {CommonModule} from "@angular/common";
+import { CalendarMonthComponentModule} from "./components/calendar-month/calendar-month-component.module";
+import { CalendarWeekComponentModule} from "./components/calendar-week/calendar-week-component.module";
 import { MatButtonModule} from "@angular/material/button";
 import { MatDialogModule} from "@angular/material/dialog";
 import { MatSlideToggleModule} from "@angular/material/slide-toggle";
@@ -15,19 +17,12 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from "@angular/mater
 import { MatSelectModule} from "@angular/material/select";
 import localeDe from '@angular/common/locales/de';
 
-registerLocaleData(localeDe);
-
 @NgModule({
   declarations: [],
   exports: [],
   imports: [
-
     BrowserModule,
     MatSlideToggleModule,
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
     CommonModule,
     CalendarMonthComponentModule,
     CalendarWeekComponentModule,
@@ -41,6 +36,7 @@ registerLocaleData(localeDe);
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},
+    {provide: CalendarDateFormatter, useClass: CalendarNativeDateFormatter}
   ]
 })
 export class AppModule { }

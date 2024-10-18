@@ -5,9 +5,10 @@
     <div>
       <button
         mat-raised-button
+        class="font-highlight"
         (click)="resetDateToday()">
-        <i class="material-icons margin-medium-right">history</i>
-        {{ today | date: 'dd. MMM. YYYY' }}
+        <i class="material-icons margin-medium-right font-highlight">history</i>
+        <div class="font-highlight">{{ today | date: 'dd. MMM. YYYY' }}</div>
       </button>
     </div>
   </div>

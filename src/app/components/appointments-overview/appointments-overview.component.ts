@@ -71,7 +71,6 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     );
     this.subscriptionArray.push(
       this.appointmentsServce.getDailyAppointmentReload().subscribe(_ => {
-        console.log('UPDATE!')
         this.loadDailyAppointments();
       })
     );
@@ -126,9 +125,6 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     this.appointmentsServce.getAppointmentsByBasicDate(this.focussedDay)
       .pipe(take(1))
       .subscribe(response => {
-        console.log(this.focussedDay);
-        console.log('\t> updating')
-        console.log(response);
         this.events.next(response);
     })
   }

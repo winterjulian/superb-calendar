@@ -28,7 +28,6 @@ export class StoreService {
   private dailyAppointments: Record<string, Record<string, any[]>> = {};
   // Only works when week start = sunday
   // TODO: flexible week start
-  private basicDayStrings: Array<string> = ['Mon', 'Tue', 'Wes', 'Thu', 'Fri', 'Sat', 'Sun']
 
   /* GENERAL */
 
@@ -127,10 +126,6 @@ export class StoreService {
 
   getDailyAppointmentDataByDate(date: string): Record<string, any[]> {
     return this.dailyAppointments[date];
-  }
-
-  getBasicDayString(index: number): string {
-    return this.basicDayStrings[index];
   }
 
   getDialogWidth(): string {

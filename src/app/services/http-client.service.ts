@@ -48,7 +48,6 @@ export class HttpClientService {
      * input: extended appointment
      */
 
-    console.log(input);
     return new Observable(observer => {
       fetch(this.apiEndpoint + "/appointments", {
         method: "POST",

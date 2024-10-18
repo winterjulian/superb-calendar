@@ -48,10 +48,6 @@ export class FunctionsService {
       + ', ' + addressObject.country
   }
 
-  demandEternalJustice() {
-    console.log('TO BE REMOVED') // TODO: REMOVE
-  }
-
   getBasicDateFromDateAsString(date: Date, delimiter = '-'): String {
     const dateShards: BasicDate = this.extractBasicDateFromDate(date);
     return dateShards.year + delimiter + dateShards.month + delimiter + dateShards.day;

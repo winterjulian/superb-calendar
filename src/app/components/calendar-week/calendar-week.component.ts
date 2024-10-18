@@ -1,11 +1,4 @@
-import {Component, DestroyRef, EventEmitter, inject, OnDestroy, OnInit, Output} from '@angular/core';
-import {
-  CalendarDateFormatter,
-  CalendarEvent,
-  CalendarEventTitleFormatter,
-  CalendarNativeDateFormatter
-} from "angular-calendar";
-import { CustomEventTitleFormatter } from '../../providers/custom-event-title-formatter.provider';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {StoreService} from "../../services/store.service";
 import {MatDialog} from "@angular/material/dialog";
 import {FunctionsService} from "../../services/functions.service";
@@ -13,23 +6,12 @@ import {Subject} from "rxjs";
 import {WeekDayModel} from "../../interfaces/weekDay.model";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../../services/appointments.service";
-import {HttpClientService} from "../../services/http-client.service";
 import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
 
 @Component({
   selector: 'app-calendar-week',
   templateUrl: './calendar-week.component.html',
-  styleUrl: './calendar-week.component.css',
-  providers: [
-    {
-      provide: CalendarEventTitleFormatter,
-      useClass: CustomEventTitleFormatter,
-    },
-    {
-      provide: CalendarDateFormatter,
-      useClass: CalendarNativeDateFormatter
-    }
-  ],
+  styleUrl: './calendar-week.component.css'
 })
 export class CalendarWeekComponent implements OnInit, OnDestroy {
   public isSet: Subject<boolean> = new Subject();
@@ -43,19 +25,19 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   public endMonth: string = '';
   public startYear: any = '';
   public endYear: any = '';
-  public days: Array<string> = [];
+  public days: Array<Record<'display' | 'isToday', boolean | string>> = [];
   public view: 'month' | 'week' | 'day' = 'week';
   public resetting: boolean | undefined = undefined;
+
+  private basicDayStrings: Array<string> = ['Mon', 'Tue', 'Wes', 'Thu', 'Fri', 'Sat', 'Sun']
 
   constructor(
     private router: Router,
     private storeService: StoreService,
     private appointmentsService: AppointmentsService,
     private functionsService: FunctionsService,
-    private httpClientService: HttpClientService,
     public dialog: MatDialog
   ) {
-    // Initialization inside the constructor
     this.clickedDate = new Date();
     this.events = [];
   }
@@ -77,34 +59,29 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
-  hourSegmentClicked(e: any) {
-    this.appointmentsService.setFocussedBasicDateByDate(e.date);
-    this.router.navigate([
-      { outlets:
-          { primary: 'calendar',
-            side: ['appointments', this.functionsService.getBasicDateFromDateAsString(e.date) ]
-          }
-      }]
-    );
-    this.appointmentsService.setPreferredTime(e.date)
-    // this.openDialog(e);
+  // GETTER
+
+  getWeekDayName(index: number): string {
+    return this.basicDayStrings[index];
   }
 
-  eventClicked(e: any): void {
-    this.openDialog(e);
+  getDisplayableMonth(day: any) {
+    return day.date.getFullYear() + '-' + (day.date.getMonth() + 1)
   }
 
-  openDialog(e: any): void {
-  }
+  // SETTER
 
   setDateInformation(e: any): void {
-
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
       this.setDateRange(e.header);
 
       e.header.forEach((weekDay: WeekDayModel, index: number) => {
-        this.days[index] = weekDay.date.getDate() + ' ' + this.storeService.getBasicDayString(index);
+
+        this.days[index] = {
+          display: weekDay.date.getDate() + ' ' + this.getWeekDayName(index),
+          isToday: weekDay.isToday
+        }
 
         if (index === 0) {
           // get 1st day
@@ -134,7 +111,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   setDateRange(header: any) {
-    console.log('>>> setDateRange()');
     if (header.length === 7) {
       this.appointmentsService.setWeekRange({
         from: header[0].date,
@@ -145,16 +121,30 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
     }
   }
 
-  getDisplayableMonth(day: any) {
-    return day.date.getFullYear() + '-' + (day.date.getMonth() + 1)
+  // OTHERS
+
+  hourSegmentClicked(e: any) {
+    this.appointmentsService.setFocussedBasicDateByDate(e.date);
+    this.router.navigate([
+      { outlets:
+          { primary: 'calendar',
+            side: ['appointments', this.functionsService.getBasicDateFromDateAsString(e.date) ]
+          }
+      }]
+    );
+    this.appointmentsService.setPreferredTime(e.date)
+    // this.openDialog(e);
+  }
+
+  eventClicked(e: any): void {
+    this.openDialog(e);
+  }
+
+  openDialog(e: any): void {
   }
 
   resetFocussedDay() {
     this.storeService.setCurrentlyFocussedDate(undefined);
-  }
-
-  testFunc(input: any) {
-    console.log(input)
   }
 
   loadData() {
