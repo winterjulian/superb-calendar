@@ -138,3 +138,20 @@
 .flex-direction-row {
   flex-direction: row;
 }
+
+.small-event {
+  height: 100px !important;
+}
+
+.medium-event {
+  height: 200px;
+}
+
+.large-event {
+  height: 300px !important;
+}
+
+.delete-icon-addition {
+  scale: 0.8;
+  cursor: pointer;
+}

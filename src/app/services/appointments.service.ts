@@ -38,8 +38,8 @@ export class AppointmentsService {
   }
 
   getAppointmentsByBasicDate(basicDate: BasicDate): Observable<ExtendedCalendarEvent[]> {
-    let from = this.functionsService.generateDateFromBasicDate(basicDate);
-    let to = this.functionsService.generateDateFromBasicDate(basicDate, 23, 59, 59);
+    const from = this.functionsService.generateDateFromBasicDate(basicDate);
+    const to = this.functionsService.generateDateFromBasicDate(basicDate, 23, 59, 59);
     return this.httpClientService.loadDataInDateRangeWithDates(from, to)
   }
 
@@ -62,7 +62,7 @@ export class AppointmentsService {
   }
 
   setPreferredTime(date: Date) {
-    let newTime: AppointmentTime = {
+    const newTime: AppointmentTime = {
       hour: date.getHours(),
       minute: date.getMinutes()
     }
@@ -105,11 +105,11 @@ export class AppointmentsService {
   }
 
   saveAppointment(
-    title: String,
+    title: string,
     focussedDay: BasicDate,
     startTime: AppointmentTime,
     endTime: AppointmentTime,
-    details: String | undefined
+    details: string | undefined
   ) {
     const startAsValidDate = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, startTime.hour, startTime.minute)
     const endAsValidDate: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, endTime.hour, endTime.minute)
@@ -119,11 +119,12 @@ export class AppointmentsService {
       endTime,
       start: startAsValidDate,
       end: endAsValidDate,
-      details: details
+      details: details,
+      totalMinutes: this.functionsService.getTotalMinutes(endAsValidDate, startAsValidDate)
     }
     this.httpClientService.saveData(newAppointment)
       .pipe(take(1))
-      .subscribe(savedAppointment => {
+      .subscribe(() => {
         this.triggerDailyAppointmentReload();
         this.triggerWeeklyAppointmentReload();
       })
@@ -132,7 +133,7 @@ export class AppointmentsService {
   deleteAppointment(id: string) {
     this.httpClientService.deleteData(id)
       .pipe(take(1))
-      .subscribe(response => {
+      .subscribe(() => {
         this.triggerDailyAppointmentReload();
         this.triggerWeeklyAppointmentReload();
       })

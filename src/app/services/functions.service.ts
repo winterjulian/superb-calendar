@@ -17,6 +17,10 @@ export class FunctionsService {
     return (String(year+'-'+month+'-'+day));
   }
 
+  getTotalMinutes(endDate: Date, startDate: Date): number {
+    return (endDate.getTime() - startDate.getTime()) / 60000
+  }
+
   extractBasicDateFromURL(urlSegment: Array<UrlSegment>): BasicDate | null {
     if (urlSegment.length > 1) {
       const dateShardsArray: Array<String> = String(urlSegment[1].path).split('-');

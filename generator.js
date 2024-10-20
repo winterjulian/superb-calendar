@@ -180,6 +180,8 @@ rawAppointments.forEach((appointment, index) => {
   currentEnd.setMinutes(appointment.endTime.minute);
   appointment.end = currentEnd;
 
+  appointment.totalMinutes = (currentEnd.getTime() - currentStart.getTime()) / 60000
+
   appointment.id = String(index+1);
 
   data.appointments.push(appointment);

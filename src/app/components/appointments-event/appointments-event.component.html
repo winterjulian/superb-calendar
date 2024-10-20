@@ -1,4 +1,6 @@
-<div class="appointments-event display-flex event-background material-box-shadow-lowkey border-radius-small fade-in-transition width-100-percent">
+<div
+  [ngClass]="{'small-event': event.totalMinutes <= 60, 'large-event': event.totalMinutes >= 180}"
+  class="medium-event appointments-event display-flex event-background material-box-shadow-lowkey border-radius-small fade-in-transition width-100-percent">
 
   <div class="padding-medium simple-border-right">
     <div class="display-flex flex-direction-col flex-centralize-v flex-space-between-v height-100-percent">
@@ -7,6 +9,7 @@
         {{ event.startTime.hour | time: 'h' }}:{{ event.startTime.minute | time }}
       </div>
       <div>
+        <div class="font-size-xsmall">{{ event.totalMinutes }} min.</div>
         {{ event.endTime.hour | time: 'h' }}:{{ event.endTime.minute | time }}
       </div>
 
@@ -23,7 +26,7 @@
       </div>
       <div>
         <div class="display-flex">
-          <i class="material-icons" (click)="openDeleteDialog(event)" style="scale: 0.8; cursor: pointer">delete</i>
+          <i class="material-icons delete-icon-addition" (click)="openDeleteDialog(event)">delete</i>
         </div>
       </div>
     </div>
