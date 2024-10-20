@@ -17,8 +17,7 @@ RUN pnpm run build --configuration production
 FROM nginxinc/nginx-unprivileged:stable-alpine-slim
 
 COPY --from=build /app/dist/superb-calendar /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]

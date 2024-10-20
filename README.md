@@ -9,6 +9,10 @@ A simple exemplary calendar application - have fun!
 3. Run `json-server --watch db.json` to start the json-server (before yout start the application itself!). The server needs to run constantly.
 4. Run in a new terminal `ng s` to start the SuperbCalendar
 
+### Docker Setup
+`docker build -t superb-calendar .`
+`docker run -p 8080:80 superb-calendar`
+
 ### Q&A
 
 1. What is the json-server?

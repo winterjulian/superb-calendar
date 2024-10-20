@@ -1,8 +1,0 @@
-services:
-  angular-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: angular-app
-    ports:
-      - "8080:8080"
