@@ -6,8 +6,8 @@ A simple exemplary calendar application - have fun!
 
 1. Run `npm i` to install all necessary packages for this application.
 2. Run `node generator.js` to create some exemplary appointments for your calendar. In case an error occurs, the step can be skipped. It is merely nice-to-have.
-3. Run `json-server --watch db.json` to start the json-server (before yout start the application itself!).
-4. Run `ng s` to start the SuperbCalendar
+3. Run `json-server --watch db.json` to start the json-server (before yout start the application itself!). The server needs to run constantly.
+4. Run in a new terminal `ng s` to start the SuperbCalendar
 
 ### Q&A
 

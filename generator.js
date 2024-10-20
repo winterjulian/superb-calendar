@@ -6,7 +6,14 @@ function addDays(date, days) {
   return result;
 }
 
-let monday = addDays(today, -today.getDay()+1);
+// 0 = sunday
+// treat like 7 to place appointments from monday before given sunday
+let monday = addDays(today, -(today.getDay()===0 ? 7 : today.getDay()) +1);
+
+console.log(today);
+console.log(today.getDay());
+console.log('monday', monday);
+
 let data = {
   "appointments": []
 };
