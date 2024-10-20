@@ -47,26 +47,6 @@
   max-height: 85px;
 }
 
-.simple-border {
-  border: 1px solid var(--font-color-basic)
-}
-
-.simple-border-bottom {
-  border-bottom: 1px solid var(--font-color-basic)
-}
-
-.simple-border-top {
-  border-top: 1px solid var(--font-color-basic)
-}
-
-.simple-border-left {
-  border-left: 1px solid var(--font-color-basic)
-}
-
-.simple-border-right {
-  border-right: 1px solid var(--font-color-basic)
-}
-
 .font-size-xxsmall {
   font-size: 8px;
 }
