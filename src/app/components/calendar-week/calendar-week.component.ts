@@ -137,10 +137,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   eventClicked(e: any): void {
-    this.openDialog(e);
-  }
-
-  openDialog(e: any): void {
+    this.hourSegmentClicked({date: e.event.start});
   }
 
   resetFocussedDay() {

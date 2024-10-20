@@ -15,7 +15,7 @@
 
   <div class="padding-medium display-flex flex-direction-col width-100-percent">
 
-    <div class="display-flex flex-direction-row height-100-percent flex-centralize-v flex-space-between-v">
+    <div class="display-flex flex-direction-row flex-centralize-v flex-space-between-v">
       <div class="font-size-medium width-100-percent font-weight-thick">
 
         {{ event.title }}
@@ -27,9 +27,9 @@
         </div>
       </div>
     </div>
-    <div>
-      <div *ngIf="event.details" class="display-flex flex-direction-row padding-medium-top">
-        <div class="width-100-percent details-area-height scroll-container-y">
+    <div class="scroll-container-y height-100-percent margin-medium-top">
+      <div *ngIf="event.details" class="display-flex flex-direction-row">
+        <div class="width-100-percent details-area-height">
 
           {{ event.details }}
 

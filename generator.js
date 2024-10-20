@@ -10,10 +10,6 @@ function addDays(date, days) {
 // treat like 7 to place appointments from monday before given sunday
 let monday = addDays(today, -(today.getDay()===0 ? 7 : today.getDay()) +1);
 
-console.log(today);
-console.log(today.getDay());
-console.log('monday', monday);
-
 let data = {
   "appointments": []
 };
@@ -184,7 +180,7 @@ rawAppointments.forEach((appointment, index) => {
   currentEnd.setMinutes(appointment.endTime.minute);
   appointment.end = currentEnd;
 
-  appointment.id = index;
+  appointment.id = String(index+1);
 
   data.appointments.push(appointment);
 })

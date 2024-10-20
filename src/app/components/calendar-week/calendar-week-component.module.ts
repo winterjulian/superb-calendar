@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import {
   CalendarDateFormatter,
   CalendarModule, CalendarNativeDateFormatter,
@@ -12,6 +12,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCalendar} from "@angular/material/datepicker";
 
+@Injectable()
 class CustomDateFormatter extends CalendarNativeDateFormatter {
 
   public override dayViewHour({date, locale}: DateFormatterParams): string {
