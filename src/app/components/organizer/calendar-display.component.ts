@@ -6,13 +6,13 @@ import {DatePipe} from "@angular/common";
 import {CalendarWeekComponent} from "../calendar-week/calendar-week.component";
 
 @Component({
-  selector: 'app-organizer',
+  selector: 'app-calendar-display',
   standalone: true,
   imports: [CalendarMonthComponentModule, CalendarWeekComponentModule, MatButton, DatePipe],
-  templateUrl: './organizer.component.html',
-  styleUrl: './organizer.component.css'
+  templateUrl: './calendar-display.component.html',
+  styleUrl: './calendar-display.component.css'
 })
-export class OrganizerComponent {
+export class CalendarDisplay {
   @ViewChild(CalendarWeekComponent) child!: CalendarWeekComponent;
 
   constructor() {}

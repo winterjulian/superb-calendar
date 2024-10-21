@@ -12,14 +12,14 @@ import {AppointmentsService} from "../../services/appointments.service";
 
 
 @Component({
-  selector: 'app-specifier',
+  selector: 'app-calendar-specifier',
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, MatSelectModule, CommonModule, MatButton, MatButtonToggleGroup, MatButtonToggle, MatIcon, MatCard, MatCardContent, MatCardHeader],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './specifier.component.html',
-  styleUrl: './specifier.component.css'
+  templateUrl: './calendar-specifier.component.html',
+  styleUrl: './calendar-specifier.component.css'
 })
-export class SpecifierComponent implements OnInit {
+export class CalendarSpecifier implements OnInit {
 
   constructor(
     public themeService: ThemeService,

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {BrowserModule} from "@angular/platform-browser";
-import { OrganizerComponent } from "./components/organizer/organizer.component";
-import { SpecifierComponent } from "./components/specifier/specifier.component";
+import { CalendarDisplay } from "./components/organizer/calendar-display.component";
+import { CalendarSpecifier } from "./components/calendar-specifier/calendar-specifier.component";
 import {
   CalendarDateFormatter,
   CalendarNativeDateFormatter,
@@ -29,9 +29,9 @@ import { MatSelectModule} from "@angular/material/select";
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    OrganizerComponent,
+    CalendarDisplay,
     AppComponent,
-    SpecifierComponent,
+    CalendarSpecifier,
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},

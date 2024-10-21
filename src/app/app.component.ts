@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
-import {OrganizerComponent} from "./components/organizer/organizer.component";
-import {SpecifierComponent} from "./components/specifier/specifier.component";
+import {CalendarDisplay} from "./components/organizer/calendar-display.component";
+import {CalendarSpecifier} from "./components/calendar-specifier/calendar-specifier.component";
 import {CalendarMonthComponentModule} from "./components/calendar-month/calendar-month-component.module";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {CalendarWeekModule} from "angular-calendar";
@@ -13,7 +13,7 @@ import {NgClass} from "@angular/common";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, OrganizerComponent, SpecifierComponent, CalendarMonthComponentModule, MatSlideToggleModule, CalendarWeekModule, MatCalendar, CalendarComponent, RouterLink, NgClass],
+  imports: [RouterOutlet, CalendarDisplay, CalendarSpecifier, CalendarMonthComponentModule, MatSlideToggleModule, CalendarWeekModule, MatCalendar, CalendarComponent, RouterLink, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -27,8 +27,7 @@ export class AppComponent {
   }
 
   // TODO: Add angular animations
-  // TODO: Finalize event template (calendar-week)
   // TODO: Add a "last-created-appointments" logic (under calendar-month)
   // TODO: rename organizer (=>calendar-display)
-  // TODO: rename specifier (=>calendar-specifier)
+  // TODO: rename calendar-specifier (=>calendar-calendar-specifier)
 }

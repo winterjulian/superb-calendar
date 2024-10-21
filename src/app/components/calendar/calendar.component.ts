@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {OrganizerComponent} from "../organizer/organizer.component";
-import {SpecifierComponent} from "../specifier/specifier.component";
+import {CalendarDisplay} from "../organizer/calendar-display.component";
+import {CalendarSpecifier} from "../calendar-specifier/calendar-specifier.component";
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
     imports: [
-        OrganizerComponent,
-        SpecifierComponent
+        CalendarDisplay,
+        CalendarSpecifier
     ],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
