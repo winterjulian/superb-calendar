@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AsyncPipe, DatePipe, NgClass, NgForOf, NgIf} from "@angular/common";
+import { AsyncPipe, DatePipe, NgClass } from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton} from "@angular/material/button";
 import {AppointmentsCreateComponent} from "../appointments-create/appointments-create.component";
@@ -21,12 +21,10 @@ import {AppointmentsEventComponent} from "../appointments-event/appointments-eve
     DatePipe,
     MatButton,
     AppointmentsCreateComponent,
-    NgForOf,
     AsyncPipe,
     AppointmentsHeaderComponent,
-    NgIf,
     AppointmentsEventComponent
-  ],
+],
   templateUrl: './appointments-overview.component.html',
   styleUrl: './appointments-overview.component.css'
 })

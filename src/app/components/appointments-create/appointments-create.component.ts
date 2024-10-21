@@ -6,7 +6,7 @@ import {MatButton} from "@angular/material/button";
 import {BasicDate} from "../../interfaces/basicDate";
 import {AppointmentsService} from "../../services/appointments.service";
 import {Subject, takeUntil} from "rxjs";
-import {NgClass, NgIf} from "@angular/common";
+import { NgClass } from "@angular/common";
 import {AppointmentTime} from "../../interfaces/appointmentTime";
 import {FunctionsService} from "../../services/functions.service";
 import {appointmentEndValidator} from "../../helpers/appointment-end.directive";
@@ -20,9 +20,8 @@ import {appointmentEndValidator} from "../../helpers/appointment-end.directive";
     FormsModule,
     MatButton,
     ReactiveFormsModule,
-    NgIf,
     NgClass
-  ],
+],
   templateUrl: './appointments-create.component.html',
   styleUrls: ['./appointments-create.component.css', '/src/styles.css']
 })

@@ -1,6 +1,6 @@
 <div class="display-flex flex-direction-col side-sheet theme-background material-box-shadow basic-font-color"
-     [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
->
+  [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
+  >
   <div class="display-flex flex-direction-col flex-space-between-v simple-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
     <app-appointments-header
       [isRenewed]="isRenewed"
@@ -14,22 +14,23 @@
   </div>
 
   <div class="height-100-percent scroll-container-y-scroll simple-border-bottom">
-    <div class="margin-xlarge" *ngFor="let event of events | async; index as i">
-      <app-appointments-event [focussedDay]="focussedDay" [event]="event"></app-appointments-event>
-    </div>
+    @for (event of events | async; track event; let i = $index) {
+      <div class="margin-xlarge">
+        <app-appointments-event [focussedDay]="focussedDay" [event]="event"></app-appointments-event>
+      </div>
+    }
   </div>
 
   <div class="display-flex flex-direction-col margin-xlarge-left margin-xlarge-right margin-xlarge-top margin-medium-bottom">
-    <ng-container *ngIf="isCreating; else elseBlock">
+    @if (isCreating) {
       <app-appointments-create [focussedDay]="focussedDay" (emitToggleCreating)="toggleCreating()"></app-appointments-create>
-    </ng-container>
-    <ng-template #elseBlock>
+    } @else {
       <button
         mat-raised-button
         class="border-radius-none"
         (click)="toggleCreating()">
         <i  class="material-icons margin-medium-right">add</i>
       </button>
-    </ng-template>
+    }
   </div>
 </div>

@@ -31,13 +31,13 @@
       </div>
     </div>
     <div class="scroll-container-y height-100-percent margin-medium-top">
-      <div *ngIf="event.details" class="display-flex flex-direction-row">
-        <div class="width-100-percent details-area-height">
-
-          {{ event.details }}
-
+      @if (event.details) {
+        <div class="display-flex flex-direction-row">
+          <div class="width-100-percent details-area-height">
+            {{ event.details }}
+          </div>
         </div>
-      </div>
+      }
     </div>
 
   </div>

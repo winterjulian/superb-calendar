@@ -4,9 +4,11 @@
     <!--- calender controller: --->
 
     <div class="display-flex flex-space-between-v">
-      <div *ngIf="isSet" class="flex-centralize-v font-weight-thick margin-left-20">
-        {{ startDayWeek  }}. {{ startMonth | date:'MMMM' }} {{ startYear }} — {{ endDayWeek }}. {{ endMonth | date:'MMMM' }} {{ endYear }}
-      </div>
+      @if (isSet) {
+        <div class="flex-centralize-v font-weight-thick margin-left-20">
+          {{ startDayWeek  }}. {{ startMonth | date:'MMMM' }} {{ startYear }} — {{ endDayWeek }}. {{ endMonth | date:'MMMM' }} {{ endYear }}
+        </div>
+      }
       <div>
         <div class="display-flex flex-space-between-v">
           <div
@@ -14,7 +16,7 @@
             [view]="view"
             [(viewDate)]="viewDate"
             (click)="resetFocussedDay()"
-          >
+            >
             <div>
               <button
                 mat-icon-button
@@ -28,7 +30,7 @@
             [view]="view"
             [(viewDate)]="viewDate"
             (click)="resetFocussedDay()"
-          >
+            >
             <div>
               <button
                 mat-icon-button
@@ -57,17 +59,19 @@
       (hourSegmentClicked)="hourSegmentClicked($event)"
       (eventClicked)="eventClicked($event)"
       (beforeViewRender)="setDateInformation($event)"
-    >
+      >
       <ng-template #headerTemplate>
         <div role="row"
-             class="display-flex cal-day-headers">
-          <div *ngFor="let day of days; index as i"
-               [ngClass]="{'font-highlight': day.isToday}"
-               [tabindex]="i"
-               class="flex-centralize-h col-header-width"
-               role="columnheader">
-            <b>{{ day.display }}</b>
-          </div>
+          class="display-flex cal-day-headers">
+          @for (day of days; track day; let i = $index) {
+            <div
+              [ngClass]="{'font-highlight': day.isToday}"
+              [tabindex]="i"
+              class="flex-centralize-h col-header-width"
+              role="columnheader">
+              <b>{{ day.display }}</b>
+            </div>
+          }
         </div>
       </ng-template>
     </mwl-calendar-week-view>

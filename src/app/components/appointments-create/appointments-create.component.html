@@ -13,78 +13,82 @@
             [ngClass]="{'border-error': appointmentsForm.get('title')?.hasError('required') && !this.appointmentsForm.untouched}"
             class="width-100-percent basic-font-color border-radius-medium theme-background padding-medium border-transparent"
             [placeholder]="'New appointment on the ' + focussedDay.day + '.' + focussedDay.month + '.'">
-        </div>
+          </div>
 
-      </div>
-      <div style="height: 20px" class="display-flex flex-flex-end font-error">
-        <div *ngIf="appointmentsForm.get('title')?.hasError('required') && !this.appointmentsForm.untouched">
-          <i class="material-icons font-size-small">subdirectory_arrow_right</i>
-          required
+        </div>
+        <div style="height: 20px" class="display-flex flex-flex-end font-error">
+          @if (appointmentsForm.get('title')?.hasError('required') && !this.appointmentsForm.untouched) {
+            <div>
+              <i class="material-icons font-size-small">subdirectory_arrow_right</i>
+              required
+            </div>
+          }
         </div>
       </div>
-    </div>
 
-    <div formGroupName="time" class="display-flex flex-space-between-v">
-      <div class="basic-flex-1">
-        <ngb-timepicker
+      <div formGroupName="time" class="display-flex flex-space-between-v">
+        <div class="basic-flex-1">
+          <ngb-timepicker
           [ngClass]="{'border-error':
             !this.appointmentsForm.untouched
             && appointmentsForm.get('time')?.hasError('isInvalid')}"
-          formControlName="startTime"
-          [minuteStep]="5"
-          [seconds]="false"/>
-      </div>
-      <div class="display-flex flex-centralize-v">
-        <i  class="material-icons">arrow_right_alt</i>
-      </div>
-      <div class="basic-flex-1">
-        <ngb-timepicker
+            formControlName="startTime"
+            [minuteStep]="5"
+            [seconds]="false"/>
+          </div>
+          <div class="display-flex flex-centralize-v">
+            <i  class="material-icons">arrow_right_alt</i>
+          </div>
+          <div class="basic-flex-1">
+            <ngb-timepicker
           [ngClass]="{'border-error':
             !this.appointmentsForm.untouched
             && appointmentsForm.get('time')?.hasError('isInvalid')}"
-          formControlName="endTime"
-          [minuteStep]="5"
-          [seconds]="false"/>
-      </div>
-    </div>
-    <div>
-      <div style="height: 20px" class="display-flex flex-flex-end font-error">
-        <div *ngIf="!this.appointmentsForm.untouched && appointmentsForm.get('time')?.hasError('isInvalid')">
-          <i class="material-icons font-size-small">subdirectory_arrow_right</i>
-          end date should be after start date
+              formControlName="endTime"
+              [minuteStep]="5"
+              [seconds]="false"/>
+            </div>
+          </div>
+          <div>
+            <div style="height: 20px" class="display-flex flex-flex-end font-error">
+              @if (!this.appointmentsForm.untouched && appointmentsForm.get('time')?.hasError('isInvalid')) {
+                <div>
+                  <i class="material-icons font-size-small">subdirectory_arrow_right</i>
+                  end date should be after start date
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="display-flex margin-small-top">
+            <textarea formControlName="details"
+              class="text-area width-100-percent padding-small border-radius-medium"
+              placeholder="Appointment's details"
+            ></textarea>
+          </div>
+
         </div>
-      </div>
-    </div>
+        <div>
+          <div class="display-flex">
+            <div class="basic-flex-1 material-box-shadow margin-small-right">
+              <button
+                mat-raised-button
+                class="border-radius-none width-100-percent"
+                (click)="toggleCreating()">
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+            <div class="basic-flex-1 material-box-shadow">
 
-    <div class="display-flex margin-small-top">
-      <textarea formControlName="details"
-                class="text-area width-100-percent padding-small border-radius-medium"
-                placeholder="Appointment's details"
-      ></textarea>
-    </div>
-
-  </div>
-  <div>
-    <div class="display-flex">
-      <div class="basic-flex-1 material-box-shadow margin-small-right">
-        <button
-          mat-raised-button
-          class="border-radius-none width-100-percent"
-          (click)="toggleCreating()">
-          <i class="material-icons">delete</i>
-        </button>
-      </div>
-      <div class="basic-flex-1 material-box-shadow">
-
-        <button
-          type="submit"
-          [ngClass]="{'border-error': appointmentsForm.invalid && !this.appointmentsForm.untouched}"
-          class="border-radius-none width-100-percent"
-          mat-raised-button
-          (click)="submit()">
-          <i class="material-icons">check</i>
-        </button>
-      </div>
-    </div>
-  </div>
-</form>
+              <button
+                type="submit"
+                [ngClass]="{'border-error': appointmentsForm.invalid && !this.appointmentsForm.untouched}"
+                class="border-radius-none width-100-percent"
+                mat-raised-button
+                (click)="submit()">
+                <i class="material-icons">check</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
