@@ -28,6 +28,12 @@ export class AppComponent {
 
   // TODO: Add angular animations
   // TODO: Add a "last-created-appointments" logic (under calendar-month)
-  // TODO: rename organizer (=>calendar-display)
-  // TODO: rename calendar-specifier (=>calendar-calendar-specifier)
+
+  // TODO: Implement Tailwind Css
+  // TODO: untilDestroyed(this) rxjs operator for SubscriptionArray for example
+  // TODO: Implement control-flow instead of *ngIf
+  // TODO: Migrate to inject() for constructur initialization
+  // TODO: Implement Lazy-Loading for router components
+  // TODO: Outsource subscription calls in services
+  // TODO: Dissolve nested subscriptions
 }
