@@ -17,7 +17,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   public viewDate: Date = new Date();
   public clickedDate: Date;
   public events: ExtendedCalendarEvent[];
-  public refresh: Subject<void> = new Subject<void>();
   public startDayWeek: number = 0;
   public endDayWeek: number = 0;
   public startMonth: string = '';

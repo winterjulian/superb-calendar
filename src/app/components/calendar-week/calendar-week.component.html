@@ -46,7 +46,6 @@
     <!--- calender: --->
 
     <mwl-calendar-week-view
-      [refresh]="refresh"
       [weekStartsOn]="1"
       [viewDate]="viewDate"
       [events]="events"
@@ -63,7 +62,7 @@
       <ng-template #headerTemplate>
         <div role="row"
           class="display-flex cal-day-headers">
-          @for (day of days; track day; let i = $index) {
+          @for (day of days; track day.display; let i = $index) {
             <div
               [ngClass]="{'font-highlight': day.isToday}"
               [tabindex]="i"
