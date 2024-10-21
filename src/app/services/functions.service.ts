@@ -10,9 +10,9 @@ import {AppointmentTime} from "../interfaces/appointmentTime";
 export class FunctionsService {
   extractDate(givenDate: Date): string {
     // returns a standardized date-format by a given date
-    let day: number = givenDate.getDate();
-    let month: number = givenDate.getMonth();
-    let year: number = givenDate.getFullYear();
+    const day: number = givenDate.getDate();
+    const month: number = givenDate.getMonth();
+    const year: number = givenDate.getFullYear();
 
     return (String(year+'-'+month+'-'+day));
   }
@@ -23,7 +23,7 @@ export class FunctionsService {
 
   extractBasicDateFromURL(urlSegment: Array<UrlSegment>): BasicDate | null {
     if (urlSegment.length > 1) {
-      const dateShardsArray: Array<String> = String(urlSegment[1].path).split('-');
+      const dateShardsArray: Array<string> = String(urlSegment[1].path).split('-');
       if (dateShardsArray.length === 3) {
         return {
           year: Number(dateShardsArray[0]),
@@ -52,7 +52,7 @@ export class FunctionsService {
       + ', ' + addressObject.country
   }
 
-  getBasicDateFromDateAsString(date: Date, delimiter = '-'): String {
+  getBasicDateFromDateAsString(date: Date, delimiter = '-'): string {
     const dateShards: BasicDate = this.extractBasicDateFromDate(date);
     return dateShards.year + delimiter + dateShards.month + delimiter + dateShards.day;
 
@@ -67,8 +67,8 @@ export class FunctionsService {
   }
 
   addDayToDate(date: Date, daysAmount = 1) {
-    let newDate = new Date(date);
-    return new Date(newDate.setDate(newDate.getDate() + 1));
+    const newDate = new Date(date);
+    return new Date(newDate.setDate(newDate.getDate() + daysAmount));
   }
 
   add30MinutesToAppointmentTime(input: AppointmentTime): AppointmentTime {

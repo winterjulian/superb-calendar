@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
 import {MatButton} from "@angular/material/button";
 import {DatePipe, NgClass, NgIf} from "@angular/common";
@@ -29,7 +29,7 @@ export class AppointmentsEventComponent {
   ) {}
 
   openDeleteDialog(event: ExtendedCalendarEvent): void {
-    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+    this.dialog.open(DialogDeleteComponent, {
       panelClass: 'custom-dialog-container',
       width: "350px",
       data: {

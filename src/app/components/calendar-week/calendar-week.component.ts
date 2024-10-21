@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {StoreService} from "../../services/store.service";
 import {MatDialog} from "@angular/material/dialog";
 import {FunctionsService} from "../../services/functions.service";
 import {Subject} from "rxjs";
@@ -23,8 +22,8 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   public endDayWeek: number = 0;
   public startMonth: string = '';
   public endMonth: string = '';
-  public startYear: any = '';
-  public endYear: any = '';
+  public startYear: string = '';
+  public endYear: string = '';
   public days: Array<Record<'display' | 'isToday', boolean | string>> = [];
   public view: 'month' | 'week' | 'day' = 'week';
   public resetting: boolean | undefined = undefined;
@@ -33,7 +32,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private storeService: StoreService,
     private appointmentsService: AppointmentsService,
     private functionsService: FunctionsService,
     public dialog: MatDialog
@@ -43,10 +41,10 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.storeService.getResetCalendar().subscribe((reset: boolean | undefined) => {
+    this.appointmentsService.getResetCalendar().subscribe((reset: boolean | undefined) => {
       this.resetting = reset;
     })
-    this.storeService.getCurrentlyFocussedDate().subscribe((date): void => {
+    this.appointmentsService.getCurrentlyFocussedDate().subscribe((date: Date | undefined): void => {
       if (date != undefined) {
         this.viewDate = date;
       }
@@ -65,13 +63,13 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
     return this.basicDayStrings[index];
   }
 
-  getDisplayableMonth(day: any) {
+  getDisplayableMonth(day: Record<'date', Date>) {
     return day.date.getFullYear() + '-' + (day.date.getMonth() + 1)
   }
 
   // SETTER
 
-  setDateInformation(e: any): void {
+  setDateInformation(e: Record<'header', undefined | Array<any>>): void {
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
       this.setDateRange(e.header);
@@ -87,13 +85,13 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
           // get 1st day
           this.startDayWeek = weekDay.date.getDate();
           this.startMonth = this.getDisplayableMonth(weekDay);
-          this.startYear = weekDay.date.getFullYear();
+          this.startYear = String(weekDay.date.getFullYear());
         }
         if (index === 6) {
           // get last day
           this.endDayWeek = weekDay.date.getDate();
           this.endMonth = this.getDisplayableMonth(weekDay);
-          this.endYear = weekDay.date.getFullYear();
+          this.endYear = String(weekDay.date.getFullYear());
 
           // Makes double months invisible, only last one appears (endMonth)
 
@@ -110,7 +108,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
     this.isSet.next(true);
   }
 
-  setDateRange(header: any) {
+  setDateRange(header: Array<any>) {
     if (header.length === 7) {
       this.appointmentsService.setWeekRange({
         from: header[0].date,
@@ -123,7 +121,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
 
   // OTHERS
 
-  hourSegmentClicked(e: any) {
+  hourSegmentClicked(e: Record<'date', Date>) {
     this.appointmentsService.setFocussedBasicDateByDate(e.date);
     this.router.navigate([
       { outlets:
@@ -141,7 +139,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   resetFocussedDay() {
-    this.storeService.setCurrentlyFocussedDate(undefined);
+    this.appointmentsService.setCurrentlyFocussedDate(undefined);
   }
 
   loadData() {

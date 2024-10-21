@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ThemeService {
 
   constructor() {
-    this.scanPrefereces();
+    this.scanPreferences();
     this.scanLocalStorage();
     this.setTheme();
   }
@@ -28,7 +28,7 @@ export class ThemeService {
     this.setTheme();
   }
 
-  scanPrefereces() {
+  scanPreferences() {
     this.darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
   }
 

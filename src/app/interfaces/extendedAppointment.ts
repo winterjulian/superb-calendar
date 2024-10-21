@@ -1,10 +1,10 @@
 import {AppointmentTime} from "./appointmentTime";
 
 export interface extendedAppointment {
-  title: String,
+  title: string,
   startTime: AppointmentTime,
   endTime: AppointmentTime
   start: Date;
   end: Date,
-  details: String | undefined,
+  details: string | undefined,
 }

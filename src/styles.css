@@ -14,14 +14,6 @@ body {
   background-image: var(--bg-image);
 }
 
-html, body { height: 100%; }
-
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 .basic-font {
   font-family: "Roboto",
   "Segoe UI",

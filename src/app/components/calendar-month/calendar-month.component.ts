@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {StoreService} from "../../services/store.service";
 import {MatCalendar} from "@angular/material/datepicker";
 import {CalendarMonthHeaderComponent} from "../calendar-month-header/calendar-month-header.component";
 import {DateAdapter} from '@angular/material/core';
+import {AppointmentsService} from "../../services/appointments.service";
 
 @Component({
   selector: 'app-calendar-month',
@@ -13,7 +13,7 @@ export class CalendarMonthComponent implements OnInit {
   @ViewChild('calendar', {static: false}) calendar!: MatCalendar<Date>;
 
   constructor(
-    public storeService: StoreService,
+    public appointmentsService: AppointmentsService,
     private dateAdapter: DateAdapter<Date>
   ) {
     // initialization
@@ -26,10 +26,10 @@ export class CalendarMonthComponent implements OnInit {
   public focussedDate: Date | undefined = undefined;
 
   ngOnInit() {
-    this.storeService.getResetCalendar().subscribe((reset: boolean | undefined) => {
+    this.appointmentsService.getResetCalendar().subscribe((reset: boolean | undefined) => {
       this.resetting = reset;
     })
-    this.storeService.getCurrentlyFocussedDate().subscribe((date: Date | undefined) => {
+    this.appointmentsService.getCurrentlyFocussedDate().subscribe((date: Date | undefined) => {
       this.focussedDate = date;
       if (date) {
         this.goToMonthInCalendar(date)
@@ -59,7 +59,7 @@ export class CalendarMonthComponent implements OnInit {
   }
 
   setFocussedDate() {
-    this.storeService.setCurrentlyFocussedDate(this.focussedDate);
+    this.appointmentsService.setCurrentlyFocussedDate(this.focussedDate);
   }
 
   public goToMonthInCalendar(date: Date) {

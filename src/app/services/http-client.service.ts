@@ -1,15 +1,14 @@
 import {Injectable} from "@angular/core";
 import {extendedAppointment} from "../interfaces/extendedAppointment";
 import {Observable} from "rxjs";
-import {CalendarEvent} from "angular-calendar";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
-import {BasicDate} from "../interfaces/basicDate";
+import * as config from '../../../json-server.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpClientService {
-  private apiEndpoint = 'http://localhost:3000'
+  private apiEndpoint = 'http://localhost:' + config.port;
 
   loadDataInDateRangeWithDates(from: Date, to: Date): Observable<ExtendedCalendarEvent[]> {
     // TODO: reposition into appointmentsService
@@ -26,6 +25,7 @@ export class HttpClientService {
      * from: date string; equal or greater than the start of requested appointments
      * to: date string; equal or lesser than the end of requested appointments
      */
+
     return new Observable(observer => {
       fetch(this.apiEndpoint + "/appointments" +
         "?" + "start_gte=" + from + "&start_lte=" + to, {
@@ -33,9 +33,13 @@ export class HttpClientService {
       }).then((response: Response) => {
         return response.json();
       }).then((response: Array<ExtendedCalendarEvent>) => {
-        response.forEach((appointment: any) => {
-          appointment.start = new Date(appointment.start);
-          appointment.end = new Date(appointment.end);
+        response.forEach((appointment: ExtendedCalendarEvent) => {
+          if (appointment.start && appointment.end) {
+            appointment.start = new Date(appointment.start);
+            appointment.end = new Date(appointment.end);
+          } else {
+            console.warn('an appointment from the db had no valid start or end')
+          }
         })
         observer.next(response);
         observer.complete();
@@ -67,7 +71,7 @@ export class HttpClientService {
   deleteData(id: string) {
     /**
      * id: string or number given by JSON-server
-     * stringyfied at this point
+     * stringified at this point
      */
     return new Observable(observer => {
       fetch(this.apiEndpoint + "/appointments/" + id, {

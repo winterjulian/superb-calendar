@@ -15,11 +15,11 @@ import {MatCalendar} from "@angular/material/datepicker";
 @Injectable()
 class CustomDateFormatter extends CalendarNativeDateFormatter {
 
-  public override dayViewHour({date, locale}: DateFormatterParams): string {
+  public override dayViewHour({date}: DateFormatterParams): string {
     // change this to return a different date format
     return new Intl.DateTimeFormat('ca', {hour: 'numeric', minute: 'numeric', hour12: false}).format(date);
   }
-  public override weekViewHour({date, locale}: DateFormatterParams): string {
+  public override weekViewHour({date}: DateFormatterParams): string {
     // change this to return a different date format
     return new Intl.DateTimeFormat('ca', {hour: 'numeric', minute: 'numeric', hour12: false}).format(date);
   }

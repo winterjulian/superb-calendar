@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {BrowserModule} from "@angular/platform-browser";
 import { OrganizerComponent } from "./components/organizer/organizer.component";
-import { SpecifyerComponent } from "./components/specifyer/specifyer.component";
+import { SpecifierComponent } from "./components/specifier/specifier.component";
 import {
   CalendarDateFormatter,
   CalendarNativeDateFormatter,
@@ -31,7 +31,7 @@ import { MatSelectModule} from "@angular/material/select";
     MatSelectModule,
     OrganizerComponent,
     AppComponent,
-    SpecifyerComponent,
+    SpecifierComponent,
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}},

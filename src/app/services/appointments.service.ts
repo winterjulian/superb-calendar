@@ -11,9 +11,12 @@ import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
   providedIn: 'root'
 })
 export class AppointmentsService {
+  private today: Date = new Date();
   private weekRange: ReplaySubject<DateRange | undefined> = new ReplaySubject<DateRange | undefined>(1)
   private appointments: ReplaySubject<ExtendedCalendarEvent[]> = new ReplaySubject<ExtendedCalendarEvent[]>(1)
   private preferredTime: ReplaySubject<AppointmentTime> = new ReplaySubject<AppointmentTime>(1)
+  private currentlyFocussedDate: Subject<Date | undefined> = new Subject();
+  private calendarReset: BehaviorSubject<boolean | undefined> = new BehaviorSubject<boolean | undefined>(undefined);
   private dailyAppointmentReload: Subject<boolean> = new Subject<boolean>()
 
   constructor(
@@ -47,6 +50,14 @@ export class AppointmentsService {
     return this.dailyAppointmentReload;
   }
 
+  getCurrentlyFocussedDate() {
+    return this.currentlyFocussedDate;
+  }
+
+  getResetCalendar(): Subject<boolean | undefined> {
+    return this.calendarReset;
+  }
+
   // SETTER
 
   setFocussedBasicDate(dateInput: BasicDate | null): void {
@@ -67,6 +78,14 @@ export class AppointmentsService {
       minute: date.getMinutes()
     }
     this.preferredTime.next(newTime);
+  }
+
+  setCurrentlyFocussedDate(date: Date | undefined): void {
+    this.currentlyFocussedDate.next(date);
+  }
+
+  setCurrentlyFocussedDateToToday() {
+    this.currentlyFocussedDate.next(this.today);
   }
 
   // DATA MANAGEMENT
@@ -137,5 +156,13 @@ export class AppointmentsService {
         this.triggerDailyAppointmentReload();
         this.triggerWeeklyAppointmentReload();
       })
+  }
+
+  resetCalendar(time: number = 500) {
+    this.calendarReset.next(true);
+    setTimeout(() => {
+      this.setCurrentlyFocussedDateToToday();
+      this.calendarReset.next(false)
+    }, time)
   }
 }

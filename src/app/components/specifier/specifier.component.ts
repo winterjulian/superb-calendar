@@ -8,22 +8,22 @@ import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-to
 import {MatIcon} from "@angular/material/icon";
 import {ThemeService} from "../../services/theme.service";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
-import {StoreService} from "../../services/store.service";
+import {AppointmentsService} from "../../services/appointments.service";
 
 
 @Component({
-  selector: 'app-specifyer',
+  selector: 'app-specifier',
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, MatSelectModule, CommonModule, MatButton, MatButtonToggleGroup, MatButtonToggle, MatIcon, MatCard, MatCardContent, MatCardHeader],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './specifyer.component.html',
-  styleUrl: './specifyer.component.css'
+  templateUrl: './specifier.component.html',
+  styleUrl: './specifier.component.css'
 })
-export class SpecifyerComponent implements OnInit {
+export class SpecifierComponent implements OnInit {
 
   constructor(
     public themeService: ThemeService,
-    public storeService: StoreService
+    public appointmentsService: AppointmentsService
   ) {
     this.today = new Date();
   }
@@ -41,17 +41,6 @@ export class SpecifyerComponent implements OnInit {
   }
 
   resetDateToday() {
-    this.storeService.resetCalendar();
+    this.appointmentsService.resetCalendar();
   }
-
-  fakeProperties: any = [
-    { displayValue: 'Deutsch', value: 'de' },
-    { displayValue: 'English', value: 'en' },
-  ]
-
-  fakeAgents: any = [
-    { displayValue: 'Mustermann, Max', id: '01' },
-    { displayValue: 'Richelieu, Jean', id: '02' },
-    { displayValue: 'Teebaum, Miriam', id: '03' }
-  ];
 }

@@ -60,7 +60,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
           if (!response) {
             // response = null;
             // side sheet was opened because of present auxiliary route
-            this.initialUrlOpening(response);
+            this.initialUrlOpening();
           } else {
             // response = { year: ... }
             // side sheet was opened through conventional UI click
@@ -70,7 +70,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
       })
     );
     this.subscriptionArray.push(
-      this.appointmentsServce.getDailyAppointmentReload().subscribe(_ => {
+      this.appointmentsServce.getDailyAppointmentReload().subscribe(() => {
         this.loadDailyAppointments();
       })
     );
@@ -95,7 +95,7 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
     }]);
   }
 
-  initialUrlOpening(response: null): void {
+  initialUrlOpening(): void {
     const basicDate = this.functionsService.extractBasicDateFromURL(this.route.snapshot.url)
     if (basicDate) {
       this.focussedDay = basicDate;
