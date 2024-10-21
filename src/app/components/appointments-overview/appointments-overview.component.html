@@ -2,6 +2,9 @@
      [ngClass]="{'move-in-transition': isLoaded, 'move-out-transition': !isLoaded}"
 >
   <div class="display-flex flex-direction-col flex-space-between-v simple-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
+    {{ isRenewed }}<br>
+    {{ today }}<br>
+    {{ focussedDay.day }}.{{ focussedDay.month }}<br>
     <app-appointments-header
       [isRenewed]="isRenewed"
       [today]="today"

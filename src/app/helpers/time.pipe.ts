@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimePipe implements PipeTransform {
 
-  transform(value: never, ...args: string[]): string {
+  transform(value: any, ...args: string[]): string {
     const stringyfiedValue = String(value);
 
     if (stringyfiedValue.length === 1) {

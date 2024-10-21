@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
+import {Component, computed, EventEmitter, Input, Output, input, InputSignal} from '@angular/core';
 import {DatePipe, NgClass} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {BasicDate} from "../../interfaces/basicDate";
@@ -14,10 +14,10 @@ import {BasicDate} from "../../interfaces/basicDate";
   templateUrl: './appointments-header.component.html',
   styleUrl: './appointments-header.component.css'
 })
-export class AppointmentsHeaderComponent implements OnChanges {
+export class AppointmentsHeaderComponent {
   @Input() isRenewed!: boolean;
   @Input() today!: Date;
-  @Input() focussedDay!: BasicDate;
+  public focussedDay: InputSignal<BasicDate> = input.required<BasicDate>();
 
   @Output() emitNavigateToDate = new EventEmitter<void>();
   @Output() emitTriggerIsRenewed = new EventEmitter<void>();
@@ -25,18 +25,15 @@ export class AppointmentsHeaderComponent implements OnChanges {
   @Output() emitClose = new EventEmitter<void>();
 
   public currentTime: number;
-  public focussedDayIsToday: boolean = false;
+  public focussedDayIsToday = computed(() => {
+    return (this.today.getDate() === this.focussedDay().day
+      && (this.today.getMonth() + 1) === this.focussedDay().month
+      && this.today.getFullYear() === this.focussedDay().year)
+  })
 
   constructor() {
     this.currentTime = Date.now();
     setInterval(() => {this.currentTime = Date.now()}, 1000);
-  }
-
-  ngOnChanges() {
-    this.focussedDayIsToday =
-      this.today.getDate() === this.focussedDay.day
-      && (this.today.getMonth() + 1) === this.focussedDay.month
-      && this.today.getFullYear() === this.focussedDay.year;
   }
 
   navigateToDate() {

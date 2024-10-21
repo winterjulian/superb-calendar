@@ -29,11 +29,12 @@
   <div>
 <!--    <    -->
   </div>
+  {{ focussedDayIsToday() }}
   <div [ngClass]="{'scroll-down-transition': isRenewed}">
     <div class="display-flex flex-centralize-h flex-centralize-v font-size-xlarge"
-      [ngClass]="{'font-highlight': focussedDayIsToday}">
+      [ngClass]="{'font-highlight': focussedDayIsToday()}">
       <i class="material-icons padding-medium-right">calendar_month</i>
-      {{ focussedDay.day }}.{{ focussedDay.month }}.{{ focussedDay.year }}
+      {{ focussedDay().day }}.{{ focussedDay().month }}.{{ focussedDay().year }}
     </div>
   </div>
   <div>

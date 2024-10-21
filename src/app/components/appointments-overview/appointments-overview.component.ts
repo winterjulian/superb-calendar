@@ -90,9 +90,9 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
       outlets:
         {
           primary: 'calendar',
-          side: ['appointments', this.functionsService.getBasicDateFromDateAsString(this.today) ]
+          side: ['appointments', this.functionsService.getBasicDateFromDateAsString(this.today)]
         }
-    }]);
+    }]).then();
   }
 
   initialUrlOpening(): void {
@@ -112,8 +112,8 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
   close() {
     this.isLoaded = false;
     setTimeout(() => {
-      this.router.navigate(['', { outlets: {primary: 'calendar', side: null } }]);
-    }, 300)
+      this.router.navigate(['', {outlets: {primary: 'calendar', side: null}}]).then();
+     }, 300)
   }
 
   setToToday() {
