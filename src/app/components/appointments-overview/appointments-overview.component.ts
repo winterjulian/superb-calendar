@@ -71,7 +71,6 @@ export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.ngUnsubscribe)
       ).subscribe(() => {
-        console.log('TEST');
       this.loadDailyAppointments();
     })
   }

@@ -1,4 +1,13 @@
-import {animation, style, animate, trigger, transition, useAnimation, keyframes, state} from '@angular/animations';
+import {
+  animation,
+  style,
+  animate,
+  trigger,
+  transition,
+  useAnimation,
+  keyframes,
+  state
+} from '@angular/animations';
 
 // EXAMPLE:
 export const transitionAnimation = animation([
@@ -24,19 +33,19 @@ export const triggerAnimation = trigger('openClose', [
 
 // ANIMATIONS
 
-export const rightAppearAnimation = animation([
-  animate("0.5s", keyframes([
-    style({scale: 0.9, left: '15px', opacity: 0}),
-    style({scale: 0.9, left: 0, opacity: 0}),
-    style({scale: 1, left: 0, opacity: 1}),
-  ]))
-]);
-
 export const leftDisappearAnimation = animation([
   animate("0.5s", keyframes([
     style({scale: 1, left: 0, opacity: 1}),
     style({scale: 0.9, left: 0, opacity: 1}),
-    style({scale: 0.9, left: '-15px', opacity: 0})
+    style({scale: 0.9, left: '-30px', opacity: 0}),
+  ]))
+]);
+
+export const rightAppearAnimation = animation([
+  animate("0.5s", keyframes([
+    style({scale: 0.9, left: '30px' , opacity: 0}),
+    style({scale: 0.9, left: 0, opacity: 1}),
+    style({scale: 1, left: 0, opacity: 1}),
   ]))
 ]);
 
@@ -44,14 +53,15 @@ export const leftDisappearAnimation = animation([
 
 export const reloadAnimation = trigger('reloadContent', [
   transition('done => reload', [
-    style({position: 'relative', 'animation-fill-mode': 'forwards'}),
+    style({position: 'relative'}),
     useAnimation(leftDisappearAnimation)
   ]),
   state('reload', style({
-    opacity: 0
+    opacity: 0,
+    left: '30px',
   })),
   transition('reload => done', [
-    style({position: 'relative', 'animation-fill-mode': 'forwards'}),
+    style({position: 'relative'}),
     useAnimation(rightAppearAnimation)
   ])
 ])

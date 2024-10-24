@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatCalendar} from "@angular/material/datepicker";
-import {CalendarMonthHeaderComponent} from "../calendar-month-header/calendar-month-header.component";
 import {DateAdapter} from '@angular/material/core';
 import {AppointmentsService} from "../../services/appointments.service";
 
@@ -12,18 +11,18 @@ import {AppointmentsService} from "../../services/appointments.service";
 export class CalendarMonthComponent implements OnInit {
   @ViewChild('calendar', {static: false}) calendar!: MatCalendar<Date>;
 
+  public resetting: boolean | undefined = undefined;
+  public clickedDate: Date;
+  public focussedDate: Date | undefined = undefined;
+  public isReloading = false;
+
   constructor(
     public appointmentsService: AppointmentsService,
     private dateAdapter: DateAdapter<Date>
   ) {
-    // initialization
     this.clickedDate = new Date();
     this.dateAdapter.getFirstDayOfWeek = () => 1;
   }
-
-  public resetting: boolean | undefined = undefined;
-  public clickedDate: Date;
-  public focussedDate: Date | undefined = undefined;
 
   ngOnInit() {
     this.appointmentsService.getResetCalendar().subscribe((reset: boolean) => {
@@ -65,6 +64,4 @@ export class CalendarMonthComponent implements OnInit {
   public goToMonthInCalendar(date: Date) {
     this.calendar._goToDateInView(date, 'month')
   }
-
-  protected readonly CalendarMonthHeaderComponent = CalendarMonthHeaderComponent;
 }

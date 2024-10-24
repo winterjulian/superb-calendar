@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, distinctUntilChanged, Observable, pairwise, ReplaySubject, Subject, take} from "rxjs";
+import {BehaviorSubject, Observable, pairwise, ReplaySubject, Subject, take} from "rxjs";
 import {BasicDate} from "../interfaces/basicDate";
 import {FunctionsService} from "./functions.service";
 import {HttpClientService} from "./http-client.service";
@@ -18,6 +18,9 @@ export class AppointmentsService {
   private currentlyFocussedDate: Subject<Date | undefined> = new Subject();
   private calendarReset: Subject<boolean> = new Subject<boolean>();
   private dailyAppointmentReload: Subject<boolean> = new Subject<boolean>()
+  private focussedBasicDate: BehaviorSubject<BasicDate | null> = new BehaviorSubject<BasicDate | null>(null);
+
+  private reloadAnimationTime: number = 500;
 
   constructor(
     public functionsService: FunctionsService,
@@ -27,7 +30,6 @@ export class AppointmentsService {
     this.setWeekRange(undefined)
   }
 
-  private focussedBasicDate: BehaviorSubject<BasicDate | null> = new BehaviorSubject<BasicDate | null>(null);
 
   // GETTER
 
@@ -59,6 +61,10 @@ export class AppointmentsService {
 
   getResetCalendar(): Subject<boolean> {
     return this.calendarReset;
+  }
+
+  getReloadAnimationTime(): number {
+    return this.reloadAnimationTime;
   }
 
   // SETTER
@@ -132,7 +138,6 @@ export class AppointmentsService {
     this.weekRange
       .pipe(take(1))
       .subscribe(range => {
-        console.log('>>> triggerWeeklyAppointmentReload()')
         if (range) {
           this.loadAppointments(range)
         }
@@ -156,18 +161,15 @@ export class AppointmentsService {
       .subscribe((dateRangeArray: Array<DateRange | undefined>) => {
         const prev = dateRangeArray[0];
         const curr = dateRangeArray[1];
-        console.log(dateRangeArray);
         if (prev?.from.getTime() === curr?.from.getTime()) {
-          console.log('They are the same');
           setTimeout(() => {
             this.calendarReset.next(false);
-          }, 1000);
+          }, this.reloadAnimationTime);
         } else {
           this.loadAppointments(curr!);
-          console.log('They are not the same');
           setTimeout(() => {
             this.calendarReset.next(false);
-          }, 1000);
+          }, this.reloadAnimationTime);
         }
     })
   }
@@ -216,9 +218,10 @@ export class AppointmentsService {
   }
 
   resetCalendar() {
-    console.log('>>> resetCalendar()');
     this.calendarReset.next(true);
-    this.setCurrentlyFocussedDateToToday();
-    this.setWeekRangeToThisWeek();
+    setTimeout(() => {
+      this.setCurrentlyFocussedDateToToday();
+      this.setWeekRangeToThisWeek();
+    }, this.reloadAnimationTime)
   }
 }

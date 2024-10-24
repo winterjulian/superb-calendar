@@ -53,20 +53,16 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.appointmentsService.getResetCalendar().subscribe((reset: boolean) => {
-      console.log('\tgetting reset:', reset);
       this.resetting = reset;
       this.isReloading = reset;
     })
     this.appointmentsService.getCurrentlyFocussedDate().subscribe((date: Date | undefined): void => {
-      console.log('\tgetting focussed Date')
-      console.log('\t', date);
       if (date != undefined) {
         this.viewDate = date;
       }
     })
     this.appointmentsService.getAppointments()
       .subscribe(response => {
-        console.log('\tgetting appointments')
         this.events = response
         this.isReloading = false;
       })
@@ -87,7 +83,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   // SETTER
 
   setDateInformation(e: Record<'header', undefined | Array<any>>): void {
-    console.log('>>> setDateInformation');
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
       this.setDateRange(e.header);
@@ -127,7 +122,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   setDateRange(header: Array<any>) {
-    console.log('>>> setDateRange');
     if (header.length === 7) {
       this.appointmentsService.setWeekRange({
         from: header[0].date,
@@ -143,12 +137,14 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   hourSegmentClicked(e: Record<'date', Date>) {
     this.appointmentsService.setFocussedBasicDateByDate(e.date);
     this.router.navigate([
-      { outlets:
-          { primary: 'calendar',
-            side: ['appointments', this.functionsService.getBasicDateFromDateAsString(e.date) ]
+      {
+        outlets:
+          {
+            primary: 'calendar',
+            side: ['appointments', this.functionsService.getBasicDateFromDateAsString(e.date)]
           }
-      }]
-    );
+       }]
+    ).then();
     this.appointmentsService.setPreferredTime(e.date)
     // this.openDialog(e);
   }
