@@ -1,6 +1,5 @@
-<div class="height-100-percent theme-background padding-medium-top">
+<div [@reloadContent]="isReloading ? 'reload' : 'done'" class="height-100-percent theme-background padding-medium-top">
   <mat-calendar #calendar
-                [@reloadContent]="isReloading ? 'reload' : 'done'"
                 [(selected)]="focussedDate"
                 (selectedChange)="onDateValueChange($event)"
   >

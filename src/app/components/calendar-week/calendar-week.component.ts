@@ -1,20 +1,19 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {FunctionsService} from "../../services/functions.service";
-import {Subject} from "rxjs";
+import {distinctUntilChanged, Subject} from "rxjs";
 import {WeekDayModel} from "../../interfaces/weekDay.model";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../../services/appointments.service";
 import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
-import {reloadAnimation, triggerAnimation} from "../../../styles/animations";
+import {reloadAnimation} from "../../../styles/animations";
 
 @Component({
   selector: 'app-calendar-week',
   templateUrl: './calendar-week.component.html',
   styleUrl: './calendar-week.component.css',
   animations: [
-    reloadAnimation,
-    triggerAnimation
+    reloadAnimation
   ]
 })
 export class CalendarWeekComponent implements OnInit, OnDestroy {
@@ -30,12 +29,16 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   public endYear: string = '';
   public days: Array<Record<'display' | 'isToday', boolean | string>> = [];
   public view: 'month' | 'week' | 'day' = 'week';
-  public resetting: boolean | undefined = undefined;
 
   public isReloading = false;
   public isOpen = true;
 
   private basicDayStrings: Array<string> = ['Mon', 'Tue', 'Wes', 'Thu', 'Fri', 'Sat', 'Sun']
+  /*
+  calendar updates whole view when events are passed
+  prevent double updating for animations
+   */
+  private preventDoubleUpdating: boolean = false;
 
   toggle() {
     this.isOpen = !this.isOpen;
@@ -52,9 +55,11 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.appointmentsService.getResetCalendar().subscribe((reset: boolean) => {
-      this.resetting = reset;
-      this.isReloading = reset;
+    this.appointmentsService.getResetCalendar()
+      .pipe(
+        distinctUntilChanged(((prev, curr) => prev === curr)))
+      .subscribe((reset: boolean) => {
+        this.isReloading = reset;
     })
     this.appointmentsService.getCurrentlyFocussedDate().subscribe((date: Date | undefined): void => {
       if (date != undefined) {
@@ -63,8 +68,8 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
     })
     this.appointmentsService.getAppointments()
       .subscribe(response => {
+        this.preventDoubleUpdating = true;
         this.events = response
-        this.isReloading = false;
       })
   }
 
@@ -85,7 +90,10 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   setDateInformation(e: Record<'header', undefined | Array<any>>): void {
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
-      this.setDateRange(e.header);
+
+      if (!this.preventDoubleUpdating) {
+        this.setDateRange(e.header);
+      }
 
       e.header.forEach((weekDay: WeekDayModel, index: number) => {
 
@@ -118,6 +126,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
       })
     }
 
+    this.preventDoubleUpdating = false;
     this.isSet.next(true);
   }
 
@@ -146,7 +155,6 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
        }]
     ).then();
     this.appointmentsService.setPreferredTime(e.date)
-    // this.openDialog(e);
   }
 
   eventClicked(e: any): void {

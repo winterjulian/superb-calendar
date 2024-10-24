@@ -85,7 +85,7 @@ export class AppointmentsService {
     let currentWeekDay = this.today.getDay();
     /*
     sunday equals 0.
-    If sunday, set to 7 for easier ongoing calculations
+    If sunday, set to 7 easier for ongoing calculations
      */
     currentWeekDay = currentWeekDay === 7 ? 0 : currentWeekDay;
 
@@ -135,6 +135,9 @@ export class AppointmentsService {
   }
 
   triggerWeeklyAppointmentReload() {
+    /*
+    singular (pipe(take(1))) reload of appointments after saving for example
+     */
     this.weekRange
       .pipe(take(1))
       .subscribe(range => {
@@ -167,10 +170,8 @@ export class AppointmentsService {
           }, this.reloadAnimationTime);
         } else {
           this.loadAppointments(curr!);
-          setTimeout(() => {
-            this.calendarReset.next(false);
-          }, this.reloadAnimationTime);
         }
+
     })
   }
 
@@ -179,6 +180,7 @@ export class AppointmentsService {
       .pipe(take(1))
       .subscribe(response => {
         this.appointments.next(response);
+        this.calendarReset.next(false);
     })
   }
 
@@ -219,6 +221,9 @@ export class AppointmentsService {
 
   resetCalendar() {
     this.calendarReset.next(true);
+    /*
+    set timeout for animation to end successfully
+     */
     setTimeout(() => {
       this.setCurrentlyFocussedDateToToday();
       this.setWeekRangeToThisWeek();
