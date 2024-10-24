@@ -25,10 +25,6 @@
     left: -400px; /* TODO: take size of sidebar dynamically */
     opacity: 1;
   }
-  50% {
-    left: 0;
-    opacity: 1;
-  }
   100% {
     left: 0;
     opacity: 1;
@@ -37,10 +33,6 @@
 
 @keyframes sidebar-move-out {
   0% {
-    left: 0;
-    opacity: 1;
-  }
-  50% {
     left: 0;
     opacity: 1;
   }

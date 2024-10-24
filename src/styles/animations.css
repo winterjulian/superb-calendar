@@ -1,11 +1,11 @@
 .move-out-transition {
   position: relative;
+  animation-fill-mode: forwards;
   animation: move-in-animation 0.5s;
 }
 
 .move-in-transition {
   position: relative;
-  animation-direction: reverse;
   animation: move-out-animation 0.5s;
 }
 
@@ -62,22 +62,6 @@
   100% {
     top: 0;
     opacity: 1;
-  }
-}
-
-@keyframes move-out-animation {
-  0% {
-    scale: 0.9;
-    left: 15px;
-    opacity: 0;
-  }
-  50% {
-    scale: 0.9;
-    left: 0;
-    opacity: 1;
-  }
-  100% {
-    scale: 1;
   }
 }
 

@@ -6,11 +6,16 @@ import {WeekDayModel} from "../../interfaces/weekDay.model";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../../services/appointments.service";
 import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
+import {reloadAnimation, triggerAnimation} from "../../../styles/animations";
 
 @Component({
   selector: 'app-calendar-week',
   templateUrl: './calendar-week.component.html',
-  styleUrl: './calendar-week.component.css'
+  styleUrl: './calendar-week.component.css',
+  animations: [
+    reloadAnimation,
+    triggerAnimation
+  ]
 })
 export class CalendarWeekComponent implements OnInit, OnDestroy {
   public isSet: Subject<boolean> = new Subject();
@@ -27,7 +32,14 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   public view: 'month' | 'week' | 'day' = 'week';
   public resetting: boolean | undefined = undefined;
 
+  public isReloading = false;
+  public isOpen = true;
+
   private basicDayStrings: Array<string> = ['Mon', 'Tue', 'Wes', 'Thu', 'Fri', 'Sat', 'Sun']
+
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
 
   constructor(
     private router: Router,
@@ -40,17 +52,23 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.appointmentsService.getResetCalendar().subscribe((reset: boolean | undefined) => {
+    this.appointmentsService.getResetCalendar().subscribe((reset: boolean) => {
+      console.log('\tgetting reset:', reset);
       this.resetting = reset;
+      this.isReloading = reset;
     })
     this.appointmentsService.getCurrentlyFocussedDate().subscribe((date: Date | undefined): void => {
+      console.log('\tgetting focussed Date')
+      console.log('\t', date);
       if (date != undefined) {
         this.viewDate = date;
       }
     })
     this.appointmentsService.getAppointments()
       .subscribe(response => {
+        console.log('\tgetting appointments')
         this.events = response
+        this.isReloading = false;
       })
   }
 
@@ -69,6 +87,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   // SETTER
 
   setDateInformation(e: Record<'header', undefined | Array<any>>): void {
+    console.log('>>> setDateInformation');
     // header = array with 7 objects (=all weekdays)
     if (e.header != undefined) {
       this.setDateRange(e.header);
@@ -108,6 +127,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
   }
 
   setDateRange(header: Array<any>) {
+    console.log('>>> setDateRange');
     if (header.length === 7) {
       this.appointmentsService.setWeekRange({
         from: header[0].date,

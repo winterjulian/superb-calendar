@@ -1,7 +1,18 @@
 <div class="theme-background-nuance-2 week-calendar-wrapper">
-  <div [ngClass]="{'move-out-transition' : resetting, 'move-in-transition': resetting===false }">
+  {{ isReloading }} {{ isReloading ? 'reload ' : 'done' }}
+  <!--  <div [ngClass]="{'move-out-transition' : resetting, 'move-in-transition': resetting===false }">-->
+  <div [@reloadContent]="isReloading ? 'reload' : 'done'">
 
     <!--- calender controller: --->
+
+    <div>
+      <nav>
+        <button type="button" (click)="toggle()">Toggle Open/Close</button>
+      </nav>
+      <div [@openClose]="isOpen ? 'open' : 'closed'">
+        <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+      </div>
+    </div>
 
     <div class="display-flex flex-space-between-v">
       @if (isSet) {
@@ -74,5 +85,6 @@
         </div>
       </ng-template>
     </mwl-calendar-week-view>
+
   </div>
 </div>

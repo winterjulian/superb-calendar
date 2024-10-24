@@ -26,7 +26,7 @@ export class CalendarMonthComponent implements OnInit {
   public focussedDate: Date | undefined = undefined;
 
   ngOnInit() {
-    this.appointmentsService.getResetCalendar().subscribe((reset: boolean | undefined) => {
+    this.appointmentsService.getResetCalendar().subscribe((reset: boolean) => {
       this.resetting = reset;
     })
     this.appointmentsService.getCurrentlyFocussedDate().subscribe((date: Date | undefined) => {

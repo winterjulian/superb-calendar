@@ -25,6 +25,7 @@ export class HttpClientService {
      * from: date string; equal or greater than the start of requested appointments
      * to: date string; equal or lesser than the end of requested appointments
      */
+    console.log('>>> loadingData');
 
     return new Observable(observer => {
       fetch(this.apiEndpoint + "/appointments" +
