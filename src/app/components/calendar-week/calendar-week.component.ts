@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {FunctionsService} from "../../services/functions.service";
 import {distinctUntilChanged, Subject} from "rxjs";
-import {WeekDayModel} from "../../interfaces/weekDay.model";
+import {WeekDay} from "../../interfaces/weekDay";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../../services/appointments.service";
 import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
@@ -95,7 +95,7 @@ export class CalendarWeekComponent implements OnInit, OnDestroy {
         this.setDateRange(e.header);
       }
 
-      e.header.forEach((weekDay: WeekDayModel, index: number) => {
+      e.header.forEach((weekDay: WeekDay, index: number) => {
 
         this.days[index] = {
           display: weekDay.date.getDate() + ' ' + this.getWeekDayName(index),

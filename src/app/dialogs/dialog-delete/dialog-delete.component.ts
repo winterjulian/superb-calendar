@@ -5,6 +5,7 @@ import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
 import {DatePipe} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {AppointmentsService} from "../../services/appointments.service";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-dialog-delete',
@@ -35,6 +36,11 @@ export class DialogDeleteComponent {
   deleteAppointment(id: number | string | undefined) {
     if (id) {
       this.appointmentsService.deleteAppointment(String(id))
+      this.appointmentsService.newDeleteAppointment(String(id))
+        .pipe(take(1))
+        .subscribe(() => {
+          console.log('done');
+        })
     } else {
       console.warn('The given id was neither valid string nor valid number')
     }

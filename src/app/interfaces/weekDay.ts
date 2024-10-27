@@ -1,4 +1,4 @@
-export interface WeekDayModel {
+export interface WeekDay {
   date: Date;
   day: number;
   isFuture: boolean;

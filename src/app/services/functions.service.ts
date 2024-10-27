@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {AddressModel} from "../interfaces/address.model";
+import {Address} from "../interfaces/address";
 import {UrlSegment} from "@angular/router";
 import {BasicDate} from "../interfaces/basicDate";
 import {AppointmentTime} from "../interfaces/appointmentTime";
@@ -44,7 +44,7 @@ export class FunctionsService {
     return new Date(basicDate.year, basicDate.month-1, basicDate.day, hour, minutes, seconds);
   }
 
-  generateAddress(addressObject: AddressModel): string {
+  generateAddress(addressObject: Address): string {
     return addressObject.street
       + ' ' + addressObject.houseNumber
       + ', ' + addressObject.zipCode

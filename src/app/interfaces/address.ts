@@ -1,4 +1,4 @@
-export interface AddressModel {
+export interface Address {
   city: string;
   country: string;
   houseNumber: string;

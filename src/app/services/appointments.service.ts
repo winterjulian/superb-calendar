@@ -4,7 +4,7 @@ import {BasicDate} from "../interfaces/basicDate";
 import {FunctionsService} from "./functions.service";
 import {HttpClientService} from "./http-client.service";
 import {AppointmentTime} from "../interfaces/appointmentTime";
-import {DateRange} from "../interfaces/DateRange";
+import {DateRange} from "../interfaces/dateRange";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 
 @Injectable({
@@ -217,6 +217,10 @@ export class AppointmentsService {
         this.triggerDailyAppointmentReload();
         this.triggerWeeklyAppointmentReload();
       })
+  }
+
+  newDeleteAppointment(id: string) {
+    return this.httpClientService.deleteData(id);
   }
 
   resetCalendar() {
