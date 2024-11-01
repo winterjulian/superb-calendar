@@ -11,7 +11,10 @@ A simple exemplary calendar application - have fun!
 
 ### Docker Setup
 `docker build -t superb-calendar .`
-`docker run -p 8080:80 superb-calendar`
+`docker compose up -d`
+
+### ToDo
+Dockerize JSON Server or provide minimum backend so the app works in production.
 
 ### Q&A
 
