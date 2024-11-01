@@ -4,3 +4,10 @@ dist
 .gitignore
 Dockerfile
 docker-compose.yml
+.vscode
+README.md
+.git
+.pnpm-store/*
+.editorconfig
+.DS_Store
+.idea
