@@ -1,0 +1,7 @@
+services:
+  node:
+    container_name: superb-calendar
+    image: 'superb-calendar:latest'
+    ports:
+      - "4200:8080"
+    restart: always
