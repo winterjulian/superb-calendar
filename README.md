@@ -17,9 +17,6 @@ A simple exemplary calendar application - have fun!
 > **Caution: No functionality that needs an API bc. JSON server is
 not dockerized.**
 
-### ToDo
-Dockerize JSON Server or provide minimum backend so the app works in production.
-
 ### Q&A
 
 1. What is the json-server?
