@@ -1,5 +1,6 @@
 <form [formGroup]="appointmentsForm">
-  <div class="basic-font-color event-background padding-large material-box-shadow-lowkey margin-small-bottom">
+  <div style="border-radius: 2px 2px 0 0"
+       class="basic-font-color event-background padding-large material-box-shadow-lowkey margin-small-bottom">
     <div>
       <div class="display-flex flex-direction-row">
 
@@ -70,20 +71,22 @@
         </div>
         <div>
           <div class="display-flex">
-            <div class="basic-flex-1 material-box-shadow margin-small-right">
+            <div class="basic-flex-1 margin-small-right">
               <button
                 mat-raised-button
-                class="border-radius-none width-100-percent"
+                class="width-100-percent"
+                style="border-radius: 0 0 0 5px"
                 (click)="toggleCreating()">
                 <i class="material-icons">delete</i>
               </button>
             </div>
-            <div class="basic-flex-1 material-box-shadow">
+            <div class="basic-flex-1">
 
               <button
                 type="submit"
                 [ngClass]="{'border-error': appointmentsForm.invalid && !this.appointmentsForm.untouched}"
-                class="border-radius-none width-100-percent"
+                class="width-100-percent"
+                style="border-radius: 0 0 5px 0"
                 mat-raised-button
                 (click)="submit()">
                 <i class="material-icons">check</i>
