@@ -172,7 +172,7 @@ body {
 }
 
 .material-box-shadow {
-  box-shadow: var(--shadow-black);
+  box-shadow: var(--shadow-black) !important;
 }
 
 .material-box-shadow-inset {
@@ -194,4 +194,8 @@ body {
 .scroll-bar-design {
   scrollbar-color: var(--font-color-toggle-nuance-1) var(--bg-color-toggle);
   scrollbar-width: thin;
+}
+
+.back-blur {
+  backdrop-filter: blur(10px);
 }

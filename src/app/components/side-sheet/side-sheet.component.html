@@ -1,6 +1,6 @@
 <div
   [@moveSideSheet]="isLoaded ? 'in' : 'out'"
-  class="side-sheet display-flex flex-direction-col theme-background material-box-shadow basic-font-color">
+  class="side-sheet back-blur display-flex flex-direction-col material-box-shadow basic-font-color">
   <div class="display-flex flex-direction-col flex-space-between-v simple-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
     <app-appointments-header
       [isRenewed]="isRenewed"
@@ -28,7 +28,7 @@
     } @else {
       <button
         mat-raised-button
-        class="border-radius-medium"
+        class="border-radius-medium material-box-shadow"
         (click)="toggleCreating()">
         <i  class="material-icons margin-medium-right">add</i>
       </button>

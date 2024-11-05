@@ -74,7 +74,7 @@
             <div class="basic-flex-1 margin-small-right">
               <button
                 mat-raised-button
-                class="width-100-percent"
+                class="width-100-percent material-box-shadow"
                 style="border-radius: 0 0 0 5px"
                 (click)="toggleCreating()">
                 <i class="material-icons">delete</i>
@@ -85,7 +85,7 @@
               <button
                 type="submit"
                 [ngClass]="{'border-error': appointmentsForm.invalid && !this.appointmentsForm.untouched}"
-                class="width-100-percent"
+                class="width-100-percent material-box-shadow"
                 style="border-radius: 0 0 5px 0"
                 mat-raised-button
                 (click)="submit()">
