@@ -14,7 +14,7 @@
     ></app-appointments-header>
   </div>
 
-  <div class="height-100-percent scroll-container-y-scroll simple-border-bottom">
+  <div class="height-100-percent scroll-container-y-scroll scroll-bar-design simple-border-bottom">
     @for (event of events | async; track event; let i = $index) {
       <div class="margin-xlarge">
         <app-appointments-event [focussedDay]="focussedDay" [event]="event"></app-appointments-event>

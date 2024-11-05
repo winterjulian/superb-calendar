@@ -44,6 +44,7 @@ body {
   --bg-color-toggle: #e7e7e7;
   --bg-color-toggle-checked: #cacaca;
   --font-color-toggle: grey;
+  --font-color-toggle-nuance-1: #a6a6a6;
   --color-error: #d65555;
   --color-highlight: #00b0ba;
   --warn-symbol-color: #f1bf3f;
@@ -74,6 +75,7 @@ body {
     --bg-color-toggle: #3b3b3b;
     --bg-color-toggle-checked: #1a1a1a;
     --font-color-toggle: grey;
+    --font-color-toggle-nuance-1: grey;
     --color-error: #d65555;
     --color-highlight: #00b0ba;
     --warn-symbol-color: goldenrod;
@@ -187,4 +189,9 @@ body {
 
 .col-header-width {
   width: 70px;
+}
+
+.scroll-bar-design {
+  scrollbar-color: var(--font-color-toggle-nuance-1) var(--bg-color-toggle);
+  scrollbar-width: thin;
 }
