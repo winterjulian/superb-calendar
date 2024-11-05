@@ -6,14 +6,14 @@ import {WeekDay} from "../../interfaces/weekDay";
 import {Router} from "@angular/router";
 import {AppointmentsService} from "../../services/appointments.service";
 import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
-import {reloadAnimation} from "../../../styles/animations";
+import {reloadTransition} from "../../../styles/animations";
 
 @Component({
   selector: 'app-calendar-week',
   templateUrl: './calendar-week.component.html',
   styleUrl: './calendar-week.component.css',
   animations: [
-    reloadAnimation
+    reloadTransition
   ]
 })
 export class CalendarWeekComponent implements OnInit, OnDestroy {

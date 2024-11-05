@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppointmentsOverviewComponent } from './appointments-overview.component';
+import { SideSheetComponent } from './side-sheet.component';
 
 describe('AppointmentsOverviewComponent', () => {
-  let component: AppointmentsOverviewComponent;
-  let fixture: ComponentFixture<AppointmentsOverviewComponent>;
+  let component: SideSheetComponent;
+  let fixture: ComponentFixture<SideSheetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppointmentsOverviewComponent]
+      imports: [SideSheetComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(AppointmentsOverviewComponent);
+
+    fixture = TestBed.createComponent(SideSheetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

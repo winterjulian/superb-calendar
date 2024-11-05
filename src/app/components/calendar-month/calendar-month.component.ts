@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatCalendar} from "@angular/material/datepicker";
 import {DateAdapter} from '@angular/material/core';
 import {AppointmentsService} from "../../services/appointments.service";
-import {reloadAnimation} from "../../../styles/animations";
+import {reloadTransition} from "../../../styles/animations";
 import {distinctUntilChanged} from "rxjs";
 
 @Component({
@@ -10,7 +10,7 @@ import {distinctUntilChanged} from "rxjs";
   templateUrl: './calendar-month.component.html',
   styleUrl: './calendar-month.component.css',
   animations: [
-    reloadAnimation
+    reloadTransition
   ]
 })
 export class CalendarMonthComponent implements OnInit {

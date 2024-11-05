@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 import {CalendarComponent} from "./components/calendar/calendar.component";
-import {AppointmentsOverviewComponent} from "./components/appointments-overview/appointments-overview.component";
+import {SideSheetComponent} from "./components/side-sheet/side-sheet.component";
 
 export const routeConfig: Routes = [
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
@@ -8,6 +8,6 @@ export const routeConfig: Routes = [
   {
     path: 'appointments/:date',
     outlet: 'side',
-    component: AppointmentsOverviewComponent,
+    component: SideSheetComponent,
   },
 ];

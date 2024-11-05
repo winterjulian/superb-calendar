@@ -13,7 +13,7 @@ import {AppointmentsHeaderComponent} from "../appointments-header/appointments-h
 import {AppointmentsEventComponent} from "../appointments-event/appointments-event.component";
 
 @Component({
-  selector: 'app-appointments-overview',
+  selector: 'app-side-sheet',
   standalone: true,
   imports: [
     NgClass,
@@ -25,10 +25,10 @@ import {AppointmentsEventComponent} from "../appointments-event/appointments-eve
     AppointmentsHeaderComponent,
     AppointmentsEventComponent
 ],
-  templateUrl: './appointments-overview.component.html',
-  styleUrl: './appointments-overview.component.css'
+  templateUrl: './side-sheet.component.html',
+  styleUrl: './side-sheet.component.css'
 })
-export class AppointmentsOverviewComponent implements OnInit, OnDestroy {
+export class SideSheetComponent implements OnInit, OnDestroy {
   public isLoaded: boolean = false;
   public isCreating: boolean = false;
   public isRenewed: boolean = false;

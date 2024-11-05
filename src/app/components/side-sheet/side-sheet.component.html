@@ -4,6 +4,7 @@
   <div class="display-flex flex-direction-col flex-space-between-v simple-border-bottom padding-medium padding-xlarge-left padding-xlarge-right">
     <app-appointments-header
       [isRenewed]="isRenewed"
+      [isReloading]="isRenewed"
       [today]="today"
       [focussedDay]="focussedDay"
       (emitNavigateToDate)="navigateToDate()"

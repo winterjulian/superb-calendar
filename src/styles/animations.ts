@@ -27,9 +27,18 @@ export const rightAppearAnimation = animation([
   ]))
 ]);
 
+export const overWriteAnimation = animation([
+  animate("0.3s", keyframes([
+    style({top: 0, opacity: 1}),
+    style({top: '10px', opacity: 0}),
+    style({top: '-10px', opacity: 0}),
+    style({top: 0, opacity: 1}),
+  ]))
+])
+
 // TRANSITIONS
 
-export const reloadAnimation = trigger('reloadContent', [
+export const reloadTransition = trigger('reloadContent', [
   transition('done => reload', [
     style({position: 'relative'}),
     useAnimation(leftDisappearAnimation)
@@ -41,6 +50,13 @@ export const reloadAnimation = trigger('reloadContent', [
   transition('reload => done', [
     style({position: 'relative'}),
     useAnimation(rightAppearAnimation)
+  ])
+])
+
+export const scrollDownAnimation = trigger('scrollContent', [
+  transition('done => scroll', [
+    style({position: 'relative'}),
+    useAnimation(overWriteAnimation)
   ])
 ])
 
