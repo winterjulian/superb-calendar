@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {BrowserModule} from "@angular/platform-browser";
-import { CalendarDisplay } from "./components/organizer/calendar-display.component";
+import { CalendarBody } from "./components/calendar-body/calendar-body.component";
 import { CalendarSpecifier } from "./components/calendar-specifier/calendar-specifier.component";
 import {
   CalendarDateFormatter,
@@ -29,7 +29,7 @@ import { MatSelectModule} from "@angular/material/select";
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    CalendarDisplay,
+    CalendarBody,
     AppComponent,
     CalendarSpecifier,
   ],

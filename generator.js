@@ -1,3 +1,5 @@
+console.log('... Start generating appointments');
+
 let today = new Date();
 
 function addDays(date, days) {
@@ -168,6 +170,8 @@ let rawAppointments = [
   }
 ]
 
+console.log('... Refine pre-defined appointment\'s');
+
 rawAppointments.forEach((appointment, index) => {
   let currentStart = addDays(monday, desiredWeekDay[index] ? desiredWeekDay[index] : 0);
   let currentEnd = addDays(monday, desiredWeekDay[index] ? desiredWeekDay[index] : 0);
@@ -187,6 +191,8 @@ rawAppointments.forEach((appointment, index) => {
   data.appointments.push(appointment);
 })
 
+console.log('... Write data into JSON');
+
 let jsonData = JSON.stringify(data);
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports,no-undef
@@ -194,3 +200,5 @@ let fs = require('fs');
 fs.writeFile("db.json", jsonData, function(err) {
   if(err) console.log('error', err);
 });
+
+console.log('... Done');

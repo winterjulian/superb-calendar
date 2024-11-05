@@ -4,18 +4,18 @@ A simple exemplary calendar application - have fun!
 
 ### Development Setup
 
-1. Run `npm i` to install all necessary packages for this application.
+1. Install with `npm i` all necessary packages for this application.
 2. Run `node generator.js` to create some exemplary appointments for your current calendar week. In case an error occurs, the step can be skipped. It is merely nice-to-have.
-3. Run `json-server --watch db.json` to start the json-server (before yout start the application itself!). The server needs to run constantly.
-4. Run in a new terminal `ng s` to start the SuperbCalendar
+3. Start the fake server with `json-server --watch db.json` (before yout start the application itself!). The server needs to run constantly.
+4. Run `ng s` to start the SuperbCalendar
 
-### Docker Setup
-1. Build the image: `docker build -t superb-calendar .`
-2. Run the container: `docker compose up -d`
-3. Access the app at: http://localhost:4200
+### Production Setup (with Docker)
+1. Make sure to have have Docker installed.
+2. Build the image: `docker build -t superb-calendar .`
+3. Run the container: `docker compose up -d`
+4. Access the app at: http://localhost:4200
 
-> **Caution: No functionality that needs an API bc. JSON server is
-not dockerized.**
+> **Caution: The JSON server is not dockerized, there will be no appointments and no interactions with it.**
 
 ### Q&A
 

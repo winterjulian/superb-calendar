@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
-import {CalendarDisplay} from "./components/organizer/calendar-display.component";
+import {CalendarBody} from "./components/calendar-body/calendar-body.component";
 import {CalendarSpecifier} from "./components/calendar-specifier/calendar-specifier.component";
 import {CalendarMonthComponentModule} from "./components/calendar-month/calendar-month-component.module";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
@@ -13,7 +13,7 @@ import {NgClass} from "@angular/common";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CalendarDisplay, CalendarSpecifier, CalendarMonthComponentModule, MatSlideToggleModule, CalendarWeekModule, MatCalendar, CalendarComponent, RouterLink, NgClass],
+  imports: [RouterOutlet, CalendarBody, CalendarSpecifier, CalendarMonthComponentModule, MatSlideToggleModule, CalendarWeekModule, MatCalendar, CalendarComponent, RouterLink, NgClass],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

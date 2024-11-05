@@ -9,10 +9,10 @@ import {CalendarWeekComponent} from "../calendar-week/calendar-week.component";
   selector: 'app-calendar-display',
   standalone: true,
   imports: [CalendarMonthComponentModule, CalendarWeekComponentModule, MatButton, DatePipe],
-  templateUrl: './calendar-display.component.html',
-  styleUrl: './calendar-display.component.css'
+  templateUrl: './calendar-body.component.html',
+  styleUrl: './calendar-body.component.css'
 })
-export class CalendarDisplay {
+export class CalendarBody {
   @ViewChild(CalendarWeekComponent) child!: CalendarWeekComponent;
 
   constructor() {}
