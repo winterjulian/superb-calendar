@@ -2,7 +2,7 @@ import {Component, computed, EventEmitter, Input, Output, input, InputSignal} fr
 import {DatePipe, NgClass} from "@angular/common";
 import {MatButton} from "@angular/material/button";
 import {BasicDate} from "../../interfaces/basicDate";
-import {scrollDownAnimation} from "../../../styles/animations";
+import {scrollDownTransition} from "../../../styles/animations";
 
 @Component({
   selector: 'app-appointments-header',
@@ -15,7 +15,7 @@ import {scrollDownAnimation} from "../../../styles/animations";
     NgClass
   ],
   animations: [
-    scrollDownAnimation
+    scrollDownTransition
   ]
 })
 export class AppointmentsHeaderComponent {

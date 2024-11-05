@@ -27,7 +27,7 @@ export const rightAppearAnimation = animation([
   ]))
 ]);
 
-export const overWriteAnimation = animation([
+export const scrollOverAnimation = animation([
   animate("0.3s", keyframes([
     style({top: 0, opacity: 1}),
     style({top: '10px', opacity: 0}),
@@ -36,7 +36,38 @@ export const overWriteAnimation = animation([
   ]))
 ])
 
+export const moveInAnimation = animation([
+  animate("0.2s ease-out", keyframes([
+    style({left: '-400px', opacity: 1}),
+    style({left: '0', opacity: 1}),
+  ]))
+])
+
+
+export const moveOutAnimation = animation([
+  animate("0.2s ease-in", keyframes([
+    style({left: '0', opacity: 1}),
+    style({left: '-400px', opacity: 1}),
+  ]))
+])
+
 // TRANSITIONS
+
+export const sideSheetTransition = trigger('moveSideSheet', [
+  // keep "out" as a state to correctly fly in loaded window (prevents flickering)
+  state('out', style({
+    left: '-400px',
+    opacity: 1,
+  })),
+  transition('out => in', [
+    style({}),
+    useAnimation(moveInAnimation)
+  ]),
+  transition('in => out', [
+    style({}),
+    useAnimation(moveOutAnimation)
+  ]),
+])
 
 export const reloadTransition = trigger('reloadContent', [
   transition('done => reload', [
@@ -53,10 +84,10 @@ export const reloadTransition = trigger('reloadContent', [
   ])
 ])
 
-export const scrollDownAnimation = trigger('scrollContent', [
+export const scrollDownTransition = trigger('scrollContent', [
   transition('done => scroll', [
     style({position: 'relative'}),
-    useAnimation(overWriteAnimation)
+    useAnimation(scrollOverAnimation)
   ])
 ])
 

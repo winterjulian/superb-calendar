@@ -7,37 +7,3 @@
   max-width: 400px;
   z-index: 999;
 }
-
-.move-in-transition {
-  animation: sidebar-move-in 0.3s;
-}
-
-.move-out-transition {
-  animation: sidebar-move-out 0.3s forwards;
-}
-
-.fade-in-transition {
-  animation: fade-in-animation 0.3s forwards;
-}
-
-@keyframes sidebar-move-in {
-  0% {
-    left: -400px; /* TODO: take size of sidebar dynamically */
-    opacity: 1;
-  }
-  100% {
-    left: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes sidebar-move-out {
-  0% {
-    left: 0;
-    opacity: 1;
-  }
-  100% {
-    left: -400px; /* TODO: take size of sidebar dynamically */
-    opacity: 1;
-  }
-}

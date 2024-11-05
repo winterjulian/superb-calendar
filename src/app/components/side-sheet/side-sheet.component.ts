@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import { AsyncPipe, DatePipe, NgClass } from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
@@ -11,6 +11,7 @@ import {BasicDate} from "../../interfaces/basicDate";
 import {ExtendedCalendarEvent} from "../../interfaces/extendedCalendarEvent";
 import {AppointmentsHeaderComponent} from "../appointments-header/appointments-header.component";
 import {AppointmentsEventComponent} from "../appointments-event/appointments-event.component";
+import {sideSheetTransition} from "../../../styles/animations";
 
 @Component({
   selector: 'app-side-sheet',
@@ -24,11 +25,14 @@ import {AppointmentsEventComponent} from "../appointments-event/appointments-eve
     AsyncPipe,
     AppointmentsHeaderComponent,
     AppointmentsEventComponent
-],
+  ],
+  animations: [
+    sideSheetTransition
+  ],
   templateUrl: './side-sheet.component.html',
   styleUrl: './side-sheet.component.css'
 })
-export class SideSheetComponent implements OnInit, OnDestroy {
+export class SideSheetComponent implements OnInit, AfterViewInit, OnDestroy {
   public isLoaded: boolean = false;
   public isCreating: boolean = false;
   public isRenewed: boolean = false;
@@ -46,7 +50,6 @@ export class SideSheetComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.isLoaded = true;
     this.appointmentsService.getFocussedBasicDate()
       .pipe(
         takeUntil(this.ngUnsubscribe),
@@ -73,6 +76,14 @@ export class SideSheetComponent implements OnInit, OnDestroy {
       ).subscribe(() => {
       this.loadDailyAppointments();
     })
+  }
+
+  ngAfterViewInit() {
+    /*
+     set isLoaded after view has been initialized
+     else: instant appearance of component
+     */
+    this.isLoaded = true;
   }
 
   ngOnDestroy() {
