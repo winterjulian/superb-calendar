@@ -9,6 +9,7 @@ import * as config from '../../../json-server.json';
 })
 export class HttpClientService {
   private apiEndpoint = 'http://localhost:' + config.port;
+  private delayInMs = 3000;
 
   loadDataInDateRangeWithDates(from: Date, to: Date): Observable<ExtendedCalendarEvent[]> {
     // TODO: reposition into appointmentsService
@@ -26,23 +27,27 @@ export class HttpClientService {
      * to: date string; equal or lesser than the end of requested appointments
      */
     return new Observable(observer => {
-      fetch(this.apiEndpoint + "/appointments" +
-        "?" + "start_gte=" + from + "&start_lte=" + to, {
-        method: "GET"
-      }).then((response: Response) => {
-        return response.json();
-      }).then((response: Array<ExtendedCalendarEvent>) => {
-        response.forEach((appointment: ExtendedCalendarEvent) => {
-          if (appointment.start && appointment.end) {
-            appointment.start = new Date(appointment.start);
-            appointment.end = new Date(appointment.end);
-          } else {
-            console.warn('an appointment from the db had no valid start or end')
-          }
+
+      setTimeout(() => {
+        fetch(this.apiEndpoint + "/appointments" +
+          "?" + "start_gte=" + from + "&start_lte=" + to, {
+          method: "GET"
+        }).then((response: Response) => {
+          return response.json();
+        }).then((response: Array<ExtendedCalendarEvent>) => {
+          response.forEach((appointment: ExtendedCalendarEvent) => {
+            if (appointment.start && appointment.end) {
+              appointment.start = new Date(appointment.start);
+              appointment.end = new Date(appointment.end);
+            } else {
+              console.warn('an appointment from the db had no valid start or end')
+            }
+          })
+          observer.next(response);
+          observer.complete();
         })
-        observer.next(response);
-        observer.complete();
-      })
+      }, this.delayInMs)
+
     })
   }
 
