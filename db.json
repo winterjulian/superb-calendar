@@ -1,1 +1,143 @@
-{"appointments":[{"title":"Conversation with Konstantin","startTime":{"hour":8,"minute":30},"endTime":{"hour":10,"minute":0},"start":"2024-10-28T07:30:13.727Z","end":"2024-10-28T09:00:13.727Z","details":"About the current situation in the team","id":"1","totalMinutes":90},{"title":"Database problems: Ideas exchange with team","startTime":{"hour":11,"minute":0},"endTime":{"hour":12,"minute":0},"start":"2024-10-28T10:00:13.727Z","end":"2024-10-28T11:00:13.727Z","id":"2","totalMinutes":60},{"title":"Lunch break with Miriam","startTime":{"hour":12,"minute":0},"endTime":{"hour":13,"minute":0},"start":"2024-10-28T11:00:13.727Z","end":"2024-10-28T12:00:13.727Z","id":"3","totalMinutes":60},{"title":"Code review junior engineer","startTime":{"hour":9,"minute":0},"endTime":{"hour":10,"minute":0},"start":"2024-10-29T08:00:13.727Z","end":"2024-10-29T09:00:13.727Z","details":"Feedback about the calendar component; focussing on the missing unsubscribe()","id":"4","totalMinutes":60},{"title":"Call with munich team","startTime":{"hour":16,"minute":0},"endTime":{"hour":17,"minute":20},"start":"2024-10-29T15:00:13.727Z","end":"2024-10-29T16:20:13.727Z","id":"5","totalMinutes":80},{"title":"Refinement","startTime":{"hour":11,"minute":0},"endTime":{"hour":11,"minute":40},"start":"2024-10-30T10:00:13.727Z","end":"2024-10-30T10:40:13.727Z","details":"Focussing on interactive calendar events (ticket-14021)","id":"6","totalMinutes":40},{"title":"Scrum feedback to Lisa","startTime":{"hour":13,"minute":0},"endTime":{"hour":13,"minute":20},"start":"2024-10-30T12:00:13.727Z","end":"2024-10-30T12:20:13.727Z","details":"Lisa asked for feedback for her first meeting as a scrum master","id":"7","totalMinutes":20},{"title":"NGRX workshop","startTime":{"hour":9,"minute":0},"endTime":{"hour":12,"minute":15},"start":"2024-10-31T08:00:13.727Z","end":"2024-10-31T11:15:13.727Z","id":"8","totalMinutes":195},{"title":"workshop results presentation","startTime":{"hour":11,"minute":30},"endTime":{"hour":12,"minute":30},"start":"2024-11-01T10:30:13.727Z","end":"2024-11-01T11:30:13.727Z","id":"9","totalMinutes":60},{"title":"Driving to Munich","startTime":{"hour":15,"minute":30},"endTime":{"hour":17,"minute":30},"start":"2024-11-01T14:30:13.727Z","end":"2024-11-01T16:30:13.727Z","id":"10","totalMinutes":120}]}
+{
+  "appointments": [
+    {
+      "title": "Conversation with Konstantin",
+      "startTime": {
+        "hour": 8,
+        "minute": 30
+      },
+      "endTime": {
+        "hour": 10,
+        "minute": 0
+      },
+      "start": "2024-10-28T07:30:13.727Z",
+      "end": "2024-10-28T09:00:13.727Z",
+      "details": "About the current situation in the team",
+      "id": "1",
+      "totalMinutes": 90
+    },
+    {
+      "title": "Lunch break with Miriam",
+      "startTime": {
+        "hour": 12,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 13,
+        "minute": 0
+      },
+      "start": "2024-10-28T11:00:13.727Z",
+      "end": "2024-10-28T12:00:13.727Z",
+      "id": "3",
+      "totalMinutes": 60
+    },
+    {
+      "title": "Code review junior engineer",
+      "startTime": {
+        "hour": 9,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 10,
+        "minute": 0
+      },
+      "start": "2024-10-29T08:00:13.727Z",
+      "end": "2024-10-29T09:00:13.727Z",
+      "details": "Feedback about the calendar component; focussing on the missing unsubscribe()",
+      "id": "4",
+      "totalMinutes": 60
+    },
+    {
+      "title": "Call with munich team",
+      "startTime": {
+        "hour": 16,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 17,
+        "minute": 20
+      },
+      "start": "2024-10-29T15:00:13.727Z",
+      "end": "2024-10-29T16:20:13.727Z",
+      "id": "5",
+      "totalMinutes": 80
+    },
+    {
+      "title": "Refinement",
+      "startTime": {
+        "hour": 11,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 11,
+        "minute": 40
+      },
+      "start": "2024-10-30T10:00:13.727Z",
+      "end": "2024-10-30T10:40:13.727Z",
+      "details": "Focussing on interactive calendar events (ticket-14021)",
+      "id": "6",
+      "totalMinutes": 40
+    },
+    {
+      "title": "Scrum feedback to Lisa",
+      "startTime": {
+        "hour": 13,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 13,
+        "minute": 20
+      },
+      "start": "2024-10-30T12:00:13.727Z",
+      "end": "2024-10-30T12:20:13.727Z",
+      "details": "Lisa asked for feedback for her first meeting as a scrum master",
+      "id": "7",
+      "totalMinutes": 20
+    },
+    {
+      "title": "NGRX workshop",
+      "startTime": {
+        "hour": 9,
+        "minute": 0
+      },
+      "endTime": {
+        "hour": 12,
+        "minute": 15
+      },
+      "start": "2024-10-31T08:00:13.727Z",
+      "end": "2024-10-31T11:15:13.727Z",
+      "id": "8",
+      "totalMinutes": 195
+    },
+    {
+      "title": "workshop results presentation",
+      "startTime": {
+        "hour": 11,
+        "minute": 30
+      },
+      "endTime": {
+        "hour": 12,
+        "minute": 30
+      },
+      "start": "2024-11-01T10:30:13.727Z",
+      "end": "2024-11-01T11:30:13.727Z",
+      "id": "9",
+      "totalMinutes": 60
+    },
+    {
+      "title": "Driving to Munich",
+      "startTime": {
+        "hour": 15,
+        "minute": 30
+      },
+      "endTime": {
+        "hour": 17,
+        "minute": 30
+      },
+      "start": "2024-11-01T14:30:13.727Z",
+      "end": "2024-11-01T16:30:13.727Z",
+      "id": "10",
+      "totalMinutes": 120
+    }
+  ]
+}

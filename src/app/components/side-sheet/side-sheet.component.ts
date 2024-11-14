@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import { AsyncPipe, DatePipe, NgClass } from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
@@ -32,7 +32,7 @@ import {sideSheetTransition} from "../../../styles/animations";
   templateUrl: './side-sheet.component.html',
   styleUrl: './side-sheet.component.css'
 })
-export class SideSheetComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SideSheetComponent implements OnInit, AfterViewChecked, OnDestroy {
   public isLoaded: boolean = false;
   public isCreating: boolean = false;
   public isRenewed: boolean = false;
@@ -50,6 +50,9 @@ export class SideSheetComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    setTimeout(() => {
+      this.isLoaded = true;
+    }, 200)
     this.appointmentsService.getFocussedBasicDate()
       .pipe(
         takeUntil(this.ngUnsubscribe),
@@ -78,12 +81,12 @@ export class SideSheetComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked(){
     /*
      set isLoaded after view has been initialized
      else: instant appearance of component
      */
-    this.isLoaded = true;
+    // this.isLoaded = true;
   }
 
   ngOnDestroy() {
