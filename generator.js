@@ -170,7 +170,7 @@ let rawAppointments = [
   }
 ]
 
-console.log('... Refine pre-defined appointment\'s');
+console.log('... Refine pre-defined appointments');
 
 rawAppointments.forEach((appointment, index) => {
   let currentStart = addDays(monday, desiredWeekDay[index] ? desiredWeekDay[index] : 0);

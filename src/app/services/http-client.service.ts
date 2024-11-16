@@ -9,7 +9,7 @@ import * as config from '../../../json-server.json';
 })
 export class HttpClientService {
   private apiEndpoint = 'http://localhost:' + config.port;
-  private delayInMs = 3000;
+  private delayInMs = 0;
 
   loadDataInDateRangeWithDates(from: Date, to: Date): Observable<ExtendedCalendarEvent[]> {
     // TODO: reposition into appointmentsService
