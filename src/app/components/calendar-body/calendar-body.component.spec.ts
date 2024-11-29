@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CalendarBody } from './calendar-body.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 describe('CalendarBodyComponent', () => {
   let component: CalendarBody;
@@ -8,7 +9,7 @@ describe('CalendarBodyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CalendarBody]
+      imports: [CalendarBody, BrowserAnimationsModule]
     })
     .compileComponents();
 
