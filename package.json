@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "jest"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +28,7 @@
     "date-fns": "^3.3.1",
     "json-server": "^1.0.0-beta.3",
     "rxjs": "~7.8.0",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
@@ -37,15 +38,8 @@
     "@angular/compiler-cli": "^18.2.7",
     "@angular/localize": "^18.2.7",
     "@eslint/js": "^9.12.0",
-    "@types/jasmine": "~5.1.0",
     "eslint": "^9.12.0",
     "globals": "^15.11.0",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.5.4",
     "typescript-eslint": "^8.10.0"
   }

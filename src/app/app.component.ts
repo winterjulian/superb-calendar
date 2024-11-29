@@ -26,9 +26,8 @@ export class AppComponent {
     this.dateAdapter.getFirstDayOfWeek = () => 1;
   }
 
-  // TODO: Add angular animations
+  // TODO: Introduce NGRX
   // TODO: Add a "last-created-appointments" logic (under calendar-month)
-
   // TODO: Implement Tailwind Css
   // TODO: Migrate to inject() for constructor initialization
   // TODO: Implement Lazy-Loading for router components
