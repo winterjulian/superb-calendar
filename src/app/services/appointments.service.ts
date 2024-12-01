@@ -4,7 +4,7 @@ import {BasicDate} from "../interfaces/basicDate";
 import {FunctionsService} from "./functions.service";
 import {HttpClientService} from "./http-client.service";
 import {AppointmentTime} from "../interfaces/appointmentTime";
-import {DateRange} from "../interfaces/dateRange";
+import {DateRange} from "../interfaces/DateRange";
 import {ExtendedCalendarEvent} from "../interfaces/extendedCalendarEvent";
 
 @Injectable({

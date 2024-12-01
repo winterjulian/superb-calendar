@@ -12,6 +12,4 @@ import {CalendarSpecifier} from "../calendar-specifier/calendar-specifier.compon
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.css'
 })
-export class CalendarComponent {
-
-}
+export class CalendarComponent {}
