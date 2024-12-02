@@ -13,17 +13,17 @@ import {
 
 export const leftDisappearAnimation = animation([
   animate("0.4s", keyframes([
-    style({scale: 1, left: 0, opacity: 1}),
-    style({scale: 0.9, left: 0, opacity: 1}),
-    style({scale: 0.9, left: '-30px', opacity: 0}),
+    style({ transform: 'scale(1)', left: 0, opacity: 1 }),
+    style({ transform: 'scale(0.9)', left: 0, opacity: 1 }),
+    style({ transform: 'scale(0.9)', left: '-30px', opacity: 0 }),
   ]))
 ]);
 
 export const rightAppearAnimation = animation([
   animate("0.4s", keyframes([
-    style({scale: 0.9, left: '30px' , opacity: 0}),
-    style({scale: 0.9, left: 0, opacity: 1}),
-    style({scale: 1, left: 0, opacity: 1}),
+    style({ transform: 'scale(0.9)', left: '30px', opacity: 0 }),
+    style({ transform: 'scale(0.9)', left: 0, opacity: 1 }),
+    style({ transform: 'scale(1)', left: 0, opacity: 1 }),
   ]))
 ]);
 
