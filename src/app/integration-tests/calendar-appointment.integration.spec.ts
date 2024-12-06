@@ -1,6 +1,6 @@
 // AI generated
 import { Component } from '@angular/core';
-import {ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
+import {ComponentFixture, discardPeriodicTasks, fakeAsync, flush, TestBed} from '@angular/core/testing';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 import { CalendarComponent } from '../components/calendar/calendar.component';
@@ -117,7 +117,7 @@ describe('CalendarComponent', () => {
 
     appointmentTitle.click();
 
-    fixture.detectChanges();
+    // fixture.detectChanges();
 
     expect(navigateSpy).toHaveBeenCalledWith([
       {
@@ -127,6 +127,9 @@ describe('CalendarComponent', () => {
         }
       }
     ]);
+
+    flush();
+    discardPeriodicTasks();
   }));
 
 });
