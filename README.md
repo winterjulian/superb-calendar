@@ -1,7 +1,5 @@
 # SuperbCalendar
 
-![superb-calendar-screenshot](https://github.com/user-attachments/assets/821d92e6-fef5-4ba8-9bd0-84e177bc0e36)
-
 A simple exemplary calendar application - have fun!
 
 ### Development Setup
