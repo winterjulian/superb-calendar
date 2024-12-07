@@ -15,7 +15,7 @@ A simple exemplary calendar application - have fun!
 - `ng test` to run all tests with Jest 
 
 ### Production Setup (with Docker)
-1. Make sure to have have Docker installed.
+1. Make sure to have Docker installed.
 2. Build the image: `docker build -t superb-calendar .`
 3. Run the container: `docker compose up -d`
 4. Access the app at: http://localhost:4200
