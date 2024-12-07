@@ -6,8 +6,13 @@ A simple exemplary calendar application - have fun!
 
 1. Install with `npm i` all necessary packages for this application.
 2. Run `node generator.js` to create some exemplary appointments for your current calendar week. In case an error occurs, the step can be skipped. It is merely nice-to-have.
-3. Start the fake server with `json-server --watch db.json` (before yout start the application itself!). The server needs to run constantly.
+3. Start the fake server with `json-server --watch db.json` (before you start the application itself!). The server needs to run constantly.
 4. Run `ng s` to start the SuperbCalendar
+
+### Additional Features
+
+- `ng lint` to lint the TypeScript files
+- `ng test` to run all tests with Jest 
 
 ### Production Setup (with Docker)
 1. Make sure to have have Docker installed.
@@ -26,4 +31,4 @@ A simple exemplary calendar application - have fun!
 3. What is the [generator.js](generator.js)?
    - It is a vanilla JavaScript file for generating some exemplary appointments for this app. If this script cannot be run, there is already a db.json, but an empty one.
 4. Is there any testing?
-   - Currently, there is no testing in this app.
+   - There is partial testing. Unit testing is currently being implemented. However, there are already some integration tests that have been designed and refined with AI.
