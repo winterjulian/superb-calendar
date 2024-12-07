@@ -1,13 +1,33 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
+// eslint.config.mjs
+import tseslint from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
+import angularEslint from "@angular-eslint/eslint-plugin";
 
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts}"] },
-  { languageOptions: { globals: globals.browser },
+  {
+    // Allgemeine Konfiguration für TypeScript- und JavaScript-Dateien
+    files: ["**/*.{ts,js,mjs,cjs}"],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: "./tsconfig.json",
+        sourceType: "module",
+      },
+    },
+    plugins: {
+      "@typescript-eslint": tseslint,
+      "@angular-eslint": angularEslint,
+    },
     rules: {
-      '@typescript-eslint/no-explicit-any': ['off']
-    }},
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+      "@typescript-eslint/no-explicit-any": "off",
+      "@angular-eslint/directive-selector": [
+        "error",
+        { type: "attribute", prefix: "app", style: "camelCase" },
+      ],
+      "@angular-eslint/component-selector": [
+        "error",
+        { type: "element", prefix: "app", style: "kebab-case" },
+      ],
+    },
+  }
 ];

@@ -17,8 +17,6 @@ class CalendarSpecifierStubComponent {}
 
 describe('Theme toggle functionality', () => {
   const bodyElement = document.body;
-  // IDE bug:
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let component: CalendarComponent;
   let fixture: ComponentFixture<CalendarComponent>;
   let appointmentServiceMock: {
