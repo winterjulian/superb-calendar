@@ -195,7 +195,6 @@ console.log('... Write data into JSON');
 
 let jsonData = JSON.stringify(data);
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports,no-undef
 let fs = require('fs');
 fs.writeFile("db.json", jsonData, function(err) {
   if(err) console.log('error', err);
