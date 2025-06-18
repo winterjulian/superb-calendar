@@ -173,23 +173,32 @@ let rawAppointments = [
 console.log('... Refine pre-defined appointments');
 
 rawAppointments.forEach((appointment, index) => {
-  let currentStart = addDays(monday, desiredWeekDay[index] ? desiredWeekDay[index] : 0);
-  let currentEnd = addDays(monday, desiredWeekDay[index] ? desiredWeekDay[index] : 0);
+  let dayOffset = desiredWeekDay[index] ? desiredWeekDay[index] : 0;
+
+  let currentStart = addDays(monday, dayOffset);
+  let currentEnd = addDays(monday, dayOffset);
 
   currentStart.setHours(appointment.startTime.hour);
   currentStart.setMinutes(appointment.startTime.minute);
-  appointment.start = currentStart;
+  currentStart.setSeconds(0);
+  currentStart.setMilliseconds(0);
 
   currentEnd.setHours(appointment.endTime.hour);
   currentEnd.setMinutes(appointment.endTime.minute);
-  appointment.end = currentEnd;
+  currentEnd.setSeconds(0);
+  currentEnd.setMilliseconds(0);
 
-  appointment.totalMinutes = (currentEnd.getTime() - currentStart.getTime()) / 60000
+  appointment.start = currentStart.toISOString();
+  appointment.end = currentEnd.toISOString();
+  appointment.startMs = currentStart.getTime();
+  appointment.endMs = currentEnd.getTime();
 
-  appointment.id = String(index+1);
+  appointment.totalMinutes = (appointment.endMs - appointment.startMs) / 60000;
+
+  appointment.id = String(index + 1);
 
   data.appointments.push(appointment);
-})
+});
 
 console.log('... Write data into JSON');
 

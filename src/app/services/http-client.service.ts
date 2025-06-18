@@ -27,10 +27,12 @@ export class HttpClientService {
      * to: date string; equal or lesser than the end of requested appointments
      */
     return new Observable(observer => {
-
       setTimeout(() => {
+        const fromMs = new Date(from).getTime();
+        const toMs = new Date(to).getTime();
+
         fetch(this.apiEndpoint + "/appointments" +
-          "?" + "start_gte=" + from + "&start_lte=" + to, {
+          "?startMs_gte=" + fromMs + "&startMs_lte=" + toMs, {
           method: "GET"
         }).then((response: Response) => {
           return response.json();
@@ -40,16 +42,16 @@ export class HttpClientService {
               appointment.start = new Date(appointment.start);
               appointment.end = new Date(appointment.end);
             } else {
-              console.warn('an appointment from the db had no valid start or end')
+              console.warn('An appointment from the db had no valid start or end');
             }
-          })
+          });
           observer.next(response);
           observer.complete();
-        })
-      }, this.delayInMs)
-
-    })
+        });
+      }, this.delayInMs);
+    });
   }
+
 
   saveData(input: extendedAppointment): Observable<ExtendedCalendarEvent> {
     /**
