@@ -169,7 +169,7 @@ export class AppointmentsService {
           this.loadAppointments(curr!);
         }
 
-    })
+      })
   }
 
   loadAppointments(dateRange: DateRange) {
@@ -178,7 +178,7 @@ export class AppointmentsService {
       .subscribe(response => {
         this.appointments.next(response);
         this.calendarReset.next(false);
-    })
+      })
   }
 
   saveAppointment(
@@ -188,8 +188,8 @@ export class AppointmentsService {
     endTime: AppointmentTime,
     details: string | undefined
   ) {
-    const startAsValidDate = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, startTime.hour, startTime.minute)
-    const endAsValidDate: Date = new Date(focussedDay.year, focussedDay.month-1, focussedDay.day, endTime.hour, endTime.minute)
+    const startAsValidDate = new Date(focussedDay.year, focussedDay.month - 1, focussedDay.day, startTime.hour, startTime.minute)
+    const endAsValidDate: Date = new Date(focussedDay.year, focussedDay.month - 1, focussedDay.day, endTime.hour, endTime.minute)
     const newAppointment = {
       title,
       startTime,
