@@ -64,7 +64,7 @@ export class HttpClientService {
     })
   }
 
-  deleteData(id: string) {
+  deleteData(id: string): Observable<any> {
     /**
      * id: string or number given by JSON-server
      * stringified at this point

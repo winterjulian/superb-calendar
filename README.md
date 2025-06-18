@@ -22,7 +22,20 @@ A simple exemplary calendar application - have fun!
 
 > **Caution: The JSON server is not dockerized. There will be no appointments and no successful backend interactions.**
 
-### Q&A
+## What to expect?
+
+| Area             |                             |
+|------------------|-----------------------------|
+| AI               | ❌                           | 
+| Backend          | json-server                 | 
+| Containerization | ✅                           | 
+| Dark mode        | ✅                           |
+| Database         | Json file (db.json)         |
+| Reactivity       | Subjects (BehaviorSubjects) |
+| Styling          | css, self-written           |
+| Testing          | Integration                 |
+
+## Q&A
 
 1. What is the json-server?
    - https://github.com/typicode/json-server - A simple lightweight fake backend that is using a json file as database.
@@ -30,5 +43,5 @@ A simple exemplary calendar application - have fun!
    - The db.json is a fake database in form of a json file. It is part of the json-server.
 3. What is the [generator.js](generator.js)?
    - It is a vanilla JavaScript file for generating some exemplary appointments for this app. If this script cannot be run, there is already a db.json, but an empty one.
-4. Is there any testing?
+4. How about the testing?
    - There is partial testing. Unit testing is currently being implemented. However, there are already some integration tests that have been designed and refined with AI.
