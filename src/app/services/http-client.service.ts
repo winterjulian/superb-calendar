@@ -11,16 +11,6 @@ export class HttpClientService {
   private apiEndpoint = 'http://localhost:' + config.port;
   private delayInMs = 0;
 
-  loadDataInDateRangeWithDates(from: Date, to: Date): Observable<ExtendedCalendarEvent[]> {
-    // TODO: reposition into appointmentsService
-    /**
-     * from: date object;
-     * to: date object;
-     * alternative for load data with date strings
-     */
-    return this.loadDataInDateRangeWithStrings(from.toISOString(), to.toISOString());
-  }
-
   loadDataInDateRangeWithStrings(from: string, to: string): Observable<ExtendedCalendarEvent[]> {
     /**
      * from: date string; equal or greater than the start of requested appointments

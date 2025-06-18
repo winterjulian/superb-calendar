@@ -1,0 +1,196 @@
+/* BASICS */
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: var(--bg-image);
+}
+
+.basic-font {
+  font-family: "Roboto",
+  "Segoe UI",
+  "GeezaPro",
+  "DejaVu Serif",
+  "sans-serif",
+  "-apple-system",
+  "BlinkMacSystemFont";
+}
+
+/* THEMEING */
+
+body {
+  --bg-image: linear-gradient(355deg, #69bec2 14%, whitesmoke 55%);
+  --bg-image-comp: linear-gradient(90deg, #dcfbff 5%, whitesmoke 60%);
+  --bg-image-event: linear-gradient(-12deg, #9ad7d9 5%, #f3f3f4 40%);
+  --bg-image-event-hover: linear-gradient(-12deg, whitesmoke 5%, #9ad7d9 25%, whitesmoke 50%);
+  --font-color-basic: #474a50;
+  --font-color-disabled: #93969c;
+
+  --bg-color: whitesmoke;
+  --bg-color-nuance-1: #dcdcdc;
+  --bg-color-table-row: white;
+  --bg-color-table-row-odd: whitesmoke;
+  --bg-color-event-1: #69bec2;
+  --bg-color-focussed-day: #9ad7d9;
+
+  --bg-color-disabled: #dadada;
+  --bg-color-toggle: #e7e7e7;
+  --bg-color-toggle-checked: #cacaca;
+  --font-color-toggle: grey;
+  --font-color-toggle-nuance-1: #a6a6a6;
+  --color-error: #d65555;
+  --color-highlight: #00b0ba;
+  --warn-symbol-color: #f1bf3f;
+
+  --color-border: #cacaca;
+  --color-border-highlight: #51b5bb;
+  --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+  --shadow-black-lowkey: 1px 1px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark-theme {
+    --bg-image: linear-gradient(355deg, #0d333b 14%, #212121 55%);
+    --bg-image-comp: linear-gradient(90deg, #0d333b 5%, #282828 60%);
+    --bg-image-event: linear-gradient(-12deg, #1a4f5d 5%, #2f2f2f 40%);
+    --bg-image-event-hover: linear-gradient(-12deg, #1a4f5d 5%, #2f2f2f 50%);
+    --font-color-basic: lightgrey;
+    --font-color-disabled: #5a5a5a;
+
+    --bg-color: #282828;
+    --bg-color-nuance-1: #1a1a1a;
+    --bg-color-table-row: #1a1a1a;
+    --bg-color-table-row-odd: #2a2a2a;
+    --bg-color-event-1: #69bec2;
+    --bg-color-focussed-day: #158c8d;
+
+    --bg-color-disabled: #282828;
+    --bg-color-toggle: #3b3b3b;
+    --bg-color-toggle-checked: #1a1a1a;
+    --font-color-toggle: grey;
+    --font-color-toggle-nuance-1: grey;
+    --color-error: #d65555;
+    --color-highlight: #00b0ba;
+    --warn-symbol-color: goldenrod;
+
+    --color-border: #545454;
+    --color-border-highlight: #559a9e;
+    --shadow-black: 1px 1px 2px 0 rgba(0, 0, 0, 0.6), 0 2px 5px 0 rgba(0, 0, 0, 0.6);
+    --shadow-black-lowkey: 1px 1px 2px 0 rgba(0, 0, 0, 0.4), 0 2px 5px 0 rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* COLORS & THEMES */
+
+.body-corresponding-comp-background {
+  background-image: var(--bg-image-comp)
+}
+
+.basic-font-color {
+  color: var(--font-color-basic) !important;
+}
+
+.toggle-font-color {
+  color: var(--font-color-toggle) !important;
+}
+
+:host ::ng-deep .mat-button-toggle-checked {
+  background-color: var(--bg-color-toggle-checked);
+}
+
+.theme-background {
+  background-color: var(--bg-color);
+}
+
+.theme-background-nuance-1 {
+  background-color: var(--bg-color-toggle)
+}
+
+.theme-background-nuance-2 {
+  background-color: var(--bg-color-nuance-1);
+}
+
+.simple-border {
+  border: 1px solid var(--font-color-basic)
+}
+
+.simple-border-bottom {
+  border-bottom: 1px solid var(--font-color-basic)
+}
+
+.simple-border-top {
+  border-top: 1px solid var(--font-color-basic)
+}
+
+.simple-border-left {
+  border-left: 1px solid var(--font-color-basic)
+}
+
+.simple-border-right {
+  border-right: 1px solid var(--font-color-basic)
+}
+
+.event-background {
+  background-image: var(--bg-image-event) !important;
+  transition: 0.1s ease-in-out;
+}
+
+.event-background:hover {
+  scale: 1.05;
+  transition: 0.1s ease-in-out;
+}
+
+.border-transparent {
+  border: 1px solid transparent;
+}
+
+.warn-symbol-color {
+  color: var(--warn-symbol-color)
+}
+
+.font-error {
+  color: var(--color-error);
+}
+
+.border-error {
+  border: 1px solid var(--color-error);
+}
+
+.background-error {
+  background-color: var(--color-error);
+}
+
+.font-highlight {
+  color: var(--color-highlight) !important;
+}
+
+.material-box-shadow {
+  box-shadow: var(--shadow-black) !important;
+}
+
+.material-box-shadow-inset {
+  box-shadow: 1px 4px 8px 0 rgba(0, 0, 0, 0.2) inset, 1px 4px 8px 0 rgba(0, 0, 0, 0.19) inset;
+}
+
+.material-box-shadow-lowkey {
+  box-shadow: var(--shadow-black-lowkey);
+}
+
+.calender-column-width {
+  width: 250px;
+}
+
+.col-header-width {
+  width: 70px;
+}
+
+.scroll-bar-design {
+  scrollbar-color: var(--font-color-toggle-nuance-1) var(--bg-color-toggle);
+  scrollbar-width: thin;
+}
+
+.back-blur {
+  backdrop-filter: blur(10px) !important;
+}

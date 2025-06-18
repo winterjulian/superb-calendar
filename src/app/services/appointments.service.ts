@@ -30,8 +30,16 @@ export class AppointmentsService {
     this.setWeekRange(undefined)
   }
 
-
   // GETTER
+
+  loadDataInDateRangeWithDates(from: Date, to: Date): Observable<ExtendedCalendarEvent[]> {
+    /**
+     * from: date object;
+     * to: date object;
+     * alternative for load data with date strings
+     */
+    return this.httpClientService.loadDataInDateRangeWithStrings(from.toISOString(), to.toISOString());
+  }
 
   getFocussedBasicDate(): Observable<BasicDate | null> {
     return this.focussedBasicDate.asObservable();
@@ -48,7 +56,7 @@ export class AppointmentsService {
   getAppointmentsByBasicDate(basicDate: BasicDate): Observable<ExtendedCalendarEvent[]> {
     const from = this.functionsService.generateDateFromBasicDate(basicDate);
     const to = this.functionsService.generateDateFromBasicDate(basicDate, 23, 59, 59);
-    return this.httpClientService.loadDataInDateRangeWithDates(from, to)
+    return this.loadDataInDateRangeWithDates(from, to)
   }
 
   getDailyAppointmentReload(): Subject<boolean> {
@@ -147,17 +155,6 @@ export class AppointmentsService {
       })
   }
 
-  // initLoadAppointments() {
-  //   this.weekRange.pipe(
-  //     distinctUntilChanged(((prev, curr) =>
-  //       prev?.from.getTime() === curr?.from.getTime() &&
-  //       prev?.to.getTime() === curr?.to.getTime()
-  //     ))
-  //   ).subscribe(dateRange => {
-  //     this.loadAppointments(dateRange!);
-  //   })
-  // }
-
   initLoadAppointments() {
     this.weekRange
       .pipe(pairwise())
@@ -176,7 +173,7 @@ export class AppointmentsService {
   }
 
   loadAppointments(dateRange: DateRange) {
-    this.httpClientService.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
+    this.loadDataInDateRangeWithDates(dateRange.from, dateRange.to)
       .pipe(take(1))
       .subscribe(response => {
         this.appointments.next(response);
