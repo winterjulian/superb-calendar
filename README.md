@@ -1,4 +1,4 @@
-# SuperbCalendar
+# Superb Calendar
 ![superb-calendar-screenshot](https://github.com/user-attachments/assets/e741daed-c2ff-4f88-894b-f990c1f82473)
 A simple exemplary calendar application - have fun!
 
