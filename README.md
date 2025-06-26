@@ -10,6 +10,11 @@ A simple exemplary calendar application - have fun!
 3. Start the fake server with `json-server --watch db.json` (before you start the application itself!). The server needs to run constantly.
 4. In a new console window: Run `ng s` to start the SuperbCalendar
 
+### Additional Features
+
+- `ng lint` to lint the TypeScript files
+- `ng test` to run all tests with Jest 
+
 ### Production Setup (with Docker)
 
 1. Make sure to have Docker installed.
@@ -19,12 +24,7 @@ A simple exemplary calendar application - have fun!
 
 > **Caution: The JSON server is not dockerized. There will be no appointments and no successful backend interactions.**
 
-### Additional Features
-
-- `ng lint` to lint the TypeScript files
-- `ng test` to run all tests with Jest
-
-### What to expect?
+## What to expect?
 
 | Area             |                             |
 |------------------|-----------------------------|
